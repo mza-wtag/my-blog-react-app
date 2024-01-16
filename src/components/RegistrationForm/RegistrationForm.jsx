@@ -12,11 +12,19 @@ const RegistrationForm = () => {
         password: "",
     });
 
+    const handleInputChange = (e) => {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value,
+        });
+    };
+
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("user", JSON.stringify(input));
         navigate("/login");
     };
+
     return (
         <>
             <section>
@@ -28,12 +36,7 @@ const RegistrationForm = () => {
                             type="text"
                             value={input.userName}
                             name="userName"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -42,12 +45,7 @@ const RegistrationForm = () => {
                             type="text"
                             value={input.firstName}
                             name="firstName"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -56,12 +54,7 @@ const RegistrationForm = () => {
                             type="text"
                             value={input.lastName}
                             name="lastName"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -71,12 +64,7 @@ const RegistrationForm = () => {
                             required
                             value={input.email}
                             name="email"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -85,12 +73,7 @@ const RegistrationForm = () => {
                             type="password"
                             value={input.password}
                             name="password"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <button type="submit">Register</button>

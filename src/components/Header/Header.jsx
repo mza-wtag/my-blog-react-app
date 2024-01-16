@@ -4,8 +4,9 @@ import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
     const navigate = useNavigate();
+    const registeredUser = JSON.parse(localStorage.getItem("user"));
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
     const handleLogout = () => {
         localStorage.removeItem("loggedUser");
@@ -20,10 +21,11 @@ const Header = () => {
                 <div className="navbar__search">
                     <input type="search" placeholder="Search" />
                 </div>
-                {user ? (
+                {loggedUser ? (
                     <div className="navbar__menu">
                         <div>
-                            Welcome <Link to="/me">{user.userName}!</Link>
+                            Welcome{" "}
+                            <Link to="/me">{registeredUser.userName}!</Link>
                             <Link to="/login" onClick={handleLogout}>
                                 Logout
                             </Link>

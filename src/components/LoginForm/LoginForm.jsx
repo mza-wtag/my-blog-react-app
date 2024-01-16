@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const LoginForm = () => {
     const navigate = useNavigate();
     const [input, setInput] = useState({
         userName: "",
         password: "",
     });
+
+    const handleInputChange = (e) => {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value,
+        });
+    };
+
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const loggedUser = JSON.parse(localStorage.getItem("user"));
@@ -31,12 +40,7 @@ const LoginForm = () => {
                             type="text"
                             value={input.userName}
                             name="userName"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
@@ -45,12 +49,7 @@ const LoginForm = () => {
                             type="password"
                             value={input.password}
                             name="password"
-                            onChange={(e) =>
-                                setInput({
-                                    ...input,
-                                    [e.target.name]: e.target.value,
-                                })
-                            }
+                            onChange={handleInputChange}
                         />
                     </div>
                     <button type="submit">Login</button>
