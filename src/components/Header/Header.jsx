@@ -14,23 +14,23 @@ const Header = () => {
     return (
         <>
             <nav className="navbar">
-                <Link to="/" className="navbar__title">
+                <Link to="/" className="navbar__logo">
                     WellBlog
                 </Link>
                 <div className="navbar__search">
                     <input type="search" placeholder="Search" />
                 </div>
                 {user ? (
-                    <div className="navbar__auth-access">
+                    <div className="navbar__menu">
                         <div>
-                            {/* Welcome <Link to="/">{user.userName}!</Link> */}
+                            Welcome <Link to="/me">{user.userName}!</Link>
                             <Link to="/login" onClick={handleLogout}>
                                 Logout
                             </Link>
                         </div>
                     </div>
                 ) : (
-                    <div className="navbar__auth-access">
+                    <div className="navbar__menu">
                         <Link to="/login">Login</Link> <span> / </span>
                         <Link to="/register">Register</Link>
                     </div>
