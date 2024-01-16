@@ -5,11 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const navigate = useNavigate();
-    const registeredUser = JSON.parse(localStorage.getItem("user"));
-    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     const handleLogout = () => {
-        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("loggedInUser");
         navigate("/login");
     };
     return (
@@ -21,11 +19,11 @@ const Header = () => {
                 <div className="navbar__search">
                     <input type="search" placeholder="Search" />
                 </div>
-                {loggedUser ? (
+                {loggedInUser ? (
                     <div className="navbar__menu">
                         <div>
                             Welcome{" "}
-                            <Link to="/me">{registeredUser.userName}!</Link>
+                            <Link to="/me">{loggedInUser?.userName}!</Link>
                             <Link to="/login" onClick={handleLogout}>
                                 Logout
                             </Link>
