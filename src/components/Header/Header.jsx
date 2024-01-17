@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "../../assets/images/icons/search.svg";
+import Logout from "../../assets/images/icons/Frame.svg";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -22,15 +23,13 @@ const Header = () => {
                 </div>
                 {loggedInUser ? (
                     <div className="navbar__menu">
-                        <div>
-                            Welcome
-                            <span className="navbar__user-name">
-                                {loggedInUser.firstName} !
-                            </span>
-                            <Link to="/login" onClick={handleLogout}>
-                                Logout
-                            </Link>
-                        </div>
+                        Welcome
+                        <span className="navbar__user-name">
+                            {loggedInUser.firstName} !
+                        </span>
+                        <Link to="/login" onClick={handleLogout}>
+                            <img src={Logout} alt="Logout" />
+                        </Link>
                     </div>
                 ) : (
                     <div className="navbar__menu">

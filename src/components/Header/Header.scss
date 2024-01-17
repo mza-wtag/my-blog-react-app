@@ -32,6 +32,7 @@
 
     &__user-name {
         color: $link-color;
+        text-transform: capitalize;
     }
 
     &__menu {
@@ -44,7 +45,6 @@
             font-weight: 400;
             text-decoration: none;
         }
-
         span {
             margin: 0 1rem;
         }
