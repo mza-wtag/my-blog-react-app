@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginForn.scss";
 
-const LoginForm = () => {
+const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
-
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
