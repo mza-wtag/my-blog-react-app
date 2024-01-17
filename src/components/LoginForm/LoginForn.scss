@@ -17,13 +17,26 @@
 
   &__field {
     margin-bottom: 1rem;
-
-    &__label {
-      display: block;
-      margin-bottom: 0.5rem;
+  }
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+  }
+  &__error-text {
+    color: $error-color;
+  }
+  &__error-message {
+    color: $error-color;
+    margin-top: 1rem;
+  }
+  &__footer-link {
+    margin-top: 1rem;
+    a {
+      text-decoration: none;
+      font-weight: 900;
     }
   }
-
   &__input {
     padding: 0.5rem;
     width: 100%;
