@@ -25,7 +25,7 @@ const Header = () => {
           <div className="navbar__menu">
             Welcome
             <span className="navbar__user-name">
-              {loggedInUser.firstName} !
+              <Link to="/me">{loggedInUser.firstName} !</Link>
             </span>
             <Link to="/login" onClick={handleLogout}>
               <img src={Logout} alt="Logout" />

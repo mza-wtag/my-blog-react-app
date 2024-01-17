@@ -11,12 +11,14 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Profile from "./pages/Profile.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/me" element={<Profile />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Route>
