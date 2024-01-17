@@ -1,36 +1,41 @@
+@import "./../../styles/variables";
+
 .registration-form {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    margin-top: 10rem;
+
     &__title {
+        color: $link-color;
         margin-bottom: 2rem;
     }
 
     &__form {
-        width: 300px;
+        width: 20%;
     }
 
     &__field {
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
 
         &__label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
     }
+
     &__input {
-        width: 100%;
-        padding: 8px;
         box-sizing: border-box;
+        padding: 0.5rem;
+        width: 100%;
     }
 
     &__button {
-        background-color: #4caf50;
-        color: white;
-        padding: 10px 15px;
+        background-color: $link-color;
+        border-radius: 0.5rem;
         border: none;
+        color: $primary-color;
         cursor: pointer;
+        padding: 0.5rem 1rem;
     }
 }

@@ -47,6 +47,7 @@ const LoginForm = () => {
                         <input
                             className="login-form__input"
                             type="text"
+                            required
                             value={input.userName}
                             name="userName"
                             onChange={handleInputChange}
@@ -59,6 +60,7 @@ const LoginForm = () => {
                         <input
                             className="login-form__input"
                             type="password"
+                            required
                             value={input.password}
                             name="password"
                             onChange={handleInputChange}

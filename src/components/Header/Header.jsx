@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
-
 import { Link, useNavigate } from "react-router-dom";
+import SearchIcon from "../../assets/images/icons/search.svg";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -18,12 +18,15 @@ const Header = () => {
                 </Link>
                 <div className="navbar__search">
                     <input type="search" placeholder="Search" />
+                    <img src={SearchIcon} alt="" />
                 </div>
                 {loggedInUser ? (
                     <div className="navbar__menu">
                         <div>
-                            Welcome{" "}
-                            <Link to="/me">{loggedInUser?.userName}!</Link>
+                            Welcome
+                            <span className="navbar__user-name">
+                                {loggedInUser.firstName} !
+                            </span>
                             <Link to="/login" onClick={handleLogout}>
                                 Logout
                             </Link>
@@ -32,7 +35,7 @@ const Header = () => {
                 ) : (
                     <div className="navbar__menu">
                         <Link to="/login">Login</Link> <span> / </span>
-                        <Link to="/register">Register</Link>
+                        <Link to="/register">Signup</Link>
                     </div>
                 )}
             </nav>

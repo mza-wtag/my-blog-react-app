@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Layout from "./Layout.jsx";
 import "./index.scss";
 import {
     createBrowserRouter,
@@ -10,8 +11,6 @@ import {
     Route,
     RouterProvider,
 } from "react-router-dom";
-import Layout from "./Layout.jsx";
-import Profile from "./pages/Profile.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,8 +18,6 @@ const router = createBrowserRouter(
             <Route index path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/me" element={<Profile />} />
             <Route path="*" element={<h1>Page not found</h1>} />
         </Route>
     )

@@ -44,6 +44,7 @@ const RegistrationForm = () => {
                         </label>
                         <input
                             type="text"
+                            required
                             value={input.userName}
                             name="userName"
                             onChange={handleInputChange}
@@ -59,6 +60,7 @@ const RegistrationForm = () => {
                         </label>
                         <input
                             type="text"
+                            required
                             value={input.firstName}
                             name="firstName"
                             onChange={handleInputChange}
@@ -74,6 +76,7 @@ const RegistrationForm = () => {
                         </label>
                         <input
                             type="text"
+                            required
                             value={input.lastName}
                             name="lastName"
                             onChange={handleInputChange}
@@ -105,6 +108,7 @@ const RegistrationForm = () => {
                         </label>
                         <input
                             type="password"
+                            required
                             value={input.password}
                             name="password"
                             onChange={handleInputChange}
@@ -112,7 +116,7 @@ const RegistrationForm = () => {
                         />
                     </div>
                     <button type="submit" className="registration-form__button">
-                        Register
+                        Signup
                     </button>
                 </form>
             </section>
