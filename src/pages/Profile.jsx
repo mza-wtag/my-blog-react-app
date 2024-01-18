@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import UserDatails from "../components/UserDetails/UserDatails";
 
 const Profile = () => {
-  return <div>Profile</div>;
+  return (
+    <>
+      <UserDatails />
+    </>
+  );
 };
 
 export default Profile;
