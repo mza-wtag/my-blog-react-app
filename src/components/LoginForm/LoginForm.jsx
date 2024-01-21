@@ -16,16 +16,11 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
     return errors;
   };
 
-  const handleLoginSubmit = (values) => {
-    const registeredUsers = JSON.parse(localStorage.getItem("users"));
-    const user = registeredUsers?.find(
-      (user) => user?.userName === values?.userName
-    );
+  const handleLoginSubmit = (event) => {
+    const users = JSON.parse(localStorage.getItem("users"));
+    const user = users.find((user) => user.userName === event.userName);
 
-    if (
-      values.userName === user?.userName &&
-      values.password === user?.password
-    ) {
+    if (event.userName === user.userName && event.password === user.password) {
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       navigate("/");
     } else {
