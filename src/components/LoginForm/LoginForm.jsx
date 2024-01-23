@@ -19,11 +19,11 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
     return errors;
   };
 
-  const handleLoginSubmit = (values) => {
+  const handleLoginSubmit = (events) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find((user) => user.userName === values.userName);
+    const user = users.find((user) => user.userName === events.userName);
 
-    if (user && values.password === user.password) {
+    if (user && events.password === user.password) {
       dispatch(loginUser(user));
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       navigate("/");

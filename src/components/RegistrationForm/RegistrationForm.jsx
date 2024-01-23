@@ -33,10 +33,10 @@ const RegistrationForm = () => {
     return errors;
   };
 
-  const handleRegisterSubmit = (values) => {
-    dipatch(registerUser(values));
+  const handleRegisterSubmit = (events) => {
+    dipatch(registerUser(events));
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(values);
+    existingUsers.push(events);
     localStorage.setItem("users", JSON.stringify(existingUsers));
     navigate("/login");
   };
