@@ -2,9 +2,12 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./RegistrationForm.scss";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../actions/actions";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
+  const dipatch = useDispatch();
 
   const validate = (values) => {
     const errors = {};
@@ -30,9 +33,10 @@ const RegistrationForm = () => {
     return errors;
   };
 
-  const handleRegisterSubmit = (values) => {
+  const handleRegisterSubmit = (events) => {
+    dipatch(registerUser(events));
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(values);
+    existingUsers.push(events);
     localStorage.setItem("users", JSON.stringify(existingUsers));
     navigate("/login");
   };

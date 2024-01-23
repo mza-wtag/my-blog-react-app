@@ -2,9 +2,12 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginForn.scss";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../actions/actions";
 
 const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
@@ -16,20 +19,16 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
     return errors;
   };
 
-  const handleLoginSubmit = (values) => {
-    const registeredUsers = JSON.parse(localStorage.getItem("users"));
-    const user = registeredUsers?.find(
-      (user) => user?.userName === values?.userName
-    );
+  const handleLoginSubmit = (events) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find((user) => user.userName === events.userName);
 
-    if (
-      values.userName === user?.userName &&
-      values.password === user?.password
-    ) {
+    if (user && events.password === user.password) {
+      dispatch(loginUser(user));
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       navigate("/");
     } else {
-      setErrorMessage("You are not registered user!!");
+      setErrorMessage("Invalid username or password");
     }
   };
 
