@@ -4,6 +4,8 @@ import facebook from "./../../assets/images/icons/facebook.png";
 import twitter from "./../../assets/images/icons/twitter.png";
 import instagram from "./../../assets/images/icons/instagram.png";
 import youtube from "./../../assets/images/icons/youtube.png";
+import BlogForm from "../BlogForm/BlogForm";
+import BlogList from "../BlogList/BlogList";
 
 const UserDatails = () => {
   return (
@@ -37,6 +39,9 @@ const UserDatails = () => {
           <img src={youtube} alt="youtube" />
         </div>
       </section>
+
+      <BlogForm />
+      <BlogList />
     </>
   );
 };

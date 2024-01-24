@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 import UserDatails from "../components/UserDetails/UserDatails";
 
 const Profile = () => {
