@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./LoginForn.scss";
+import "./LoginForm.scss";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { loginUserWithLocalStorage } from "../../actions/authActions";
 
 const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const navigate = useNavigate();
@@ -19,17 +19,8 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
     return errors;
   };
 
-  const handleLoginSubmit = (events) => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find((user) => user.userName === events.userName);
-
-    if (user && events.password === user.password) {
-      dispatch(loginUser(user));
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
-      navigate("/");
-    } else {
-      setErrorMessage("Invalid username or password");
-    }
+  const handleLoginSubmit = (event) => {
+    dispatch(loginUserWithLocalStorage(event, setErrorMessage, navigate));
   };
 
   return (
