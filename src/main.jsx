@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import Profile from "./pages/Profile.jsx";
 import { Provider } from "react-redux";
-import store from "./store/store.js";
+import { store } from "./store/store.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
