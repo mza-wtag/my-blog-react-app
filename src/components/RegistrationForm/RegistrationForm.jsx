@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./RegistrationForm.scss";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../actions/actions";
+import { registerUser } from "../../actions/authActions";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();

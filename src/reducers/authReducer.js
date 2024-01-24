@@ -1,3 +1,5 @@
+import { LOGIN_USER, REGISTER_USER } from "../constants/actionTypes";
+
 const intialState = {
   users: [],
   currentUser: null,
@@ -5,12 +7,12 @@ const intialState = {
 
 export const userReducer = (state = intialState, action) => {
   switch (action.type) {
-    case "REGISTER_USER":
+    case REGISTER_USER:
       return {
         ...state,
         users: [...state.users, action.payload],
       };
-    case "LOGIN_USER":
+    case LOGIN_USER:
       return {
         ...state,
         currentUser: action.payload,

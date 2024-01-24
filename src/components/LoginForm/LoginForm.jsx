@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginForn.scss";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../actions/actions";
+import { loginUser } from "../../actions/authActions";
 
 const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const navigate = useNavigate();
