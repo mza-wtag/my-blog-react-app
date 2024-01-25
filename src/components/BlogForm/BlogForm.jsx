@@ -1,10 +1,7 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
-import {
-  addBlogPost,
-  addBlogPostToLocalStorage,
-} from "./../../actions/blogActions";
+import { addBlogPostAndLocalStorage } from "./../../actions/blogActions";
 
 const validate = (values) => {
   const errors = {};
@@ -32,8 +29,7 @@ const BlogForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    dispatch(addBlogPost(values));
-    addBlogPostToLocalStorage(values);
+    dispatch(addBlogPostAndLocalStorage(values));
   };
 
   return (
