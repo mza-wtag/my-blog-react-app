@@ -1,4 +1,4 @@
-import { ADD_BLOG_POST } from "../constants/actionTypes";
+import { ADD_BLOG_POST, INIT_BLOG_POSTS } from "../constants/actionTypes";
 
 export const addBlogPostAndLocalStorage = (post) => {
   return (dispatch) => {
@@ -9,5 +9,15 @@ export const addBlogPostAndLocalStorage = (post) => {
     const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
     const updatedPosts = [...existingPosts, post];
     localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
+  };
+};
+
+export const initBlogPostsFromLocalStorage = () => {
+  return (dispatch) => {
+    const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+    dispatch({
+      type: INIT_BLOG_POSTS,
+      payload: existingPosts,
+    });
   };
 };

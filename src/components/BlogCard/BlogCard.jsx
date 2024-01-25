@@ -1,13 +1,13 @@
 import React from "react";
 
 const BlogCard = ({ blog }) => {
-  const {} = blog;
+  const { title, body, tags, image } = blog;
   return (
     <div>
-      <h2>Title</h2>
-      <p>body</p>
-      <p>tag</p>
-      <img src="#" alt="image" />
+      <h2>{title}</h2>
+      <p>{body}</p>
+      <p>{tags}</p>
+      <img src={image} alt="image" />
     </div>
   );
 };
