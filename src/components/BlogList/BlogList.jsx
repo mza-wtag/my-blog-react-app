@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import BlogCard from "../BlogCard/BlogCard";
+import "./BlogList.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { initBlogPostsFromLocalStorage } from "../../actions/blogActions";
 
@@ -11,9 +12,9 @@ const BlogList = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {blogs.map((blog, index) => (
-        <BlogCard key={index} blog={blog} />
+    <div className="blog-list">
+      {blogs.map((blog) => (
+        <BlogCard key={blog.id} blog={blog} />
       ))}
     </div>
   );
