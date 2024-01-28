@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginForm.scss";
@@ -11,10 +12,10 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
-      errors.userName = "User Name Required";
+      errors.userName = "*";
     }
     if (!values.password) {
-      errors.password = "Password Required";
+      errors.password = "*";
     }
     return errors;
   };
@@ -29,7 +30,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
       <Form
         onSubmit={handleLoginSubmit}
         validate={validate}
-        render={({ handleSubmit, submitting, pristine, invalid }) => (
+        render={({ handleSubmit }) => (
           <form className="login-form__form" onSubmit={handleSubmit}>
             <div className="login-form__field">
               <label className="login-form__label">User Name:</label>
@@ -73,11 +74,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
                 </Field>
               </div>
             </div>
-            <button
-              className="login-form__button"
-              type="submit"
-              disabled={submitting || pristine || invalid}
-            >
+            <button className="login-form__button" type="submit">
               Login
             </button>
 
@@ -95,4 +92,13 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
   );
 };
 
+LoginForm.propTypes = {
+  errorMessage: PropTypes.string,
+  setErrorMessage: PropTypes.func,
+};
+
+LoginForm.defaultProps = {
+  errorMessage: "",
+  setErrorMessage: () => {},
+};
 export default LoginForm;
