@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginForm.scss";
@@ -91,4 +92,13 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
   );
 };
 
+LoginForm.propTypes = {
+  errorMessage: PropTypes.string,
+  setErrorMessage: PropTypes.func,
+};
+
+LoginForm.defaultProps = {
+  errorMessage: "",
+  setErrorMessage: () => {},
+};
 export default LoginForm;
