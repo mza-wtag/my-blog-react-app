@@ -10,16 +10,18 @@
   &__logo {
     color: $color-black;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     text-decoration: none;
   }
 
   &__search {
     display: flex;
     flex-grow: 0.1;
+    position: relative;
     img {
-      left: -2rem;
-      position: relative;
+      position: absolute;
+      right: 0.625rem;
+      top: 0.625rem;
     }
     input {
       background-color: $secondary-color;
@@ -38,11 +40,9 @@
   &__menu {
     align-items: center;
     display: flex;
-    font-size: larger;
+    font-size: 1.2rem;
     a {
       color: $link-color;
-      font-size: 1.2rem;
-      font-weight: 400;
       text-decoration: none;
     }
     span {
