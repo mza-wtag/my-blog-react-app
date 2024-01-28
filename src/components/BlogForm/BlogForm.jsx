@@ -8,9 +8,10 @@ import Select from "react-select";
 const BlogForm = () => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const onSubmit = async (values) => {
-    const blog = { ...values, image: imagePreview };
+    const blog = { ...values, image: imagePreview, tags: selectedTags };
     await dispatch(addBlogPostAndLocalStorage(blog));
     setImagePreview(null);
   };
@@ -29,16 +30,20 @@ const BlogForm = () => {
   };
 
   const tags = [
-    { value: "technology", label: "Technology" },
-    { value: "poetry", label: "Poetry" },
-    { value: "films", label: "Films" },
-    { value: "world politics", label: "World Politics" },
+    { value: "Technology", label: "Technology" },
+    { value: "Poetry", label: "Poetry" },
+    { value: "Films", label: "Films" },
+    { value: "World Politics", label: "World Politics" },
   ];
+
+  const handleChangeTags = (selectedOptions) => {
+    setSelectedTags(selectedOptions.map((option) => option.value));
+  };
 
   return (
     <Form
       onSubmit={onSubmit}
-      render={({ handleSubmit, form, submitting, pristine }) => (
+      render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <div>
             <label>Title</label>
@@ -56,11 +61,7 @@ const BlogForm = () => {
                   <input {...getInputProps()} />
                   {imagePreview ? (
                     <div style={{ position: "relative" }}>
-                      <img
-                        src={imagePreview}
-                        alt="Preview"
-                        style={{ maxWidth: "100%", maxHeight: "200px" }}
-                      />
+                      <img src={imagePreview} alt="Preview" />
                       <button
                         type="button"
                         onClick={cancelImagePreview}
@@ -80,11 +81,14 @@ const BlogForm = () => {
           </div>
           <div>
             <label>Tags</label>
-            <Field name="tags" component={Select} options={tags} isMulti />
+            <Select
+              onChange={handleChangeTags}
+              options={tags}
+              isMulti
+              value={tags.filter((tag) => selectedTags.includes(tag.value))}
+            />
           </div>
-          <button type="submit" disabled={submitting || pristine}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
       )}
     />
