@@ -12,10 +12,10 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
-      errors.userName = "User Name Required";
+      errors.userName = "*";
     }
     if (!values.password) {
-      errors.password = "Password Required";
+      errors.password = "*";
     }
     return errors;
   };
@@ -30,7 +30,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
       <Form
         onSubmit={handleLoginSubmit}
         validate={validate}
-        render={({ handleSubmit, submitting, pristine, invalid }) => (
+        render={({ handleSubmit }) => (
           <form className="login-form__form" onSubmit={handleSubmit}>
             <div className="login-form__field">
               <label className="login-form__label">User Name:</label>

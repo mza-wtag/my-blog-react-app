@@ -12,23 +12,23 @@ const RegistrationForm = () => {
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
-      errors.userName = "User Name Required";
+      errors.userName = "*";
     }
     if (!values.firstName) {
-      errors.firstName = "First Name Required";
+      errors.firstName = "*";
     }
     if (!values.lastName) {
-      errors.lastName = "Last Name Required";
+      errors.lastName = "*";
     }
     if (!values.email) {
-      errors.email = "Email Address Required";
+      errors.email = "*";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
       errors.email = "Invalid email address";
     }
     if (!values.password) {
-      errors.password = "Password Required";
+      errors.password = "*";
     }
     return errors;
   };
