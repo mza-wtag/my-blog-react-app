@@ -73,11 +73,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
                 </Field>
               </div>
             </div>
-            <button
-              className="login-form__button"
-              type="submit"
-              disabled={submitting || pristine || invalid}
-            >
+            <button className="login-form__button" type="submit">
               Login
             </button>
 

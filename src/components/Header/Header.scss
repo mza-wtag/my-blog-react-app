@@ -17,9 +17,11 @@
   &__search {
     display: flex;
     flex-grow: 0.1;
+    position: relative;
     img {
-      left: -2rem;
-      position: relative;
+      position: absolute;
+      right: 0.625rem;
+      top: 0.625rem;
     }
     input {
       background-color: $secondary-color;

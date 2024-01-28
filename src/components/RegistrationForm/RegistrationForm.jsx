@@ -33,8 +33,8 @@ const RegistrationForm = () => {
     return errors;
   };
 
-  const handleRegisterSubmit = (events) => {
-    dispatch(registerUser(events));
+  const handleRegisterSubmit = (event) => {
+    dispatch(registerUser(event));
     navigate("/login");
   };
 
@@ -161,11 +161,7 @@ const RegistrationForm = () => {
                 </Field>
               </div>
             </div>
-            <button
-              type="submit"
-              className="registration-form__button"
-              disabled={submitting || pristine || invalid}
-            >
+            <button type="submit" className="registration-form__button">
               Signup
             </button>
             <div className="registration-form__footer-link">

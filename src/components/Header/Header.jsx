@@ -19,7 +19,7 @@ const Header = () => {
         </Link>
         <div className="navbar__search">
           <input type="search" placeholder="Search" />
-          <img src={SearchIcon} alt="" />
+          <img src={SearchIcon} alt="search" />
         </div>
         {loggedInUser ? (
           <div className="navbar__menu">
