@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { addBlogPostAndLocalStorage } from "./../../actions/blogActions";
-import Dropzone from "react-dropzone";
-import Select from "react-select";
+import ImageDnD from "../ImageDnD/ImageDnD";
+import SelectBox from "../SelectBox/SelectBox";
+import "./BlogForm.scss";
 
 const BlogForm = () => {
   const dispatch = useDispatch();
@@ -50,53 +51,53 @@ const BlogForm = () => {
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit, form }) => (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Title</label>
-            <Field name="title" component="input" type="text" />
+        <form className="blog-form" onSubmit={handleSubmit}>
+          <div className="blog-form__title-tag-wrapper">
+            <div className="blog-form__title-container">
+              <label className="blog-form__label">Title</label>
+              <Field
+                className="blog-form__input"
+                name="title"
+                component="input"
+                type="text"
+              />
+            </div>
+            <div className="blog-form__tag-container">
+              <label className="blog-form__label">Tags</label>
+              <SelectBox
+                tags={tags}
+                selectedTags={selectedTags}
+                handleChangeTags={handleChangeTags}
+              />
+            </div>
           </div>
+
           <div>
-            <label>Body</label>
-            <Field name="body" component="textarea" />
-          </div>
-          <div>
-            <label>Image</label>
-            <Dropzone onDrop={handleDrop} accept="image/*">
-              {({ getRootProps, getInputProps }) => (
-                <div {...getRootProps()} style={dropzoneStyle}>
-                  <input {...getInputProps()} />
-                  {imagePreview ? (
-                    <div style={{ position: "relative" }}>
-                      <img src={imagePreview} alt="Preview" />
-                      <button
-                        type="button"
-                        onClick={cancelImagePreview}
-                        style={crossButtonStyle}
-                      >
-                        X
-                      </button>
-                    </div>
-                  ) : (
-                    <p>
-                      Drag 'n' drop an image here, or click to select an image
-                    </p>
-                  )}
-                </div>
-              )}
-            </Dropzone>
-          </div>
-          <div>
-            <label>Tags</label>
-            <Select
-              onChange={handleChangeTags}
-              options={tags}
-              isMulti
-              value={tags.filter((tag) => selectedTags.includes(tag.value))}
+            <label className="blog-form__label">Banner Image</label>
+            <ImageDnD
+              className="imageDnD"
+              onDrop={handleDrop}
+              imagePreview={imagePreview}
+              cancelImagePreview={cancelImagePreview}
             />
           </div>
           <div>
-            <button type="submit">Submit</button>
-            <button type="button" onClick={() => handleCancel(form)}>
+            <label className="blog-form__label">Body</label>
+            <Field
+              className="blog-form__textarea"
+              name="body"
+              component="textarea"
+            />
+          </div>
+          <div className="blog-form__buttons">
+            <button className=" blog-form__buttons--submit" type="submit">
+              Submit
+            </button>
+            <button
+              className="blog-form__buttons--cancel"
+              type="button"
+              onClick={() => handleCancel(form)}
+            >
               Cancel
             </button>
           </div>
@@ -104,27 +105,6 @@ const BlogForm = () => {
       )}
     />
   );
-};
-
-const dropzoneStyle = {
-  border: "2px dashed #ccc",
-  borderRadius: "4px",
-  padding: "20px",
-  textAlign: "center",
-  cursor: "pointer",
-};
-
-const crossButtonStyle = {
-  position: "absolute",
-  top: "5px",
-  right: "5px",
-  backgroundColor: "#ffffff",
-  border: "none",
-  borderRadius: "50%",
-  width: "20px",
-  height: "20px",
-  fontSize: "12px",
-  cursor: "pointer",
 };
 
 export default BlogForm;
