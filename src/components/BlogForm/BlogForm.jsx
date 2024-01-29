@@ -10,10 +10,11 @@ const BlogForm = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, form) => {
     const blog = { ...values, image: imagePreview, tags: selectedTags };
     await dispatch(addBlogPostAndLocalStorage(blog));
     setImagePreview(null);
+    form.reset();
   };
 
   const handleDrop = (acceptedFiles) => {
@@ -26,6 +27,11 @@ const BlogForm = () => {
   };
 
   const cancelImagePreview = () => {
+    setImagePreview(null);
+  };
+
+  const handleCancel = (form) => {
+    form.reset();
     setImagePreview(null);
   };
 
@@ -43,7 +49,7 @@ const BlogForm = () => {
   return (
     <Form
       onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, form }) => (
         <form onSubmit={handleSubmit}>
           <div>
             <label>Title</label>
@@ -88,7 +94,12 @@ const BlogForm = () => {
               value={tags.filter((tag) => selectedTags.includes(tag.value))}
             />
           </div>
-          <button type="submit">Submit</button>
+          <div>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={() => handleCancel(form)}>
+              Cancel
+            </button>
+          </div>
         </form>
       )}
     />
