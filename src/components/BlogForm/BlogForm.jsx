@@ -43,6 +43,8 @@ const BlogForm = () => {
     { value: "World Politics", label: "World Politics" },
   ];
 
+  const required = (value) => (value ? undefined : "Required");
+
   const handleChangeTags = (selectedOptions) => {
     setSelectedTags(selectedOptions.map((option) => option.value));
   };
@@ -50,16 +52,27 @@ const BlogForm = () => {
   return (
     <Form
       onSubmit={onSubmit}
+      validate={(values) => {
+        const errors = {};
+        if (!values.title) {
+          errors.title = "Required";
+        }
+        if (!values.body) {
+          errors.body = "Required";
+        }
+        return errors;
+      }}
       render={({ handleSubmit, form }) => (
         <form className="blog-form" onSubmit={handleSubmit}>
           <div className="blog-form__title-tag-wrapper">
             <div className="blog-form__title-container">
-              <label className="blog-form__label">Title</label>
+              <label className="blog-form__label">Title *</label>
               <Field
                 className="blog-form__input"
                 name="title"
                 component="input"
                 type="text"
+                validate={required}
               />
             </div>
             <div className="blog-form__tag-container">
@@ -75,18 +88,18 @@ const BlogForm = () => {
           <div>
             <label className="blog-form__label">Banner Image</label>
             <ImageDnD
-              className="imageDnD"
               onDrop={handleDrop}
               imagePreview={imagePreview}
               cancelImagePreview={cancelImagePreview}
             />
           </div>
           <div>
-            <label className="blog-form__label">Body</label>
+            <label className="blog-form__label">Body *</label>
             <Field
               className="blog-form__textarea"
               name="body"
               component="textarea"
+              validate={required}
             />
           </div>
           <div className="blog-form__buttons">
