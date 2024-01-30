@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./BlogCard.scss";
+import defaultUserImage from "./../../assets/images/icons/default.png";
 
 const BlogCard = ({ blog }) => {
   const { id, title, tags, image, createdAt } = blog;
-
   return (
     <div className="blog-card">
       <Link to={`/blog/${id}`} className="blog-card__link">
@@ -13,7 +13,7 @@ const BlogCard = ({ blog }) => {
         <h3 className="blog-card__blog-title">{title}</h3>
         <div className="blog-card__author-info">
           <img
-            src=""
+            src={defaultUserImage}
             alt="Author"
             className="blog-card__author-info__author-image"
           />

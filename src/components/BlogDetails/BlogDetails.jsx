@@ -1,5 +1,6 @@
 import React from "react";
 import "./BlogDetails.scss";
+import defaultUserImage from "./../../assets/images/icons/default.png";
 
 const BlogDetails = ({ blogDetails }) => {
   const { title, createdAt, image, tags, body } = blogDetails;
@@ -10,7 +11,7 @@ const BlogDetails = ({ blogDetails }) => {
 
       <div className="blog-details__author-info">
         <img
-          src=""
+          src={defaultUserImage}
           alt="Author"
           className="blog-details__author-info__author-image"
         />
