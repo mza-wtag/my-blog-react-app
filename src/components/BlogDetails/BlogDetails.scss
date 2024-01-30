@@ -1,29 +1,28 @@
 @import "./../../styles/variables";
 
 .blog-details {
-  overflow: hidden;
-
   padding: 1rem;
   width: 40%;
   margin: auto;
   &__banner {
     width: 100%;
-    height: 15rem;
-    border-radius: 1rem;
+    height: 28rem;
+    border-radius: 0.5rem;
   }
 
   &__category-badge {
-    background-color: #4b6bfb;
+    background-color: $color-blue;
     border-radius: 0.5rem;
-    color: #ffffff;
+    color: $primary-color;
     margin: 1rem;
     padding: 0.5rem;
     width: 9.375rem;
+    text-align: center;
   }
 
   &__blog-title {
     font-size: 1.125rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     margin: 1rem;
   }
 
@@ -36,16 +35,16 @@
     &__author-image {
       width: 1rem;
       height: 1rem;
-      background: #000;
+      background: $color-blue;
     }
 
     &__author-name {
-      font-weight: bold;
+      font-weight: $font-weight-bold;
       margin-bottom: 0.25rem;
     }
 
     &__blog-createdAt {
-      color: #777;
+      color: $dim-color;
     }
   }
   &__body {
