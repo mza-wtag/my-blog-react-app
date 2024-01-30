@@ -14,6 +14,7 @@ import {
 import Profile from "./pages/Profile.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
+import Blog from "./pages/Blog.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/me" element={<Profile />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/blog/:id" element={<Blog />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Route>
   )
