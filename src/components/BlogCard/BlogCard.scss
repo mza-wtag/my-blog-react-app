@@ -21,14 +21,14 @@
   }
 
   &__blog-title {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
     font-size: 1.125rem;
     font-weight: $font-weight-bold;
     margin: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
   }
 
   &__author-info {
