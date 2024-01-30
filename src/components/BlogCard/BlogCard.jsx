@@ -1,5 +1,7 @@
 import React from "react";
 import "./BlogCard.scss";
+import defaultUserImage from "./../../assets/images/icons/default.png";
+
 const BlogCard = ({ blog }) => {
   const { title, tags, image, createdAt } = blog;
   return (
@@ -9,8 +11,8 @@ const BlogCard = ({ blog }) => {
       <h3 className="blog-card__blog-title">{title}</h3>
       <div className="blog-card__author-info">
         <img
-          src=""
-          alt="Image"
+          src={defaultUserImage}
+          alt="Author Image"
           className="blog-card__author-info__author-image"
         />
         <p className="blog-card__author-info__author-name">John</p>
