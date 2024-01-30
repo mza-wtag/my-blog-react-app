@@ -20,7 +20,7 @@ export const addBlogPostAndLocalStorage = (post) => {
       payload: postWithId,
     });
     const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-    const updatedPosts = [...existingPosts, postWithId];
+    const updatedPosts = [postWithId, ...existingPosts];
     localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
   };
 };

@@ -5,7 +5,7 @@ const initialState = [];
 export const blogReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BLOG_POST:
-      return [...state, action.payload];
+      return [action.payload, ...state];
     case INIT_BLOG_POSTS:
       return action.payload;
     default:
