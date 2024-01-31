@@ -1,4 +1,8 @@
-import { REGISTER_USER, LOGIN_USER } from "./../constants/actionTypes";
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+} from "./../constants/actionTypes";
 
 export const registerUser = (user) => {
   return (dispatch) => {
@@ -12,10 +16,24 @@ export const registerUser = (user) => {
   };
 };
 
-export const loginUser = (user) => ({
-  type: LOGIN_USER,
-  payload: user,
-});
+export const loginUser = (user) => {
+  return (dispatch) => {
+    dispatch({
+      type: LOGIN_USER,
+      payload: user,
+    });
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+  };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch({
+      type: LOGOUT_USER,
+    });
+    localStorage.removeItem("loggedInUser");
+  };
+};
 
 export const loginUserWithLocalStorage = (
   user,
@@ -30,7 +48,6 @@ export const loginUserWithLocalStorage = (
 
     if (loggedInUser && user.password === loggedInUser.password) {
       dispatch(loginUser(loggedInUser));
-      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       navigate("/");
     } else {
       errorMessageSetter("Invalid username or password");
