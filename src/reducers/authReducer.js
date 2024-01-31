@@ -1,4 +1,8 @@
-import { LOGIN_USER, REGISTER_USER } from "../constants/actionTypes";
+import {
+  LOGIN_USER,
+  LOGOUT_USER,
+  REGISTER_USER,
+} from "../constants/actionTypes";
 
 const intialState = {
   users: [],
@@ -17,6 +21,12 @@ export const authReducer = (state = intialState, action) => {
         ...state,
         loggedInUser: action.payload,
       };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        loggedInUser: null,
+      };
+
     default:
       return state;
   }

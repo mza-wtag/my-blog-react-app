@@ -44,7 +44,7 @@ const RegistrationForm = () => {
       <Form
         onSubmit={handleRegisterSubmit}
         validate={validate}
-        render={({ handleSubmit, submitting, pristine, invalid }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className="registration-form__form">
             <div className="registration-form__field">
               <label className="registration-form__label">User Name:</label>
