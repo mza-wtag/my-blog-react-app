@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
-import { addBlogPostAndLocalStorage } from "./../../actions/blogActions";
+import { addBlogPostInLocalStorage } from "./../../actions/blogActions";
 import ImageDnD from "../ImageDnD/ImageDnD";
 import SelectBox from "../SelectBox/SelectBox";
 import "./BlogForm.scss";
@@ -13,7 +13,7 @@ const BlogForm = () => {
 
   const onSubmit = async (values, form) => {
     const blog = { ...values, image: imagePreview, tags: selectedTags };
-    await dispatch(addBlogPostAndLocalStorage(blog));
+    await dispatch(addBlogPostInLocalStorage(blog));
     setImagePreview(null);
     form.reset();
   };

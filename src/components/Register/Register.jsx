@@ -1,34 +1,34 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./RegistrationForm.scss";
+import "./Register.scss";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 
-const RegistrationForm = () => {
+const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
-      errors.userName = "*";
+      errors.userName = "User Name Required";
     }
     if (!values.firstName) {
-      errors.firstName = "*";
+      errors.firstName = "First Name Required";
     }
     if (!values.lastName) {
-      errors.lastName = "*";
+      errors.lastName = "Last Name Required";
     }
     if (!values.email) {
-      errors.email = "*";
+      errors.email = "Email Required";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
       errors.email = "Invalid email address";
     }
     if (!values.password) {
-      errors.password = "*";
+      errors.password = "Password Required";
     }
     return errors;
   };
@@ -44,10 +44,10 @@ const RegistrationForm = () => {
       <Form
         onSubmit={handleRegisterSubmit}
         validate={validate}
-        render={({ handleSubmit, submitting, pristine, invalid }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className="registration-form__form">
             <div className="registration-form__field">
-              <label className="registration-form__label">User Name:</label>
+              <label className="registration-form__label">User Name:*</label>
               <Field
                 type="text"
                 name="userName"
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
               </div>
             </div>
             <div className="registration-form__field">
-              <label className="registration-form__label">First Name:</label>
+              <label className="registration-form__label">First Name:*</label>
               <Field
                 type="text"
                 name="firstName"
@@ -93,7 +93,7 @@ const RegistrationForm = () => {
               </div>
             </div>
             <div className="registration-form__field">
-              <label className="registration-form__label">Last Name:</label>
+              <label className="registration-form__label">Last Name:*</label>
               <Field
                 type="text"
                 name="lastName"
@@ -116,7 +116,7 @@ const RegistrationForm = () => {
               </div>
             </div>
             <div className="registration-form__field">
-              <label className="registration-form__label">Email:</label>
+              <label className="registration-form__label">Email:*</label>
               <Field
                 type="email"
                 name="email"
@@ -139,7 +139,7 @@ const RegistrationForm = () => {
               </div>
             </div>
             <div className="registration-form__field">
-              <label className="registration-form__label">Password:</label>
+              <label className="registration-form__label">Password:*</label>
               <Field
                 type="password"
                 name="password"
@@ -175,4 +175,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default Register;

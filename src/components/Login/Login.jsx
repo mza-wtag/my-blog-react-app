@@ -1,21 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./LoginForm.scss";
+import "./Login.scss";
 import { useDispatch } from "react-redux";
 import { loginUserWithLocalStorage } from "../../actions/authActions";
 
-const LoginForm = ({ errorMessage, setErrorMessage }) => {
+const Login = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const validate = (values) => {
     const errors = {};
     if (!values.userName) {
-      errors.userName = "*";
+      errors.userName = "User Name Required";
     }
     if (!values.password) {
-      errors.password = "*";
+      errors.password = "Password Required";
     }
     return errors;
   };
@@ -33,7 +33,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
         render={({ handleSubmit }) => (
           <form className="login-form__form" onSubmit={handleSubmit}>
             <div className="login-form__field">
-              <label className="login-form__label">User Name:</label>
+              <label className="login-form__label">User Name:*</label>
               <Field
                 className="login-form__input"
                 type="text"
@@ -54,7 +54,7 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
               </div>
             </div>
             <div className="login-form__field">
-              <label className="login-form__label">Password:</label>
+              <label className="login-form__label">Password:*</label>
               <Field
                 className="login-form__input"
                 type="password"
@@ -92,13 +92,4 @@ const LoginForm = ({ errorMessage, setErrorMessage }) => {
   );
 };
 
-LoginForm.propTypes = {
-  errorMessage: PropTypes.string,
-  setErrorMessage: PropTypes.func,
-};
-
-LoginForm.defaultProps = {
-  errorMessage: "",
-  setErrorMessage: () => {},
-};
-export default LoginForm;
+export default Login;

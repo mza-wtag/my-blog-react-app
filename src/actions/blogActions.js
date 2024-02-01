@@ -1,7 +1,7 @@
-import { ADD_BLOG_POST, INIT_BLOG_POSTS } from "../constants/actionTypes";
+import { ADD_BLOG_POST, GET_BLOG_POSTS } from "../constants/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
-export const addBlogPostAndLocalStorage = (post) => {
+export const addBlogPostInLocalStorage = (post) => {
   return (dispatch) => {
     const id = uuidv4();
     const createdAt = new Date().toLocaleDateString("en-US", {
@@ -25,11 +25,11 @@ export const addBlogPostAndLocalStorage = (post) => {
   };
 };
 
-export const initBlogPostsFromLocalStorage = () => {
+export const getBlogPostsFromLocalStorage = () => {
   return (dispatch) => {
     const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
     dispatch({
-      type: INIT_BLOG_POSTS,
+      type: GET_BLOG_POSTS,
       payload: existingPosts,
     });
   };

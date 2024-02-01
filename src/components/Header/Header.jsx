@@ -2,15 +2,20 @@ import React from "react";
 import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "../../assets/images/icons/search.svg";
-import Logout from "../../assets/images/icons/Frame.svg";
+import LogoutIcon from "../../assets/images/icons/Frame.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
 const Header = () => {
   const navigate = useNavigate();
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.auth.loggedInUser);
+
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
+    dispatch(logoutUser());
     navigate("/login");
   };
+
   return (
     <>
       <nav className="navbar">
@@ -27,9 +32,9 @@ const Header = () => {
             <span className="navbar__user-name">
               <Link to="/me">{loggedInUser.firstName} !</Link>
             </span>
-            <Link to="/login" onClick={handleLogout}>
-              <img src={Logout} alt="Logout" />
-            </Link>
+            <button onClick={handleLogout} className="navbar__logout-btn">
+              <img src={LogoutIcon} alt="Logout" />
+            </button>
           </div>
         ) : (
           <div className="navbar__menu">
