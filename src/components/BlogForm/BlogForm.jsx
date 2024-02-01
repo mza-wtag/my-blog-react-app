@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
-import { addBlogPostAndLocalStorage } from "./../../actions/blogActions";
+import { addBlogPostInLocalStorage } from "./../../actions/blogActions";
 import ImageDnD from "../ImageDnD/ImageDnD";
 import SelectBox from "../SelectBox/SelectBox";
+import tags from "./../../constants/tags.json";
 import "./BlogForm.scss";
 
 const BlogForm = () => {
@@ -11,9 +12,9 @@ const BlogForm = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
-  const onSubmit = async (values, form) => {
+  const onSubmit = (values, form) => {
     const blog = { ...values, image: imagePreview, tags: selectedTags };
-    await dispatch(addBlogPostAndLocalStorage(blog));
+    dispatch(addBlogPostInLocalStorage(blog));
     setImagePreview(null);
     form.reset();
   };
@@ -35,13 +36,6 @@ const BlogForm = () => {
     form.reset();
     setImagePreview(null);
   };
-
-  const tags = [
-    { value: "Technology", label: "Technology" },
-    { value: "Poetry", label: "Poetry" },
-    { value: "Films", label: "Films" },
-    { value: "World Politics", label: "World Politics" },
-  ];
 
   const required = (value) => (value ? undefined : "Required");
 
@@ -66,7 +60,7 @@ const BlogForm = () => {
         <form className="blog-form" onSubmit={handleSubmit}>
           <div className="blog-form__title-tag-wrapper">
             <div className="blog-form__title-container">
-              <label className="blog-form__label">Title *</label>
+              <label className="blog-form__label">Title*</label>
               <Field
                 className="blog-form__input"
                 name="title"
@@ -76,7 +70,7 @@ const BlogForm = () => {
               />
             </div>
             <div className="blog-form__tag-container">
-              <label className="blog-form__label">Tags</label>
+              <label className="blog-form__label">Tags*</label>
               <SelectBox
                 tags={tags}
                 selectedTags={selectedTags}
@@ -86,7 +80,7 @@ const BlogForm = () => {
           </div>
 
           <div>
-            <label className="blog-form__label">Banner Image</label>
+            <label className="blog-form__label">Banner Image*</label>
             <ImageDnD
               onDrop={handleDrop}
               imagePreview={imagePreview}
@@ -94,7 +88,7 @@ const BlogForm = () => {
             />
           </div>
           <div>
-            <label className="blog-form__label">Body *</label>
+            <label className="blog-form__label">Body*</label>
             <Field
               className="blog-form__textarea"
               name="body"

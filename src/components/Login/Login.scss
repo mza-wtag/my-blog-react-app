@@ -1,6 +1,7 @@
 @import "./../../styles/variables";
 @import "./../../styles/constants";
-.registration-form {
+
+.login-form {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -26,11 +27,11 @@
   }
   &__error-text {
     color: $error-color;
-    position: absolute;
-    top: 0rem;
-    left: 5.2rem;
   }
-
+  &__error-message {
+    color: $error-color;
+    margin-top: 1rem;
+  }
   &__footer-link {
     margin-top: 1rem;
   }
@@ -48,6 +49,7 @@
     border: none;
     color: $primary-color;
     cursor: pointer;
+    font-weight: $font-weight-black;
     padding: 0.5rem 1rem;
   }
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { initBlogPostsFromLocalStorage } from "../actions/blogActions";
 import BlogDetails from "../components/BlogDetails/BlogDetails";
+import { getBlogPostsFromLocalStorage } from "../actions/blogActions";
 
 const Blog = () => {
   const { id } = useParams();
@@ -10,7 +10,7 @@ const Blog = () => {
   const blogDetails = blogs.find((blog) => blog.id === id);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(initBlogPostsFromLocalStorage());
+    dispatch(getBlogPostsFromLocalStorage());
   }, [dispatch]);
   if (!blogDetails) {
     return <div>Loading...</div>;

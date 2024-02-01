@@ -1,6 +1,6 @@
 @import "./../../styles/variables";
 
-.userDetails {
+.user-details {
   background-color: $secondary-color;
   border-radius: 0.75rem;
   display: flex;
@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
 
-    &__image {
+    &_image {
       border-radius: 50%;
       height: 4rem;
       margin-right: 1rem;
@@ -28,13 +28,13 @@
       flex-direction: column;
       text-align: left;
 
-      &__fullname {
+      &_full-name {
         font-size: 1.25rem;
         font-weight: $font-weight-medium;
         text-transform: capitalize;
       }
 
-      &__subtitle {
+      &_subtitle {
         color: $black-color-200;
         font-size: 0.875rem;
         font-weight: $font-weight-normal;

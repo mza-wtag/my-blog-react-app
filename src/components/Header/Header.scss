@@ -49,4 +49,9 @@
       margin: 0 1rem;
     }
   }
+  &__logout-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
