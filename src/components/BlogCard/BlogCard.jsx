@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./BlogCard.scss";
 import defaultUserImage from "./../../assets/images/icons/default.png";
 
@@ -20,6 +21,15 @@ const BlogCard = ({ blog }) => {
       </div>
     </div>
   );
+};
+
+BlogCard.propTypes = {
+  blog: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    tags: PropTypes.array.isRequired,
+    image: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BlogCard;
