@@ -6,7 +6,7 @@ import {
 
 const intialState = {
   users: [],
-  loggedInUser: null,
+  loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")),
 };
 
 export const authReducer = (state = intialState, action) => {
