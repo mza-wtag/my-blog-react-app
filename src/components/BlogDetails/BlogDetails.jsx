@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./BlogDetails.scss";
 import defaultUserImage from "./../../assets/images/icons/default.png";
 
@@ -22,6 +23,16 @@ const BlogDetails = ({ blogDetails }) => {
       <p className="blog-details__body">{body}</p>
     </div>
   );
+};
+
+BlogDetails.propTypes = {
+  blogDetails: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    tags: PropTypes.array.isRequired,
+    body: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BlogDetails;
