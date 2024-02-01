@@ -5,7 +5,14 @@ import Button from "../Button/Button";
 import "./ImageDnD.scss";
 
 const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
-  <Dropzone onDrop={onDrop} accept="image/*">
+  <Dropzone
+    onDrop={onDrop}
+    accept={{
+      "image/png": [".png"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+    }}
+  >
     {({ getRootProps, getInputProps }) => (
       <div className="image-dnd" {...getRootProps()}>
         <input {...getInputProps()} />
