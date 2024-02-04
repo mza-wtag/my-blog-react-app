@@ -39,9 +39,9 @@ const UserDatails = () => {
           <img src={youtube} alt="youtube" />
         </div>
       </section>
-
+      {/* 
       <BlogForm />
-      <BlogList />
+      <BlogList /> */}
     </>
   );
 };

@@ -30,7 +30,7 @@ const Header = () => {
           <div className="navbar__menu">
             Welcome
             <span className="navbar__user-name">
-              <Link to="/me">{loggedInUser.firstName} !</Link>
+              <Link to="/me">{loggedInUser.fullName} !</Link>
             </span>
             <button onClick={handleLogout} className="navbar__logout-btn">
               <img src={LogoutIcon} alt="Logout" />

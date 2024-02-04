@@ -2,16 +2,37 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  UPDATE_USER_PROFILE,
 } from "./../constants/actionTypes";
-
+import { v4 as uuidv4 } from "uuid";
 export const registerUser = (user) => {
   return (dispatch) => {
+    const {
+      firstName,
+      lastName,
+      fullName,
+      subtitle,
+      about,
+      profileImage,
+      ...rest
+    } = user;
+
+    const userId = uuidv4();
+    const newUser = {
+      ...rest,
+      userId,
+      fullName: fullName || `${firstName} ${lastName}`,
+      subtitle: subtitle || null,
+      about: about || null,
+      profileImage: profileImage || null,
+    };
+
     dispatch({
       type: REGISTER_USER,
-      payload: user,
+      payload: newUser,
     });
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(user);
+    existingUsers.push(newUser);
     localStorage.setItem("users", JSON.stringify(existingUsers));
   };
 };
@@ -52,5 +73,12 @@ export const loginUserWithLocalStorage = (
     } else {
       errorMessageSetter("Invalid username or password");
     }
+  };
+};
+
+export const updateUserProfile = (userId, profileData) => {
+  return {
+    type: UPDATE_USER_PROFILE,
+    payload: { userId, profileData },
   };
 };
