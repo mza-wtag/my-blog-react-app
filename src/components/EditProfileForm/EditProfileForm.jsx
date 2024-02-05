@@ -55,42 +55,76 @@ const EditProfileForm = () => {
         about: loggedInUser?.about || "",
       }}
       render={({ handleSubmit, form }) => (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name</label>
-            <Field
-              name="fullName"
-              component="input"
-              type="text"
-              placeholder="Name"
-            />
+        <form className="edit-profile-form" onSubmit={handleSubmit}>
+          <div className="edit-profile-form__container">
+            <div className="edit-profile-form__container__info-wrapper">
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">Name</label>
+                <Field
+                  name="fullName"
+                  component="input"
+                  type="text"
+                  placeholder="Name"
+                  className="edit-profile-form__input"
+                />
+              </div>
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">Subtitle</label>
+                <Field
+                  name="subtitle"
+                  component="input"
+                  type="text"
+                  placeholder="Subtitle"
+                  className="edit-profile-form__input"
+                />
+              </div>
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">About</label>
+                <Field
+                  name="about"
+                  component="textarea"
+                  placeholder="About"
+                  className="edit-profile-form__textarea"
+                />
+              </div>
+            </div>
+            <div className="edit-profile-form__container__image-wrapper">
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">
+                  Profile Image
+                </label>
+                <ImageDnD onDrop={handleImageDrop} />
+              </div>
+              <div className="edit-profile-form__image-preview">
+                {imageName && (
+                  <span className="edit-profile-form__image-name">
+                    {imageName}
+                  </span>
+                )}
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt="Profile Preview"
+                    className="edit-profile-form__preview-image"
+                  />
+                )}
+              </div>
+            </div>
           </div>
-          <div>
-            <label>Subtitle</label>
-            <Field
-              name="subtitle"
-              component="input"
-              type="text"
-              placeholder="Subtitle"
-            />
-          </div>
-          <div>
-            <label>About</label>
-            <Field name="about" component="textarea" placeholder="About" />
-          </div>
-          <div>
-            <label>Profile Image</label>
-            <ImageDnD onDrop={handleImageDrop} />
-          </div>
-          <div className="image-preview">
-            {imageName && <span>{imageName}</span>}
-            {imagePreview && <img src={imagePreview} alt="Profile Preview" />}
-          </div>
-          <div className="buttons">
-            <Button onClick={handleSubmit} type="submit">
+
+          <div className="edit-profile-form__buttons">
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              className="edit-profile-form__buttons--submit-button"
+            >
               Submit
             </Button>
-            <Button onClick={() => onCancel(form)} type="button">
+            <Button
+              onClick={() => onCancel(form)}
+              type="button"
+              className="edit-profile-form__buttons--cancel-button"
+            >
               Cancel
             </Button>
           </div>
