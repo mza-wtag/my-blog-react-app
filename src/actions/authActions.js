@@ -31,9 +31,6 @@ export const registerUser = (user) => {
       type: REGISTER_USER,
       payload: newUser,
     });
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(newUser);
-    localStorage.setItem("users", JSON.stringify(existingUsers));
   };
 };
 

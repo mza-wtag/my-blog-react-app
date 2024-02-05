@@ -6,18 +6,22 @@ import {
 } from "../constants/actionTypes";
 
 const initialState = {
-  users: [],
+  users: JSON.parse(localStorage.getItem("users")) || [],
   loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")) || null,
 };
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_USER:
+      const newUser = action.payload;
+      const updatedUsers = [...state.users, newUser];
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
       return {
         ...state,
-        users: [...state.users, action.payload],
+        users: updatedUsers,
       };
     case LOGIN_USER:
+      localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
       return {
         ...state,
         loggedInUser: action.payload,
@@ -29,20 +33,33 @@ export const authReducer = (state = initialState, action) => {
         loggedInUser: null,
       };
     case UPDATE_USER_PROFILE:
-      const { profileData } = action.payload;
+      const { userId, profileData } = action.payload;
+      const updatedUsersList = state.users.map((user) => {
+        if (user.userId === userId) {
+          return {
+            ...user,
+            ...profileData,
+          };
+        }
+        return user;
+      });
 
-      // Update loggedInUser with new profileData
-      const updatedLoggedInUser = {
-        ...state.loggedInUser,
-        ...profileData,
-      };
-
-      // Update localStorage with the updated loggedInUser
-      localStorage.setItem("loggedInUser", JSON.stringify(updatedLoggedInUser));
+      localStorage.setItem("users", JSON.stringify(updatedUsersList));
+      localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({
+          ...state.loggedInUser,
+          ...profileData,
+        })
+      );
 
       return {
         ...state,
-        loggedInUser: updatedLoggedInUser,
+        users: updatedUsersList,
+        loggedInUser: {
+          ...state.loggedInUser,
+          ...profileData,
+        },
       };
     default:
       return state;
