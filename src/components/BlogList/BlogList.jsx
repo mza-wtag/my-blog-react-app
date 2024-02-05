@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BlogCard from "../BlogCard/BlogCard";
 import "./BlogList.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getBlogPostsFromLocalStorage } from "../../actions/blogActions";
+import { useSelector } from "react-redux";
 
 const BlogList = () => {
   const blogs = useSelector((state) => state.blog);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBlogPostsFromLocalStorage());
-  }, [dispatch]);
 
   return (
     <div className="blog-list">

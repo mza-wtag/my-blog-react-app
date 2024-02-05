@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./EditProfileForm.scss";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,10 +41,6 @@ const EditProfileForm = () => {
     };
     reader.readAsDataURL(file);
   };
-
-  useEffect(() => {
-    console.log("loggedInUser", loggedInUser);
-  }, [loggedInUser]);
 
   return (
     <Form
