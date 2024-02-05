@@ -1,22 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./EditProfileForm.scss";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserProfile } from "../../actions/authActions";
+import Button from "../Button/Button";
+import ImageDnD from "../ImageDnD/ImageDnD";
 
 const EditProfileForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageName, setImageName] = useState("");
 
   const onSubmit = (values) => {
-    dispatch(updateUserProfile(loggedInUser?.userId, values));
+    const updatedValues = { ...values, profileImage: imagePreview };
+    dispatch(updateUserProfile(loggedInUser?.userId, updatedValues));
+  };
+
+  const onCancel = (form) => {
+    form.reset();
+    setImagePreview(null);
+    setImageName("");
+  };
+
+  const handleImageDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImagePreview(reader.result);
+      setImageName(file.name);
+    };
+    reader.readAsDataURL(file);
   };
 
   useEffect(() => {
     console.log("loggedInUser", loggedInUser);
   }, [loggedInUser]);
-
-  const onCancel = () => {};
 
   return (
     <Form
@@ -52,18 +71,23 @@ const EditProfileForm = () => {
           </div>
           <div>
             <label>Profile Image</label>
-            <Field
-              name="profileImage"
-              component="input"
-              type="file"
-              accept="image/*"
-            />
+            <ImageDnD onDrop={handleImageDrop} />
+          </div>
+          <div className="image-preview">
+            {imagePreview && (
+              <>
+                <span>{imageName}</span>
+                <img src={imagePreview} alt="Profile Preview" />
+              </>
+            )}
           </div>
           <div className="buttons">
-            <button type="submit">Submit</button>
-            <button type="button" onClick={onCancel}>
+            <Button onClick={handleSubmit} type="submit">
+              Submit
+            </Button>
+            <Button onClick={onCancel} type="button">
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       )}
