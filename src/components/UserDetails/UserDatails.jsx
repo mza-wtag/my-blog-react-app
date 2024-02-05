@@ -4,32 +4,28 @@ import facebook from "./../../assets/images/icons/facebook.png";
 import twitter from "./../../assets/images/icons/twitter.png";
 import instagram from "./../../assets/images/icons/instagram.png";
 import youtube from "./../../assets/images/icons/youtube.png";
+import { useSelector } from "react-redux";
 
 const UserDatails = () => {
+  const { loggedInUser } = useSelector((state) => state.auth);
+  const { fullName, profileImage, subtitle, about } = loggedInUser;
   return (
     <>
       <section className="user-details">
         <div className="user-details__identity">
           <img
             className="user-details__identity_image"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT36VHh-mjL_Rc8IL60D77dMDPL_fNhosHuag&usqp=CAU"
+            src={profileImage}
             alt="Profile Picture"
           />
           <div className="user-details__identity__info">
             <h2 className="user-details__identity__info_fullname">
-              Jonathan Doe
+              {fullName}
             </h2>
-            <p className="user-details__identity__info_subtitle">
-              Web Developer
-            </p>
+            <p className="user-details__identity__info_subtitle">{subtitle}</p>
           </div>
         </div>
-        <p className="user-details__about">
-          Meet Jonathan Doe, a passionate writer and blogger with a love for
-          technology and travel. Jonathan holds a degree in Computer Science and
-          has spent years working in the tech industry, gaining a deep
-          understanding of the impact technology has on our lives.
-        </p>
+        <p className="user-details__about">{about}</p>
         <div className="user-details__social-media">
           <img src={facebook} alt="facebook" />
           <img src={twitter} alt="twitter" />

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./BlogCard.scss";
-import defaultUserImage from "./../../assets/images/icons/default.png";
 
 const BlogCard = ({ blog }) => {
-  const { id, title, tags, image, createdAt } = blog;
+  const { id, title, tags, image, createdAt, fullName, profileImage } = blog;
+
   return (
     <div className="blog-card">
       <Link to={`/blog/${id}`} className="blog-card__link">
@@ -14,11 +14,11 @@ const BlogCard = ({ blog }) => {
         <h3 className="blog-card__blog-title">{title}</h3>
         <div className="blog-card__author-info">
           <img
-            src={defaultUserImage}
+            src={profileImage}
             alt="Author"
             className="blog-card__author-info__author-image"
           />
-          <p className="blog-card__author-info__author-name">John</p>
+          <p className="blog-card__author-info__author-name">{fullName}</p>
           <p className="blog-card__author-info__blog-createdAt">{createdAt}</p>
         </div>
       </Link>

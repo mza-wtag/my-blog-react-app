@@ -24,20 +24,18 @@
     }
 
     &__info {
-      display: flex;
-      flex-direction: column;
       text-align: left;
-
-      &_full-name {
+      &_fullname {
         font-size: 1.25rem;
         font-weight: $font-weight-medium;
         text-transform: capitalize;
       }
 
       &_subtitle {
-        color: $black-color-200;
+        color: $dim-color;
         font-size: 0.875rem;
         font-weight: $font-weight-normal;
+        text-transform: capitalize;
       }
     }
   }

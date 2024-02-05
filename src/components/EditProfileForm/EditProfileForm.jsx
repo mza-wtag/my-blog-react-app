@@ -17,6 +17,7 @@ const EditProfileForm = () => {
       fullName: loggedInUser?.fullName || "",
       subtitle: loggedInUser?.subtitle || "",
       about: loggedInUser?.about || "",
+      profileImage: loggedInUser?.profileImage || "",
     });
     setImagePreview(null);
     setImageName("");

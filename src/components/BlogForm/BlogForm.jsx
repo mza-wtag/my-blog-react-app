@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlogPostInLocalStorage } from "./../../actions/blogActions";
 import ImageDnD from "../ImageDnD/ImageDnD";
 import SelectBox from "../SelectBox/SelectBox";
@@ -8,12 +8,22 @@ import tags from "./../../constants/tags.json";
 import "./BlogForm.scss";
 
 const BlogForm = () => {
+  const { loggedInUser } = useSelector((state) => state.auth);
+  const { profileImage, fullName, userName } = loggedInUser;
+
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
 
   const onSubmit = (values, form) => {
-    const blog = { ...values, image: imagePreview, tags: selectedTags };
+    const blog = {
+      ...values,
+      image: imagePreview,
+      tags: selectedTags,
+      profileImage,
+      fullName,
+      userName,
+    };
     dispatch(addBlogPostInLocalStorage(blog));
     setImagePreview(null);
     form.reset();

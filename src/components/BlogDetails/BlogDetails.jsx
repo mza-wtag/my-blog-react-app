@@ -4,7 +4,8 @@ import "./BlogDetails.scss";
 import defaultUserImage from "./../../assets/images/icons/default.png";
 
 const BlogDetails = ({ blogDetails }) => {
-  const { title, createdAt, image, tags, body } = blogDetails;
+  const { title, createdAt, image, tags, body, profileImage, fullName } =
+    blogDetails;
   return (
     <div className="blog-details">
       <div className="blog-details__category-badge">{tags}</div>
@@ -12,11 +13,11 @@ const BlogDetails = ({ blogDetails }) => {
 
       <div className="blog-details__author-info">
         <img
-          src={defaultUserImage}
+          src={profileImage}
           alt="Author"
           className="blog-details__author-info__author-image"
         />
-        <p className="blog-details__author-info__author-name">John</p>
+        <p className="blog-details__author-info__author-name">{fullName}</p>
         <p className="blog-details__author-info__blog-createdAt">{createdAt}</p>
       </div>
       <img src={image} className="blog-details__banner" alt="Blog Banner" />
