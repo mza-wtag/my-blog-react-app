@@ -12,15 +12,24 @@ const EditProfileForm = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [imageName, setImageName] = useState("");
 
-  const onSubmit = (values) => {
+  const resetForm = (form) => {
+    form.reset({
+      fullName: loggedInUser?.fullName || "",
+      subtitle: loggedInUser?.subtitle || "",
+      about: loggedInUser?.about || "",
+    });
+    setImagePreview(null);
+    setImageName("");
+  };
+
+  const onSubmit = (values, form) => {
     const updatedValues = { ...values, profileImage: imagePreview };
     dispatch(updateUserProfile(loggedInUser?.userId, updatedValues));
+    resetForm(form);
   };
 
   const onCancel = (form) => {
-    form.reset();
-    setImagePreview(null);
-    setImageName("");
+    resetForm(form);
   };
 
   const handleImageDrop = (acceptedFiles) => {
@@ -39,7 +48,7 @@ const EditProfileForm = () => {
 
   return (
     <Form
-      onSubmit={onSubmit}
+      onSubmit={(values, form) => onSubmit(values, form)}
       initialValues={{
         fullName: loggedInUser?.fullName || "",
         subtitle: loggedInUser?.subtitle || "",
@@ -74,18 +83,14 @@ const EditProfileForm = () => {
             <ImageDnD onDrop={handleImageDrop} />
           </div>
           <div className="image-preview">
-            {imagePreview && (
-              <>
-                <span>{imageName}</span>
-                <img src={imagePreview} alt="Profile Preview" />
-              </>
-            )}
+            {imageName && <span>{imageName}</span>}
+            {imagePreview && <img src={imagePreview} alt="Profile Preview" />}
           </div>
           <div className="buttons">
             <Button onClick={handleSubmit} type="submit">
               Submit
             </Button>
-            <Button onClick={onCancel} type="button">
+            <Button onClick={() => onCancel(form)} type="button">
               Cancel
             </Button>
           </div>
