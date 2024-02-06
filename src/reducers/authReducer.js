@@ -1,8 +1,4 @@
-import {
-  LOGIN_USER,
-  LOGOUT_USER,
-  REGISTER_USER,
-} from "../constants/actionTypes";
+import { LOGIN_USER, LOGOUT_USER, REGISTER_USER } from "@constants/actionTypes";
 
 const intialState = {
   users: [],

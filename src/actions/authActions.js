@@ -1,8 +1,4 @@
-import {
-  REGISTER_USER,
-  LOGIN_USER,
-  LOGOUT_USER,
-} from "./../constants/actionTypes";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "@constants/actionTypes";
 
 export const registerUser = (user) => {
   return (dispatch) => {

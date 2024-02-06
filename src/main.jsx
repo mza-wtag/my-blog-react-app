@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./pages/Home.jsx";
+import Home from "@pages/Home.jsx";
 import Layout from "./Layout.jsx";
 import "./index.scss";
 import {
@@ -10,9 +10,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store.js";
-import Login from "./components/Login/Login.jsx";
-import Register from "./components/Register/Register.jsx";
+import { store } from "@store/store.js";
+import Login from "@components/Login/Login.jsx";
+import Register from "@components/Register/Register.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
