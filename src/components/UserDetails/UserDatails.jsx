@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserDetails.scss";
+import "./userDetails.scss";
 import facebook from "./../../assets/images/icons/facebook.png";
 import twitter from "./../../assets/images/icons/twitter.png";
 import instagram from "./../../assets/images/icons/instagram.png";
