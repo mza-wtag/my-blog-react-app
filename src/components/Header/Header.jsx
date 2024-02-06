@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.scss";
+import "./header.scss";
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "../../assets/images/icons/search.svg";
 import LogoutIcon from "../../assets/images/icons/Frame.svg";
@@ -29,9 +29,7 @@ const Header = () => {
         {loggedInUser ? (
           <div className="navbar__menu">
             Welcome
-            <span className="navbar__user-name">
-              {loggedInUser.firstName} !
-            </span>
+            <span className="navbar__user-name">{loggedInUser.fullName} !</span>
             <button onClick={handleLogout} className="navbar__logout-btn">
               <img src={LogoutIcon} alt="Logout" />
             </button>

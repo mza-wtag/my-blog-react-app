@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./Register.scss";
+import "./register.scss";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 

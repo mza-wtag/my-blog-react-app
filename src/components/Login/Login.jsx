@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./Login.scss";
+import "./login.scss";
 import { useDispatch } from "react-redux";
 import { loginUserWithLocalStorage } from "../../actions/authActions";
 
