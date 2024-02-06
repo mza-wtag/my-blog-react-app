@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import "./BlogCard.scss";
 
 const BlogCard = ({ blog }) => {
-  const { id, title, tags, image, createdAt, fullName, profileImage } = blog;
+  const { id, title, tags, image, createdAt, creatorFullName, creatorImage } =
+    blog;
 
   return (
     <div className="blog-card">
@@ -14,11 +15,13 @@ const BlogCard = ({ blog }) => {
         <h3 className="blog-card__blog-title">{title}</h3>
         <div className="blog-card__author-info">
           <img
-            src={profileImage}
+            src={creatorImage}
             alt="Author"
             className="blog-card__author-info__author-image"
           />
-          <p className="blog-card__author-info__author-name">{fullName}</p>
+          <p className="blog-card__author-info__author-name">
+            {creatorFullName}
+          </p>
           <p className="blog-card__author-info__blog-createdAt">{createdAt}</p>
         </div>
       </Link>

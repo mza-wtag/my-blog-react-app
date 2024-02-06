@@ -20,9 +20,9 @@ const BlogForm = () => {
       ...values,
       image: imagePreview,
       tags: selectedTags,
-      profileImage,
-      fullName,
-      userName,
+      creatorImage: profileImage,
+      creatorFullName: fullName,
+      blogCreator: userName,
     };
     dispatch(addBlogPostInLocalStorage(blog));
     setImagePreview(null);
