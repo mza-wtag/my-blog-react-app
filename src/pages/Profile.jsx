@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import UserDatails from "../components/UserDetails/UserDatails";
+import UserDatails from "@components/UserDetails/UserDatails";
 
 const Profile = () => {
   return (
