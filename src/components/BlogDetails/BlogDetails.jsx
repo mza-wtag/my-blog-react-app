@@ -1,12 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "@components/BlogDetails/blogDetails.scss";
+import { useSelector } from "react-redux";
+import Button from "@components/Button/Button";
+import Edit from "@assets/images/icons/Edit.svg";
+import "@styles/common.scss";
+import { useNavigate } from "react-router";
 
 const BlogDetails = ({ blogDetails }) => {
-  const { title, createdAt, image, tags, body, creatorFullName, creatorImage } =
-    blogDetails;
+  const navigate = useNavigate();
+  const { loggedInUser } = useSelector((state) => state.auth);
+  const {
+    title,
+    createdAt,
+    image,
+    tags,
+    body,
+    creatorFullName,
+    creatorImage,
+    blogCreator,
+  } = blogDetails;
+
+  const handleEditBlog = () => {
+    navigate(`/edit-blog/${blogDetails.id}`);
+  };
+
   return (
     <div className="blog-details">
+      <div className="button-holder">
+        {loggedInUser.userName === blogCreator && (
+          <Button onClick={handleEditBlog}>
+            <img src={Edit} alt="Edit Blog" />
+          </Button>
+        )}
+      </div>
       <div className="blog-details__category-badge">{tags}</div>
       <h3 className="blog-details__blog-title">{title}</h3>
 
