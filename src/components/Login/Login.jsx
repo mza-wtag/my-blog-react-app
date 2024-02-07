@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./Login.scss";
+import "@components/Login/login.scss";
 import { useDispatch } from "react-redux";
-import { loginUserWithLocalStorage } from "../../actions/authActions";
+import { loginUserWithLocalStorage } from "@actions/authActions";
+import Button from "@components/Button/Button";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -74,9 +75,13 @@ const Login = () => {
                 </Field>
               </div>
             </div>
-            <button className="login-form__button" type="submit">
+            <Button
+              onClick={handleSubmit}
+              className="login-form__button"
+              type="submit"
+            >
               Login
-            </button>
+            </Button>
 
             {errorMessage && (
               <div className="login-form__error-message">{errorMessage}</div>
