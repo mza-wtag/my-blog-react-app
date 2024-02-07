@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "@components/BlogCard/blogCard.scss";
-import defaultUserImage from "@assets/images/icons/default.png";
 
 const BlogCard = ({ blog }) => {
   const { id, title, tags, image, createdAt, creatorFullName, creatorImage } =
