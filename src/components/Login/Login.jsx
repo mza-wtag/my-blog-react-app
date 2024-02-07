@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "@components/Login/login.scss";
@@ -96,10 +95,6 @@ const Login = () => {
       />
     </section>
   );
-};
-
-Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default Login;

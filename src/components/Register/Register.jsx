@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import "@components/Register/register.scss";
@@ -179,10 +178,6 @@ const Register = () => {
       />
     </section>
   );
-};
-
-Register.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default Register;
