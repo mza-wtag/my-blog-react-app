@@ -138,8 +138,7 @@ EditProfileForm.propTypes = {
     subtitle: PropTypes.string,
     about: PropTypes.string,
     profileImage: PropTypes.string,
-  }).isRequired,
-  dispatch: PropTypes.func.isRequired,
+  }),
 };
 
 export default EditProfileForm;

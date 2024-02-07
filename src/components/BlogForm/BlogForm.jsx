@@ -131,9 +131,9 @@ const BlogForm = () => {
 
 BlogForm.propTypes = {
   loggedInUser: PropTypes.shape({
-    profileImage: PropTypes.string.isRequired,
-    fullName: PropTypes.string.isRequired,
+    profileImage: PropTypes.string,
+    fullName: PropTypes.string,
     userName: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };
 export default BlogForm;
