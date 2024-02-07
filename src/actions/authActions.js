@@ -1,10 +1,11 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   REGISTER_USER,
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USER_PROFILE,
-} from "./../constants/actionTypes";
-import { v4 as uuidv4 } from "uuid";
+} from "@constants/actionTypes";
+
 export const registerUser = (user) => {
   return (dispatch) => {
     const {

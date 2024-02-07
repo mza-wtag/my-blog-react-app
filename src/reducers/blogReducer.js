@@ -1,4 +1,4 @@
-import { ADD_BLOG_POST, GET_BLOG_POSTS } from "./../constants/actionTypes";
+import { ADD_BLOG_POST, GET_BLOG_POSTS } from "@constants/actionTypes";
 
 const initialState = JSON.parse(localStorage.getItem("blogPosts")) || [];
 

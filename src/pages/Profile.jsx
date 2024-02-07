@@ -1,7 +1,8 @@
-import UserDatails from "../components/UserDetails/UserDatails";
-import EditProfileForm from "../components/EditProfileForm/EditProfileForm";
-import BlogList from "../components/BlogList/BlogList";
-import BlogForm from "../components/BlogForm/BlogForm";
+import React from "react";
+import UserDatails from "@components/UserDetails/UserDatails";
+import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
+import BlogForm from "@components/BlogForm/BlogForm";
+import BlogList from "@components/BlogList/BlogList";
 
 const Profile = () => {
   return (

@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./BlogDetails.scss";
-import defaultUserImage from "./../../assets/images/icons/default.png";
+import "@components/BlogDetails/blogDetails.scss";
 
 const BlogDetails = ({ blogDetails }) => {
-  const { title, createdAt, image, tags, body, profileImage, fullName } =
+  const { title, createdAt, image, tags, body, creatorFullName, creatorImage } =
     blogDetails;
   return (
     <div className="blog-details">
@@ -13,11 +12,13 @@ const BlogDetails = ({ blogDetails }) => {
 
       <div className="blog-details__author-info">
         <img
-          src={profileImage}
+          src={creatorImage}
           alt="Author"
           className="blog-details__author-info__author-image"
         />
-        <p className="blog-details__author-info__author-name">{fullName}</p>
+        <p className="blog-details__author-info__author-name">
+          {creatorFullName}
+        </p>
         <p className="blog-details__author-info__blog-createdAt">{createdAt}</p>
       </div>
       <img src={image} className="blog-details__banner" alt="Blog Banner" />

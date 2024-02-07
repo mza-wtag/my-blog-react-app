@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addBlogPostInLocalStorage } from "./../../actions/blogActions";
-import ImageDnD from "../ImageDnD/ImageDnD";
-import SelectBox from "../SelectBox/SelectBox";
-import tags from "./../../constants/tags.json";
-import "./BlogForm.scss";
+import { addBlogPostInLocalStorage } from "@actions/blogActions";
+import ImageDnD from "@components/ImageDnD/ImageDnD";
+import SelectBox from "@components/SelectBox/SelectBox";
+import tags from "@constants/tags.json";
+import "@components/BlogForm/blogForm.scss";
+import Button from "@components/Button/Button";
 
 const BlogForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
@@ -48,9 +49,8 @@ const BlogForm = () => {
   };
 
   const required = (value) => (value ? undefined : "Required");
-
   const handleChangeTags = (selectedOptions) => {
-    setSelectedTags(selectedOptions.map((option) => option.value));
+    setSelectedTags(selectedOptions?.map((option) => option.value));
   };
 
   return (
@@ -59,10 +59,10 @@ const BlogForm = () => {
       validate={(values) => {
         const errors = {};
         if (!values.title) {
-          errors.title = "Required";
+          errors.title = "Title Required";
         }
         if (!values.body) {
-          errors.body = "Required";
+          errors.body = "Body Required";
         }
         return errors;
       }}
@@ -107,16 +107,20 @@ const BlogForm = () => {
             />
           </div>
           <div className="blog-form__buttons">
-            <button className=" blog-form__buttons--submit" type="submit">
+            <Button
+              className=" blog-form__buttons--submit"
+              type="submit"
+              onClick={handleSubmit}
+            >
               Submit
-            </button>
-            <button
+            </Button>
+            <Button
               className="blog-form__buttons--cancel"
               type="button"
               onClick={() => handleCancel(form)}
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       )}

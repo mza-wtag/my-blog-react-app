@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
-import Button from "../Button/Button";
-import "./ImageDnD.scss";
+import Button from "@components/Button/Button";
+import "@components/ImageDnD/imageDnD.scss";
 
 const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
   <Dropzone
@@ -37,10 +37,15 @@ const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
     )}
   </Dropzone>
 );
+
 ImageDnD.propTypes = {
   onDrop: PropTypes.func.isRequired,
   imagePreview: PropTypes.string,
   cancelImagePreview: PropTypes.func,
+};
+
+ImageDnD.defaultProps = {
+  imagePreview: null,
 };
 
 export default ImageDnD;

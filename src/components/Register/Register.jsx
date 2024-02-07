@@ -1,9 +1,10 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "./Register.scss";
+import "@components/Register/register.scss";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { registerUser } from "@actions/authActions";
+import Button from "@components/Button/Button";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -161,9 +162,13 @@ const Register = () => {
                 </Field>
               </div>
             </div>
-            <button type="submit" className="registration-form__button">
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              className="registration-form__button"
+            >
               Signup
-            </button>
+            </Button>
             <div className="registration-form__footer-link">
               Already have an account?
               <Link to="/login"> Login </Link>

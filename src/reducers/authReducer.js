@@ -3,7 +3,7 @@ import {
   LOGOUT_USER,
   REGISTER_USER,
   UPDATE_USER_PROFILE,
-} from "../constants/actionTypes";
+} from "@constants/actionTypes";
 
 const initialState = {
   users: JSON.parse(localStorage.getItem("users")) || [],

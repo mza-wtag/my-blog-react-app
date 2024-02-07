@@ -1,10 +1,10 @@
 import React from "react";
-import "./Loader.scss";
-import { Hourglass } from "react-loader-spinner";
+import "@components/Loader/loader.scss";
+import { Oval } from "react-loader-spinner";
 export const Loader = () => {
   return (
     <div className="loader-container">
-      <Hourglass />
+      <Oval />
     </div>
   );
 };
