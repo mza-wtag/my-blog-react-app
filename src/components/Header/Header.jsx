@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "@components/Header/header.scss";
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@assets/images/icons/search.svg";
@@ -48,4 +49,10 @@ const Header = () => {
   );
 };
 
+Header.propTypes = {
+  loggedInUser: PropTypes.shape({
+    fullName: PropTypes.string.isRequired,
+  }),
+  dispatch: PropTypes.func.isRequired,
+};
 export default Header;

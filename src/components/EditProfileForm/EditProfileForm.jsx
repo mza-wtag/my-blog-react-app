@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "@components/EditProfileForm/editProfileForm.scss";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -129,6 +130,16 @@ const EditProfileForm = () => {
       )}
     />
   );
+};
+
+EditProfileForm.propTypes = {
+  loggedInUser: PropTypes.shape({
+    fullName: PropTypes.string,
+    subtitle: PropTypes.string,
+    about: PropTypes.string,
+    profileImage: PropTypes.string,
+  }).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default EditProfileForm;

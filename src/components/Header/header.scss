@@ -5,7 +5,7 @@
   background-color: $primary-color;
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 1rem 0;
 
   &__logo {
     color: $color-black;
@@ -52,6 +52,5 @@
   &__logout-btn {
     background: transparent;
     border: none;
-    cursor: pointer;
   }
 }

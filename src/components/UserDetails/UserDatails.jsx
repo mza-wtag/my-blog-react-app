@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "@components/UserDetails/userDetails.scss";
 import { useSelector } from "react-redux";
 import facebook from "@assets/images/icons/facebook.png";
@@ -37,4 +38,21 @@ const UserDatails = () => {
   );
 };
 
+UserDatails.propTypes = {
+  loggedInUser: PropTypes.shape({
+    fullName: PropTypes.string,
+    profileImage: PropTypes.string,
+    subtitle: PropTypes.string,
+    about: PropTypes.string,
+  }),
+};
+
+UserDatails.defaultProps = {
+  loggedInUser: {
+    fullName: "Guest",
+    profileImage: "",
+    subtitle: "",
+    about: "",
+  },
+};
 export default UserDatails;

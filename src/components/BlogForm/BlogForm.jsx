@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { addBlogPostInLocalStorage } from "@actions/blogActions";
@@ -128,4 +129,11 @@ const BlogForm = () => {
   );
 };
 
+BlogForm.propTypes = {
+  loggedInUser: PropTypes.shape({
+    profileImage: PropTypes.string.isRequired,
+    fullName: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+  }).isRequired,
+};
 export default BlogForm;
