@@ -1,4 +1,4 @@
-import { ADD_BLOG_POST, GET_BLOG_POSTS } from "../constants/actionTypes";
+import { ADD_BLOG_POST, GET_BLOG_POSTS } from "@constants/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
 export const addBlogPostInLocalStorage = (post) => {

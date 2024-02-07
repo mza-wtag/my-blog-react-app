@@ -1,4 +1,6 @@
-import UserDatails from "../components/UserDetails/UserDatails";
+import React from "react";
+
+import UserDatails from "@components/UserDetails/UserDatails";
 
 const Profile = () => {
   return (

@@ -1,10 +1,11 @@
 import React from "react";
-import "./Header.scss";
+import "@components/Header/header.scss";
 import { Link, useNavigate } from "react-router-dom";
-import SearchIcon from "../../assets/images/icons/search.svg";
-import LogoutIcon from "../../assets/images/icons/Frame.svg";
+import SearchIcon from "@assets/images/icons/search.svg";
+import LogoutIcon from "@assets/images/icons/Frame.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import { logoutUser } from "@actions/authActions";
+import Button from "@components/Button/Button";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,11 +31,11 @@ const Header = () => {
           <div className="navbar__menu">
             Welcome
             <span className="navbar__user-name">
-              <Link to="/me">{loggedInUser.firstName} !</Link>
+              <Link to="/me">{loggedInUser.userName} !</Link>
             </span>
-            <button onClick={handleLogout} className="navbar__logout-btn">
+            <Button onClick={handleLogout} className="navbar__logout-btn">
               <img src={LogoutIcon} alt="Logout" />
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="navbar__menu">

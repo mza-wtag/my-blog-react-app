@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./BlogDetails.scss";
-import defaultUserImage from "./../../assets/images/icons/default.png";
+import "@components/BlogDetails/blogDetails.scss";
+import defaultUserImage from "@assets/images/icons/default.png";
 
 const BlogDetails = ({ blogDetails }) => {
   const { title, createdAt, image, tags, body } = blogDetails;
