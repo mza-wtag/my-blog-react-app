@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import UserDatails from "@components/UserDetails/UserDatails";
 import BlogForm from "@components/BlogForm/BlogForm";
 
 const EditBlog = () => {
   const { blogId } = useParams();
+  const navigate = useNavigate();
   const blogPosts = useSelector((state) => state.blog);
   const [blogData, setBlogData] = useState(null);
 
@@ -16,10 +17,15 @@ const EditBlog = () => {
     }
   }, [blogId, blogPosts]);
 
+  const handleUpdateBlog = () => {
+    navigate(`/blog/${blogId}`);
+  };
   return (
-    <div>
+    <div className="container">
       <UserDatails />
-      {blogData && <BlogForm initialData={blogData} />}
+      {blogData && (
+        <BlogForm initialData={blogData} onSubmit={handleUpdateBlog} />
+      )}
     </div>
   );
 };
