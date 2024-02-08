@@ -1,34 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
-import { useDispatch, useSelector } from "react-redux";
-import { addBlogPostInLocalStorage } from "@actions/blogActions";
+import { useDispatch } from "react-redux";
+import {
+  addBlogPostInLocalStorage,
+  editBlogPostInLocalStorage,
+} from "@actions/blogActions";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
 import "@components/BlogForm/blogForm.scss";
 import Button from "@components/Button/Button";
 
-const BlogForm = () => {
-  const { loggedInUser } = useSelector((state) => state.auth);
-  const { profileImage, fullName, userName } = loggedInUser;
-
+const BlogForm = ({ initialData, onSubmit }) => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [isEditMode, setIsEditMode] = useState(false);
 
-  const onSubmit = (values, form) => {
+  useEffect(() => {
+    if (initialData) {
+      setImagePreview(initialData.image);
+      setSelectedTags(initialData.tags);
+      setIsEditMode(true);
+    }
+  }, [initialData]);
+
+  const handleSubmit = (values, form) => {
     const blog = {
       ...values,
       image: imagePreview,
       tags: selectedTags,
-      creatorImage: profileImage,
-      creatorFullName: fullName,
-      blogCreator: userName,
     };
-    dispatch(addBlogPostInLocalStorage(blog));
-    setImagePreview(null);
+    if (isEditMode) {
+      dispatch(editBlogPostInLocalStorage(initialData.id, blog));
+    } else {
+      dispatch(addBlogPostInLocalStorage(blog));
+    }
     form.reset();
+    setImagePreview(null);
+    onSubmit();
   };
 
   const handleDrop = (acceptedFiles) => {
@@ -47,6 +58,7 @@ const BlogForm = () => {
   const handleCancel = (form) => {
     form.reset();
     setImagePreview(null);
+    onSubmit();
   };
 
   const required = (value) => (value ? undefined : "Required");
@@ -56,7 +68,8 @@ const BlogForm = () => {
 
   return (
     <Form
-      onSubmit={onSubmit}
+      initialValues={initialData}
+      onSubmit={handleSubmit}
       validate={(values) => {
         const errors = {};
         if (!values.title) {
@@ -109,11 +122,11 @@ const BlogForm = () => {
           </div>
           <div className="blog-form__buttons">
             <Button
-              className=" blog-form__buttons--submit"
+              className="blog-form__buttons--submit"
               type="submit"
               onClick={handleSubmit}
             >
-              Submit
+              {isEditMode ? "Update" : "Submit"}
             </Button>
             <Button
               className="blog-form__buttons--cancel"
@@ -130,10 +143,14 @@ const BlogForm = () => {
 };
 
 BlogForm.propTypes = {
-  loggedInUser: PropTypes.shape({
-    profileImage: PropTypes.string,
-    fullName: PropTypes.string,
-    userName: PropTypes.string.isRequired,
+  initialData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
+  onSubmit: PropTypes.func.isRequired,
 };
+
 export default BlogForm;

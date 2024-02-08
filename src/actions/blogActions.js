@@ -1,4 +1,8 @@
-import { ADD_BLOG_POST, GET_BLOG_POSTS } from "@constants/actionTypes";
+import {
+  ADD_BLOG_POST,
+  EDIT_BLOG_POST,
+  GET_BLOG_POSTS,
+} from "@constants/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
 export const addBlogPostInLocalStorage = (post) => {
@@ -32,5 +36,20 @@ export const getBlogPostsFromLocalStorage = () => {
       type: GET_BLOG_POSTS,
       payload: existingPosts,
     });
+  };
+};
+
+export const editBlogPostInLocalStorage = (postId, updatedPost) => {
+  return (dispatch) => {
+    dispatch({
+      type: EDIT_BLOG_POST,
+      payload: { postId, updatedPost },
+    });
+
+    const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+    const updatedPosts = existingPosts.map((post) =>
+      post.id === postId ? updatedPost : post
+    );
+    localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
   };
 };
