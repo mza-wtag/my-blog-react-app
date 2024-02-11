@@ -22,19 +22,19 @@
     top: 14rem;
     width: 40%;
 
-    &__heading {
+    &-heading {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       gap: 2rem;
-      &--category-badge {
+      &-category-badge {
         background-color: $color-blue;
         border-radius: 0.3rem;
         padding: 0.5rem;
         text-align: center;
         width: fit-content;
       }
-      &--title {
+      &-title {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         display: -webkit-box;
@@ -46,17 +46,17 @@
       }
     }
 
-    &__identity {
+    &-identity {
       align-items: center;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      &--image {
+      &-image {
         border-radius: 50%;
         height: 2rem;
         width: 2rem;
       }
-      &--name {
+      &-name {
         font-weight: $font-weight-bold;
         margin-bottom: 0.25rem;
         text-transform: capitalize;
@@ -79,12 +79,12 @@
     top: 18rem;
     width: 40%;
 
-    &__heading {
+    &-heading {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       gap: 2rem;
-      &--category-badge {
+      &-category-badge {
         background-color: $color-blue;
         border-radius: 0.3rem;
         color: $primary-color;
@@ -92,7 +92,7 @@
         text-align: center;
         width: fit-content;
       }
-      &--title {
+      &-title {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         display: -webkit-box;
@@ -104,18 +104,18 @@
       }
     }
 
-    &__identity {
+    &-identity {
       align-items: center;
       color: $dim-color;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      &--image {
+      &-image {
         border-radius: 50%;
         height: 2rem;
         width: 2rem;
       }
-      &--name {
+      &-name {
         font-weight: $font-weight-bold;
         margin-bottom: 0.25rem;
         text-transform: capitalize;
