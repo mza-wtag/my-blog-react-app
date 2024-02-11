@@ -55,7 +55,7 @@ const EditProfileForm = () => {
       render={({ handleSubmit, form }) => (
         <form className="edit-profile-form" onSubmit={handleSubmit}>
           <div className="edit-profile-form__container">
-            <div className="edit-profile-form__container__info-wrapper">
+            <div className="edit-profile-form__info-wrapper">
               <div className="edit-profile-form__field">
                 <label className="edit-profile-form__label">Name</label>
                 <Field
@@ -86,7 +86,7 @@ const EditProfileForm = () => {
                 />
               </div>
             </div>
-            <div className="edit-profile-form__container__image-wrapper">
+            <div className="edit-profile-form__image-wrapper">
               <div className="edit-profile-form__field">
                 <label className="edit-profile-form__label">
                   Profile Image
@@ -114,14 +114,14 @@ const EditProfileForm = () => {
             <Button
               onClick={handleSubmit}
               type="submit"
-              className="edit-profile-form__buttons--submit-button"
+              className="edit-profile-form__submit-button"
             >
               Submit
             </Button>
             <Button
               onClick={() => onCancel(form)}
               type="button"
-              className="edit-profile-form__buttons--cancel-button"
+              className="edit-profile-form__cancel-button"
             >
               Cancel
             </Button>
@@ -139,6 +139,15 @@ EditProfileForm.propTypes = {
     about: PropTypes.string,
     profileImage: PropTypes.string,
   }),
+};
+
+EditProfileForm.defaultProps = {
+  loggedInUser: {
+    fullName: "",
+    subtitle: "",
+    about: "",
+    profileImage: "",
+  },
 };
 
 export default EditProfileForm;

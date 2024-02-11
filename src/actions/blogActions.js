@@ -5,7 +5,7 @@ import {
 } from "@constants/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
-export const addBlogPostInLocalStorage = (post) => {
+export const addBlog = (post) => {
   return (dispatch) => {
     const id = uuidv4();
     const createdAt = new Date().toLocaleDateString("en-US", {
@@ -39,7 +39,7 @@ export const getBlogPostsFromLocalStorage = () => {
   };
 };
 
-export const editBlogPostInLocalStorage = (postId, updatedPost) => {
+export const updateBlog = (postId, updatedPost) => {
   return (dispatch) => {
     dispatch({
       type: EDIT_BLOG_POST,

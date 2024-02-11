@@ -42,23 +42,23 @@
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: space-between;
-    padding: 0 1rem 1rem;
+    padding: 1rem 0;
+  }
 
-    &__author-image {
-      background: $color-blue;
-      border-radius: 50%;
-      height: 2rem;
-      width: 2rem;
-    }
+  &__author-image {
+    background: $color-blue;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+  }
 
-    &__author-name {
-      font-weight: $font-weight-bold;
-      margin-bottom: 0.25rem;
-      text-transform: capitalize;
-    }
+  &__author-name {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.25rem;
+    text-transform: capitalize;
+  }
 
-    &__blog-createdAt {
-      color: $dim-color;
-    }
+  &__created-at {
+    color: $dim-color;
   }
 }

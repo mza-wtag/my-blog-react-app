@@ -16,9 +16,9 @@ const Profile = () => {
   const [blogFormVisible, setBlogFormVisible] = useState(false);
 
   const personalBlogs =
-    loggedInUser?.userName !== undefined
-      ? blogs.filter((blog) => blog.blogCreator === loggedInUser?.userName)
-      : blogs;
+    loggedInUser?.userName &&
+    blogs.filter((blog) => blog.userId === loggedInUser?.userId);
+
   return (
     <div className="container">
       <div className="button-holder">

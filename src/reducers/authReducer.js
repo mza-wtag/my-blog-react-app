@@ -1,7 +1,7 @@
 import {
-  LOGIN_USER,
-  LOGOUT_USER,
-  REGISTER_USER,
+  LOGEDIN_USER,
+  LOGGEDOUT_USER,
+  REGISTERED_USER,
   UPDATE_USER_PROFILE,
 } from "@constants/actionTypes";
 
@@ -12,7 +12,7 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REGISTER_USER:
+    case REGISTERED_USER:
       const newUser = action.payload;
       const updatedUsers = [...state.users, newUser];
       localStorage.setItem("users", JSON.stringify(updatedUsers));
@@ -20,13 +20,13 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         users: updatedUsers,
       };
-    case LOGIN_USER:
+    case LOGEDIN_USER:
       localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
       return {
         ...state,
         loggedInUser: action.payload,
       };
-    case LOGOUT_USER:
+    case LOGGEDOUT_USER:
       localStorage.removeItem("loggedInUser");
       return {
         ...state,
