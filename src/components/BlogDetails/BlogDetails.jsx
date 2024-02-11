@@ -27,26 +27,26 @@ const BlogDetails = ({ blogDetails }) => {
 
   return (
     <div className="blog-details">
-      <div className="button-holder">
-        {loggedInUser.userName === blogCreator && (
-          <Button onClick={handleEditBlog}>
-            <img src={Edit} alt="Edit Blog" />
-          </Button>
-        )}
+      <div className="blog-details__top-wrapper">
+        <div className="blog-details__category-badge">{tags}</div>
+        <div>
+          {loggedInUser.userName === blogCreator && (
+            <Button onClick={handleEditBlog}>
+              <img src={Edit} alt="Edit Blog" />
+            </Button>
+          )}
+        </div>
       </div>
-      <div className="blog-details__category-badge">{tags}</div>
-      <h3 className="blog-details__blog-title">{title}</h3>
 
+      <h3 className="blog-details__title">{title}</h3>
       <div className="blog-details__author-info">
         <img
           src={creatorImage}
           alt="Author"
-          className="blog-details__author-info__author-image"
+          className="blog-details__author-image"
         />
-        <p className="blog-details__author-info__author-name">
-          {creatorFullName}
-        </p>
-        <p className="blog-details__author-info__blog-createdAt">{createdAt}</p>
+        <p className="blog-details__author-name">{creatorFullName}</p>
+        <p className="blog-details__blog-createdAt">{createdAt}</p>
       </div>
       <img src={image} className="blog-details__banner" alt="Blog Banner" />
       <p className="blog-details__body">{body}</p>
