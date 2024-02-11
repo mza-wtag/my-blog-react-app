@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <div className="container">
       <HomeBanner blog={blogs[0]} />
+      <h2>Latest Posts</h2>
       <BlogList blogs={blogs} />
     </div>
   );
