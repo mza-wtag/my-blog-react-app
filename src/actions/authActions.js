@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  REGISTER_USER,
-  LOGIN_USER,
-  LOGOUT_USER,
+  REGISTERED_USER,
+  LOGEDIN_USER,
+  LOGGEDOUT_USER,
   UPDATE_USER_PROFILE,
 } from "@constants/actionTypes";
 
@@ -29,7 +29,7 @@ export const registerUser = (user) => {
     };
 
     dispatch({
-      type: REGISTER_USER,
+      type: REGISTERED_USER,
       payload: newUser,
     });
   };
@@ -38,7 +38,7 @@ export const registerUser = (user) => {
 export const loginUser = (user) => {
   return (dispatch) => {
     dispatch({
-      type: LOGIN_USER,
+      type: LOGEDIN_USER,
       payload: user,
     });
     localStorage.setItem("loggedInUser", JSON.stringify(user));
@@ -48,7 +48,7 @@ export const loginUser = (user) => {
 export const logoutUser = () => {
   return (dispatch) => {
     dispatch({
-      type: LOGOUT_USER,
+      type: LOGGEDOUT_USER,
     });
     localStorage.removeItem("loggedInUser");
   };

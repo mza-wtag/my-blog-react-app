@@ -13,12 +13,12 @@ const BlogDetails = ({ blogDetails }) => {
   const {
     title,
     createdAt,
-    image,
+    image: BannerImage,
     tags,
     body,
     creatorFullName,
     creatorImage,
-    blogCreator,
+    userId,
   } = blogDetails;
 
   const handleEditBlog = () => {
@@ -30,7 +30,7 @@ const BlogDetails = ({ blogDetails }) => {
       <div className="blog-details__top-wrapper">
         <div className="blog-details__category-badge">{tags}</div>
         <div>
-          {loggedInUser.userName === blogCreator && (
+          {loggedInUser.userId === userId && (
             <Button onClick={handleEditBlog}>
               <img src={Edit} alt="Edit Blog" />
             </Button>
@@ -46,9 +46,13 @@ const BlogDetails = ({ blogDetails }) => {
           className="blog-details__author-image"
         />
         <p className="blog-details__author-name">{creatorFullName}</p>
-        <p className="blog-details__blog-createdAt">{createdAt}</p>
+        <p className="blog-details__created-at">{createdAt}</p>
       </div>
-      <img src={image} className="blog-details__banner" alt="Blog Banner" />
+      <img
+        src={BannerImage}
+        className="blog-details__banner"
+        alt="Blog Banner"
+      />
       <p className="blog-details__body">{body}</p>
     </div>
   );

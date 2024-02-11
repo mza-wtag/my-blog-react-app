@@ -12,14 +12,13 @@
     flex-wrap: wrap;
     gap: 4rem;
     justify-content: space-between;
-    &__info-wrapper {
-      flex-grow: 1;
-    }
-    &__image-wrapper {
-      flex-grow: 1;
-    }
   }
-
+  &__info-wrapper {
+    flex-grow: 1;
+  }
+  &__image-wrapper {
+    flex-grow: 1;
+  }
   &__label {
     display: block;
     font-weight: $font-weight-bold;
@@ -63,21 +62,22 @@
   }
   &__buttons {
     display: flex;
-    margin-top: 2rem;
     gap: 1rem;
-    &--submit-button {
-      background-color: $color-purpel;
-      border-radius: 0.313rem;
-      border: 0.063rem solid $black-color-200;
-      color: $primary-color;
-      font-size: 1rem;
-      padding: 0.75rem 2rem;
-    }
-    &--cancel-button {
-      border-radius: 0.313rem;
-      border: 0.063rem solid $black-color-200;
-      font-size: 1rem;
-      padding: 0.75rem 2rem;
-    }
+    margin-top: 2rem;
+  }
+
+  &--submit-button {
+    background-color: $color-purpel;
+    border-radius: 0.313rem;
+    border: 0.063rem solid $black-color-200;
+    color: $primary-color;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+  }
+  &--cancel-button {
+    border-radius: 0.313rem;
+    border: 0.063rem solid $black-color-200;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
   }
 }

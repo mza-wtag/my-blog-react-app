@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
-import { useDispatch } from "react-redux";
-import {
-  addBlogPostInLocalStorage,
-  editBlogPostInLocalStorage,
-} from "@actions/blogActions";
+import { useDispatch, useSelector } from "react-redux";
+import { addBlog, updateBlog } from "@actions/blogActions";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
@@ -17,6 +14,8 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
+
+  const { loggedInUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (initialData) {
@@ -31,11 +30,14 @@ const BlogForm = ({ initialData, onSubmit }) => {
       ...values,
       image: imagePreview,
       tags: selectedTags,
+      userId: loggedInUser?.userId,
+      creatorImage: loggedInUser?.profileImage,
+      creatorFullName: loggedInUser?.fullName,
     };
     if (isEditMode) {
-      dispatch(editBlogPostInLocalStorage(initialData.id, blog));
+      dispatch(updateBlog(initialData.id, blog));
     } else {
-      dispatch(addBlogPostInLocalStorage(blog));
+      dispatch(addBlog(blog));
     }
     form.reset();
     setImagePreview(null);
@@ -144,13 +146,23 @@ const BlogForm = ({ initialData, onSubmit }) => {
 
 BlogForm.propTypes = {
   initialData: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
   onSubmit: PropTypes.func,
 };
 
+BlogForm.defaultProps = {
+  initialData: {
+    id: null,
+    title: "",
+    body: "",
+    image: null,
+    tags: [],
+  },
+  onSubmit: () => {},
+};
 export default BlogForm;
