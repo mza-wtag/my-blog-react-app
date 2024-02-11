@@ -18,7 +18,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (initialData) {
+    if (initialData?.id) {
       setImagePreview(initialData.image);
       setSelectedTags(initialData.tags);
       setIsEditMode(true);
@@ -30,9 +30,9 @@ const BlogForm = ({ initialData, onSubmit }) => {
       ...values,
       image: imagePreview,
       tags: selectedTags,
-      userId: loggedInUser?.userId,
-      creatorImage: loggedInUser?.profileImage,
-      creatorFullName: loggedInUser?.fullName,
+      userId: loggedInUser.userId,
+      creatorImage: loggedInUser.profileImage,
+      creatorFullName: loggedInUser.fullName,
     };
     if (isEditMode) {
       dispatch(updateBlog(initialData.id, blog));
