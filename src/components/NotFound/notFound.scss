@@ -1,0 +1,9 @@
+@import "@styles/variables";
+
+.not-found {
+  font-size: 5rem;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

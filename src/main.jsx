@@ -17,6 +17,7 @@ import Register from "@components/Register/Register.jsx";
 import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute.jsx";
 import Blog from "@pages/Blog.jsx";
 import EditBlog from "@pages/EditBlog.jsx";
+import NotFound from "@components/NotFound/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
         element={<ProtectedRoute element={<EditBlog />} />}
       />
       <Route path="/register" element={<Register />} />
-      <Route path="*" element={<h1>Page not found</h1>} />
+      <Route path="*" element={<NotFound text="Page not found" />} />
     </Route>
   )
 );

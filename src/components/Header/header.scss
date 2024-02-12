@@ -15,6 +15,7 @@
   }
 
   &__search {
+    cursor: pointer;
     display: flex;
     flex-grow: 0.1;
     position: relative;
@@ -27,7 +28,7 @@
       background-color: $secondary-color;
       border-radius: 0.2rem;
       border: none;
-      padding: 0.6rem;
+      padding: 0.6rem 1.8rem 0.6rem;
       width: 100%;
     }
   }

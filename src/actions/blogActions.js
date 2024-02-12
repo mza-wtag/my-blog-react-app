@@ -2,6 +2,7 @@ import {
   ADD_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POSTS,
+  SEARCH_BLOG_POSTS,
 } from "@constants/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
@@ -51,5 +52,12 @@ export const updateBlog = (postId, updatedPost) => {
       post.id === postId ? updatedPost : post
     );
     localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
+  };
+};
+
+export const searchBlogPosts = (query) => {
+  return {
+    type: SEARCH_BLOG_POSTS,
+    payload: query,
   };
 };

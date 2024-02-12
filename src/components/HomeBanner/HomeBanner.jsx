@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const HomeBanner = ({ blog }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
   const { id, title, tags, image, createdAt, creatorFullName, creatorImage } =
-    blog || {};
+    blog;
 
   const wrapperClassName = loggedInUser
     ? "banner__auth-info-wrapper"
