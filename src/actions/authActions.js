@@ -6,9 +6,9 @@ export const registerUser = (user) => {
       type: REGISTER_USER,
       payload: user,
     });
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(user);
-    localStorage.setItem("users", JSON.stringify(existingUsers));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
   };
 };
 
