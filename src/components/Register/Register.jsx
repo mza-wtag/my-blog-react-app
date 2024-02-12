@@ -1,10 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "@components/Register/register.scss";
-import { useDispatch } from "react-redux";
 import { registerUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
+import "@components/Register/register.scss";
 
 const Register = () => {
   const navigate = useNavigate();

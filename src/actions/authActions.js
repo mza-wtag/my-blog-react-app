@@ -1,20 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  REGISTERED_USER,
   LOGEDIN_USER,
   LOGGEDOUT_USER,
+  REGISTERED_USER,
   UPDATE_USER_PROFILE,
 } from "@constants/actionTypes";
 
 export const registerUser = (user) => {
   return (dispatch) => {
     const {
-      firstName,
-      lastName,
-      fullName,
-      subtitle,
       about,
+      firstName,
+      fullName,
+      lastName,
       profileImage,
+      subtitle,
       ...rest
     } = user;
 

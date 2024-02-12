@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import SearchIcon from "@assets/images/icons/search.svg";
 import {
   searchBlogPosts,
   getBlogPostsFromLocalStorage,
 } from "@actions/blogActions";
+import SearchIcon from "@assets/images/icons/search.svg";
 import "@components/Search/search.scss";
 const Search = () => {
   const dispatch = useDispatch();

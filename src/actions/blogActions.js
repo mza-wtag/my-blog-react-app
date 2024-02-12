@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   ADD_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POSTS,
   SEARCH_BLOG_POSTS,
 } from "@constants/actionTypes";
-import { v4 as uuidv4 } from "uuid";
 
 export const addBlog = (post) => {
   return (dispatch) => {

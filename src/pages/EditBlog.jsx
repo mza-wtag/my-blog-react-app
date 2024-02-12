@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router";
-import UserDatails from "@components/UserDetails/UserDatails";
 import BlogForm from "@components/BlogForm/BlogForm";
+import UserDatails from "@components/UserDetails/UserDatails";
 
 const EditBlog = () => {
   const { blogId } = useParams();

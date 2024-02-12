@@ -1,6 +1,6 @@
 import React from "react";
-import "@components/NotFound/notFound.scss";
 import error from "@assets/images/icons/error.svg";
+import "@components/NotFound/notFound.scss";
 
 const NotFound = ({ text }) => {
   return (

@@ -1,11 +1,11 @@
 import React from "react";
-import "@components/Header/header.scss";
 import { Link, useNavigate } from "react-router-dom";
-import LogoutIcon from "@assets/images/icons/Frame.svg";
 import { useDispatch, useSelector } from "react-redux";
+import LogoutIcon from "@assets/images/icons/Frame.svg";
 import { logoutUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
 import Search from "@components/Search/Search";
+import "@components/Header/header.scss";
 
 const Header = () => {
   const navigate = useNavigate();

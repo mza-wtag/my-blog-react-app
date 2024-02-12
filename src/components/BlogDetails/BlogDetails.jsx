@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "@components/BlogDetails/blogDetails.scss";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import Button from "@components/Button/Button";
 import Edit from "@assets/images/icons/Edit.svg";
+import "@components/BlogDetails/blogDetails.scss";
 import "@styles/common.scss";
-import { useNavigate } from "react-router";
 
 const BlogDetails = ({ blogDetails }) => {
   const navigate = useNavigate();
