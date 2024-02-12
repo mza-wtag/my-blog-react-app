@@ -1,0 +1,9 @@
+@import "@styles/variables";
+
+.blog-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 1.75rem auto;
+  width: 80%;
+}
