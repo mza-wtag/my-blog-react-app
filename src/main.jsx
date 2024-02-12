@@ -31,7 +31,7 @@ const router = createBrowserRouter(
         element={<ProtectedRoute element={<EditBlog />} />}
       />
       <Route path="/register" element={<Register />} />
-      <Route path="*" element={<NotFound text="Page not found" />} />
+      <Route path="*" element={<NotFound text="Page Not Found" />} />
     </Route>
   )
 );

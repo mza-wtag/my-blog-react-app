@@ -8,6 +8,7 @@ import Button from "@components/Button/Button";
 import Add from "@assets/images/icons/Add.svg";
 import Edit from "@assets/images/icons/Edit.svg";
 import "@styles/common.scss";
+import NotFound from "@components/NotFound/NotFound";
 
 const Profile = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
@@ -32,8 +33,14 @@ const Profile = () => {
       <UserDatails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
-      <h2>My published posts</h2>
-      <BlogList blogs={personalBlogs} />
+      {personalBlogs.length > 0 ? (
+        <>
+          <h2>My published posts</h2>
+          <BlogList blogs={personalBlogs} />
+        </>
+      ) : (
+        <NotFound text="No Personal Blogs Found" />
+      )}
     </div>
   );
 };

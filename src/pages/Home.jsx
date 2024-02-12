@@ -16,7 +16,7 @@ const Home = () => {
           <BlogList blogs={blogs} />
         </>
       ) : (
-        <NotFound text="No blogs found" />
+        <NotFound text="No Blogs Found" />
       )}
     </div>
   );
