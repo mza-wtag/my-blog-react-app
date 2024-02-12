@@ -22,6 +22,7 @@ const BlogForm = () => {
 
   const handleDrop = (acceptedFiles) => {
     const reader = new FileReader();
+
     reader.onload = () => {
       const base64Image = reader.result;
       setImagePreview(base64Image);
@@ -48,12 +49,15 @@ const BlogForm = () => {
       onSubmit={onSubmit}
       validate={(values) => {
         const errors = {};
+
         if (!values.title) {
           errors.title = "Title Required";
         }
+
         if (!values.body) {
           errors.body = "Body Required";
         }
+
         return errors;
       }}
       render={({ handleSubmit, form }) => (
