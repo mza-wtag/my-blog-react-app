@@ -32,12 +32,9 @@ export const registerUser = (user) => {
       type: REGISTERED_USER,
       payload: newUser,
     });
-<<<<<<< HEAD
-=======
     const users = JSON.parse(localStorage.getItem("users")) || [];
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
->>>>>>> 3db30a7c1b3ac24a7e7630e16028b4c6553d29e3
   };
 };
 
