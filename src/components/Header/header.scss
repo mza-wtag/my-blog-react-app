@@ -1,0 +1,57 @@
+@import "@styles/variables";
+
+.navbar {
+  align-items: center;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+
+  &__logo {
+    color: $color-black;
+    font-size: 1.5rem;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+  }
+
+  &__search {
+    display: flex;
+    flex-grow: 0.1;
+    position: relative;
+    img {
+      position: absolute;
+      right: 0.625rem;
+      top: 0.625rem;
+    }
+    input {
+      background-color: $secondary-color;
+      border-radius: 0.2rem;
+      border: none;
+      padding: 0.6rem;
+      width: 100%;
+    }
+  }
+
+  &__user-name {
+    color: $link-color;
+    text-transform: capitalize;
+  }
+
+  &__menu {
+    align-items: center;
+    display: flex;
+    font-size: 1.2rem;
+    a {
+      color: $link-color;
+      text-decoration: none;
+    }
+    span {
+      margin: 0 1rem;
+    }
+  }
+  &__logout-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
