@@ -1,23 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-  searchBlogPosts,
-  getBlogPostsFromLocalStorage,
-} from "@actions/blogActions";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@assets/images/icons/search.svg";
 import "@components/Search/search.scss";
+import { searchBlogPosts } from "@actions/blogActions";
+
 const Search = () => {
   const dispatch = useDispatch();
-  const [searchQuery, setSearchQuery] = useState("");
+  const query = useSelector((state) => state.search.query);
 
   const handleSearch = (event) => {
-    const query = event.target.value;
-    setSearchQuery(query);
-    if (query.trim() === "") {
-      dispatch(getBlogPostsFromLocalStorage());
-    } else {
-      dispatch(searchBlogPosts(query));
-    }
+    const searchQuery = event.target.value?.toLowerCase();
+    dispatch(searchBlogPosts(searchQuery));
   };
 
   return (
@@ -25,7 +18,7 @@ const Search = () => {
       <input
         type="search"
         placeholder="Search"
-        value={searchQuery}
+        value={query}
         onChange={handleSearch}
       />
       <img src={SearchIcon} alt="search" />

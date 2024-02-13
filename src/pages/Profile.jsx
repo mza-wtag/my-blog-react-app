@@ -4,7 +4,6 @@ import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
 import UserDatails from "@components/UserDetails/UserDatails";
 import BlogForm from "@components/BlogForm/BlogForm";
 import BlogList from "@components/BlogList/BlogList";
-import NotFound from "@components/NotFound/NotFound";
 import Button from "@components/Button/Button";
 import Edit from "@assets/images/icons/Edit.svg";
 import Add from "@assets/images/icons/Add.svg";
@@ -33,14 +32,8 @@ const Profile = () => {
       <UserDatails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
-      {personalBlogs.length > 0 ? (
-        <>
-          <h2>My published posts</h2>
-          <BlogList blogs={personalBlogs} />
-        </>
-      ) : (
-        <NotFound text="No Personal Blogs Found" />
-      )}
+      <h2>My published posts</h2>
+      <BlogList blogs={personalBlogs} />
     </div>
   );
 };
