@@ -1,7 +1,7 @@
 import { SEARCH_BLOG_POSTS } from "@constants/actionTypes";
 
 const initialState = {
-  query: "",
+  searchQuery: "",
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const searchReducer = (state = initialState, action) => {
     case SEARCH_BLOG_POSTS:
       return {
         ...state,
-        query: action.payload,
+        searchQuery: action.payload,
       };
     default:
       return state;

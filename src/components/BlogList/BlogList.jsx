@@ -5,7 +5,7 @@ import "@components/BlogList/blogList.scss";
 import NotFound from "@components/NotFound/NotFound";
 
 const BlogList = ({ blogs }) => {
-  const queryString = useSelector((state) => state.search.query);
+  const queryString = useSelector((state) => state.search.searchQuery);
   const searchedBlogs = blogs?.filter((blog) =>
     blog?.title?.toLowerCase().includes(queryString)
   );
