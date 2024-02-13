@@ -56,10 +56,10 @@ export const updateBlog = (postId, updatedPost) => {
   };
 };
 
-export const searchBlogPosts = (query) => {
+export const searchBlogPosts = (searchQuery) => {
   return {
     type: SEARCH_BLOG_POSTS,
-    payload: query,
+    payload: searchQuery,
   };
 };
 

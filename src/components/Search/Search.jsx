@@ -6,7 +6,7 @@ import { searchBlogPosts } from "@actions/blogActions";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const query = useSelector((state) => state.search.query);
+  const query = useSelector((state) => state.search.searchQuery);
 
   const handleSearch = (event) => {
     const searchQuery = event.target.value?.toLowerCase();
