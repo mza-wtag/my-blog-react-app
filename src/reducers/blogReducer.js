@@ -3,6 +3,7 @@ import {
   EDIT_BLOG_POST,
   GET_BLOG_POSTS,
   SEARCH_BLOG_POSTS,
+  FILTER_BLOG_POSTS_BY_TAG,
 } from "@constants/actionTypes";
 
 const initialState = JSON.parse(localStorage.getItem("blogPosts")) || [];
@@ -19,7 +20,11 @@ export const blogReducer = (state = initialState, action) => {
     case SEARCH_BLOG_POSTS:
       const query = action.payload.toLowerCase();
       return state.filter((post) => post.title.toLowerCase().includes(query));
-
+    case FILTER_BLOG_POSTS_BY_TAG:
+      const tag = action.payload.toLowerCase();
+      return state.filter((post) =>
+        post.tags.map((t) => t.toLowerCase()).includes(tag)
+      );
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import {
   EDIT_BLOG_POST,
   GET_BLOG_POSTS,
   SEARCH_BLOG_POSTS,
+  FILTER_BLOG_POSTS_BY_TAG,
 } from "@constants/actionTypes";
 
 export const addBlog = (post) => {
@@ -59,5 +60,12 @@ export const searchBlogPosts = (query) => {
   return {
     type: SEARCH_BLOG_POSTS,
     payload: query,
+  };
+};
+
+export const filterBlogPostsByTag = (tag) => {
+  return {
+    type: FILTER_BLOG_POSTS_BY_TAG,
+    payload: tag,
   };
 };
