@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import "@components/FilterBlogs/filterBlogs.scss";
+import tags from "@constants/tags.json";
 import { filterByTag } from "@actions/blogActions";
+import "@components/FilterBlogs/filterBlogs.scss";
 
-const FilterBlogs = ({ options }) => {
+const FilterBlogs = () => {
   const dispatch = useDispatch();
   const handleChange = (event) => {
     dispatch(filterByTag(event.target.value));
@@ -14,8 +15,8 @@ const FilterBlogs = ({ options }) => {
       <label htmlFor="filter">Filter By:</label>
       <select id="filter" onChange={handleChange}>
         <option value="">Select an option</option>
-        {options &&
-          options.map((option, index) => (
+        {tags &&
+          tags.map((option, index) => (
             <option key={index} value={option.value}>
               {option.value}
             </option>
