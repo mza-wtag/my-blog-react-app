@@ -1,14 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import "@components/FilterBlogs/filterBlogs.scss";
-import { filterBlogPostsByTag } from "@actions/blogActions";
+import { filterByTag } from "@actions/blogActions";
 
 const FilterBlogs = ({ options }) => {
   const dispatch = useDispatch();
-
   const handleChange = (event) => {
-    const selectedTag = event.target.value;
-    dispatch(filterBlogPostsByTag(selectedTag));
+    dispatch(filterByTag(event.target.value));
   };
 
   return (

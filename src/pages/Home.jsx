@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import BlogList from "@components/BlogList/BlogList";
 import HomeBanner from "@components/HomeBanner/HomeBanner";
-import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
+
 import tags from "@constants/tags.json";
+import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
 
 const Home = () => {
   const blogs = useSelector((state) => state.blog);

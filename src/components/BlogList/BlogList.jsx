@@ -1,19 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BlogCard from "@components/BlogCard/BlogCard";
-import "@components/BlogList/blogList.scss";
 import NotFound from "@components/NotFound/NotFound";
+import "@components/BlogList/blogList.scss";
 
 const BlogList = ({ blogs }) => {
-  const queryString = useSelector((state) => state.search.searchQuery);
-  const searchedBlogs = blogs?.filter((blog) =>
-    blog?.title?.toLowerCase().includes(queryString)
-  );
+  const searchQuery = useSelector((state) => state.search.searchQuery);
+  const filteredTag = useSelector((state) => state.filter.filteredTag);
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const titleMatches = blog.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const tagMatches = !filteredTag || blog.tags.includes(filteredTag);
+    return titleMatches && tagMatches;
+  });
 
   return (
     <div className="blog-list">
-      {searchedBlogs?.length > 0 ? (
-        searchedBlogs?.map((blog) => <BlogCard key={blog.id} blog={blog} />)
+      {filteredBlogs.length > 0 ? (
+        filteredBlogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
       ) : (
         <NotFound text="No Blogs Found." />
       )}
