@@ -9,8 +9,10 @@ const Home = () => {
   return (
     <div className="container">
       <HomeBanner blog={blogs[0]} />
-      <h2>Latest Posts</h2>
-      <FilterBlogs />
+      <div className="common-title-filter-holder">
+        <h2>Latest Posts</h2>
+        <FilterBlogs />
+      </div>
       <BlogList blogs={blogs} />
     </div>
   );

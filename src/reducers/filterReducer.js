@@ -2,7 +2,7 @@ import { FILTER_BY_TAG } from "@constants/actionTypes";
 
 const initialState = {
   blogs: [],
-  filteredTag: null,
+  filteredTag: "",
 };
 
 const filterReducer = (state = initialState, action) => {

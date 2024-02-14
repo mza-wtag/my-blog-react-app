@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
 import UserDetails from "@components/UserDetails/UserDetails";
+import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
 import BlogForm from "@components/BlogForm/BlogForm";
 import BlogList from "@components/BlogList/BlogList";
 import Button from "@components/Button/Button";
@@ -32,7 +33,10 @@ const Profile = () => {
       <UserDetails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
-      <h2>My published posts</h2>
+      <div className="common-title-filter-holder">
+        <h2>My published posts</h2>
+        <FilterBlogs />
+      </div>
       <BlogList blogs={personalBlogs} />
     </div>
   );

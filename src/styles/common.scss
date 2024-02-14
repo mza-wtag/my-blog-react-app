@@ -8,3 +8,9 @@
   gap: 1rem;
   justify-content: end;
 }
+
+.common-title-filter-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
