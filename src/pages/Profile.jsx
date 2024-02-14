@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserDatails from "@components/UserDetails/UserDatails";
+import UserDatails from "@components/UserDetails/UserDetails";
 import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
 import BlogForm from "@components/BlogForm/BlogForm";
 import BlogList from "@components/BlogList/BlogList";
@@ -17,7 +17,7 @@ const Profile = () => {
 
   const personalBlogs =
     loggedInUser?.userName &&
-    blogs.filter((blog) => blog.userId === loggedInUser?.userId);
+    blogs?.filter((blog) => blog.userId === loggedInUser?.userId);
 
   return (
     <div className="container">
