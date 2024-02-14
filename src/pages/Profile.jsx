@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
-import UserDatails from "@components/UserDetails/UserDatails";
+import UserDetails from "@components/UserDetails/UserDetails";
 import BlogForm from "@components/BlogForm/BlogForm";
 import BlogList from "@components/BlogList/BlogList";
 import Button from "@components/Button/Button";
@@ -17,7 +17,7 @@ const Profile = () => {
 
   const personalBlogs =
     loggedInUser?.userName &&
-    blogs.filter((blog) => blog.userId === loggedInUser?.userId);
+    blogs?.filter((blog) => blog.userId === loggedInUser?.userId);
 
   return (
     <div className="container">
@@ -29,7 +29,7 @@ const Profile = () => {
           <img src={Edit} alt="Edit Profile" />
         </Button>
       </div>
-      <UserDatails />
+      <UserDetails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
       <h2>My published posts</h2>
