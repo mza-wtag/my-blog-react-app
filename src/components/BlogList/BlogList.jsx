@@ -47,8 +47,4 @@ BlogList.propTypes = {
   blogs: PropTypes.array.isRequired,
 };
 
-BlogList.defaultProps = {
-  blogs: [],
-};
-
 export default BlogList;
