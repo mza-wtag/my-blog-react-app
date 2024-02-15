@@ -9,9 +9,7 @@ const BlogList = ({ blogs }) => {
   const filteredTag = useSelector((state) => state.filter.filteredTag);
 
   const filteredBlogs = blogs.filter((blog) => {
-    const titleMatches = blog.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+    const titleMatches = blog.title.includes(searchQuery.toLowerCase());
     const tagMatches = !filteredTag || blog.tags.includes(filteredTag);
     return titleMatches && tagMatches;
   });
