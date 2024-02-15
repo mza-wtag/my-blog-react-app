@@ -8,7 +8,7 @@ const BlogList = ({ blogs }) => {
   const searchQuery = useSelector((state) => state.search.searchQuery);
   const filteredTag = useSelector((state) => state.filter.filteredTag);
 
-  const filteredBlogs = blogs.filter((blog) => {
+  const filteredBlogs = blogs?.filter((blog) => {
     const titleMatches = blog.title.includes(searchQuery.toLowerCase());
     const tagMatches = !filteredTag || blog.tags.includes(filteredTag);
     return titleMatches && tagMatches;
@@ -23,6 +23,10 @@ const BlogList = ({ blogs }) => {
       )}
     </div>
   );
+};
+
+BlogList.propTypes = {
+  blogs: PropTypes.array.isRequired,
 };
 
 export default BlogList;
