@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import BlogCard from "@components/BlogCard/BlogCard";
 import NotFound from "@components/NotFound/NotFound";
@@ -40,6 +41,14 @@ const BlogList = ({ blogs }) => {
       )}
     </>
   );
+};
+
+BlogList.propTypes = {
+  blogs: PropTypes.array.isRequired,
+};
+
+BlogList.defaultProps = {
+  blogs: [],
 };
 
 export default BlogList;
