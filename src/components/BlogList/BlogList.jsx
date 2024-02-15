@@ -11,7 +11,7 @@ const BlogList = ({ blogs }) => {
   const filteredTag = useSelector((state) => state.filter.filteredTag);
   const [blogsToShow, setBlogsToShow] = useState(9);
 
-  const filteredBlogs = blogs.filter((blog) => {
+  const filteredBlogs = blogs?.filter((blog) => {
     const titleMatches = blog.title.includes(searchQuery.toLowerCase());
     const tagMatches = !filteredTag || blog.tags.includes(filteredTag);
     return titleMatches && tagMatches;
