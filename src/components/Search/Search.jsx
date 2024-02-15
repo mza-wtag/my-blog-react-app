@@ -9,7 +9,7 @@ const Search = () => {
   const query = useSelector((state) => state.search.searchQuery);
 
   const handleSearch = (event) => {
-    const searchQuery = event.target.value?.toLowerCase();
+    const searchQuery = event.target.value;
     dispatch(searchBlogPosts(searchQuery));
   };
 
