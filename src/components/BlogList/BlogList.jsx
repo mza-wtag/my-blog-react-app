@@ -26,7 +26,7 @@ const BlogList = ({ blogs }) => {
 
   return (
     <>
-      {filteredBlogs.length > 0 ? (
+      {filteredBlogs?.length > 0 ? (
         <div className="blog-list">
           {filteredBlogs.slice(0, blogsToShow).map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
@@ -35,7 +35,7 @@ const BlogList = ({ blogs }) => {
       ) : (
         <NotFound text="No Blogs Found." />
       )}
-      {filteredBlogs.length > blogsToShow && (
+      {filteredBlogs?.length > blogsToShow && (
         <Button className="blog-list__button" onClick={handleShowMore}>
           Load More
         </Button>
