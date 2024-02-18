@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  LOGEDIN_USER,
-  LOGGEDOUT_USER,
   REGISTERED_USER,
+  LOGGEDIN_USER,
+  LOGGEDOUT_USER,
   UPDATE_USER_PROFILE,
 } from "@constants/actionTypes";
 
@@ -42,7 +42,7 @@ export const registerUser = (user) => {
 export const loginUser = (user) => {
   return (dispatch) => {
     dispatch({
-      type: LOGEDIN_USER,
+      type: LOGGEDIN_USER,
       payload: user,
     });
     localStorage.setItem("loggedInUser", JSON.stringify(user));

@@ -49,7 +49,7 @@ export const updateBlog = (postId, updatedPost) => {
     });
 
     const existingPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-    const updatedPosts = existingPosts.map((post) =>
+    const updatedPosts = existingPosts?.map((post) =>
       post.id === postId ? updatedPost : post
     );
     localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
