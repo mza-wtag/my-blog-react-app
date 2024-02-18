@@ -45,14 +45,14 @@ const HomeBanner = ({ blog }) => {
 
 HomeBanner.propTypes = {
   blog: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    tags: PropTypes.array.isRequired,
-    image: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
-    creatorFullName: PropTypes.string.isRequired,
-    creatorImage: PropTypes.string.isRequired,
-  }),
+    id: PropTypes.string,
+    title: PropTypes.string,
+    tags: PropTypes.array,
+    image: PropTypes.string,
+    createdAt: PropTypes.string,
+    creatorFullName: PropTypes.string,
+    creatorImage: PropTypes.string,
+  }).isRequired,
 };
 
 export default HomeBanner;
