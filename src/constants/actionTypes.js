@@ -1,5 +1,5 @@
 export const REGISTERED_USER = "REGISTERED_USER";
-export const LOGEDIN_USER = "LOGEDIN_USER";
+export const LOGGEDIN_USER = "LOGGEDIN_USER";
 export const ADD_BLOG_POST = "ADD_BLOG_POST";
 export const GET_BLOG_POSTS = "GET_BLOG_POSTS";
 export const LOGGEDOUT_USER = "LOGGEDOUT_USER";
