@@ -34,7 +34,7 @@ export const authReducer = (state = initialState, action) => {
       };
     case UPDATE_USER_PROFILE:
       const { userId, profileData } = action.payload;
-      const updatedUsersList = state.users.map((user) => {
+      const updatedUsersList = state?.users?.map((user) => {
         if (user.userId === userId) {
           return {
             ...user,
