@@ -35,7 +35,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
       creatorFullName: loggedInUser.fullName,
     };
     if (isEditMode) {
-      dispatch(updateBlog(initialData.id, blog));
+      dispatch(updateBlog(initialData?.id, blog));
     } else {
       dispatch(addBlog(blog));
     }
@@ -128,14 +128,14 @@ const BlogForm = ({ initialData, onSubmit }) => {
           </div>
           <div className="blog-form__buttons">
             <Button
-              className="blog-form__buttons--submit"
+              className="blog-form__buttons-submit"
               type="submit"
               onClick={handleSubmit}
             >
               {isEditMode ? "Update" : "Submit"}
             </Button>
             <Button
-              className="blog-form__buttons--cancel"
+              className="blog-form__buttons-cancel"
               type="button"
               onClick={() => handleCancel(form)}
             >
@@ -151,10 +151,10 @@ const BlogForm = ({ initialData, onSubmit }) => {
 BlogForm.propTypes = {
   initialData: PropTypes.shape({
     id: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    body: PropTypes.string,
     image: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string),
   }),
   onSubmit: PropTypes.func,
 };
