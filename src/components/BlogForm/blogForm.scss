@@ -50,7 +50,7 @@
     gap: 1rem;
     justify-content: center;
 
-    &--submit {
+    &-submit {
       background-color: $link-color;
       border-radius: 0.25rem;
       border: 0.063rem solid $black-color-200;
@@ -58,7 +58,7 @@
       font-weight: $font-weight-black;
       padding: 0.6rem 1.7rem;
     }
-    &--cancel {
+    &-cancel {
       background-color: $secondary-color;
       border-radius: 0.25rem;
       border: 0.063rem solid $black-color-200;
