@@ -6,7 +6,7 @@ import "./filterBlogs.scss";
 
 const FilterBlogs = () => {
   const dispatch = useDispatch();
-  const selectedTag = useSelector((state) => state.filter.filteredTag);
+  const selectedTag = useSelector((state) => state?.filter?.filteredTag);
   const [currentTag, setCurrentTag] = useState(selectedTag);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const FilterBlogs = () => {
           All
         </option>
         {tags &&
-          tags.map((option, index) => (
+          tags?.map((option, index) => (
             <option
               key={index}
               className="filter-blogs__option"
