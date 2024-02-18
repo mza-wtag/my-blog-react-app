@@ -5,19 +5,23 @@ import "@components/BlogList/blogList.scss";
 import NotFound from "@components/NotFound/NotFound";
 
 const BlogList = ({ blogs }) => {
-  const queryString = useSelector((state) => state.search.searchQuery);
+  const queryString = useSelector((state) => state?.search?.searchQuery);
   const searchedBlogs = blogs?.filter((blog) =>
     blog?.title.includes(queryString.toLowerCase())
   );
 
   return (
-    <div className="blog-list">
+    <>
       {searchedBlogs?.length > 0 ? (
-        searchedBlogs?.map((blog) => <BlogCard key={blog.id} blog={blog} />)
+        <div className="blog-list">
+          {searchedBlogs?.map((blog) => (
+            <BlogCard key={blog.id} blog={blog} />
+          ))}
+        </div>
       ) : (
         <NotFound text="No Blogs Found." />
       )}
-    </div>
+    </>
   );
 };
 
