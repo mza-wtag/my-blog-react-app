@@ -1,5 +1,5 @@
 import {
-  LOGEDIN_USER,
+  LOGGEDIN_USER,
   LOGGEDOUT_USER,
   REGISTERED_USER,
   UPDATE_USER_PROFILE,
@@ -20,7 +20,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         users: updatedUsers,
       };
-    case LOGEDIN_USER:
+    case LOGGEDIN_USER:
       localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
       return {
         ...state,

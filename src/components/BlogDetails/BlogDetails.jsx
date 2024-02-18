@@ -22,7 +22,7 @@ const BlogDetails = ({ blogDetails }) => {
   } = blogDetails;
 
   const handleEditBlog = () => {
-    navigate(`/edit-blog/${blogDetails.id}`);
+    navigate(`/edit-blog/${blogDetails?.id}`);
   };
 
   return (
