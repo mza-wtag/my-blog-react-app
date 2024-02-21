@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByTags } from "@actions/blogActions";
 import SelectBox from "@components/SelectBox/SelectBox";
@@ -23,6 +24,10 @@ const FilterBlogs = ({ tags }) => {
       />
     </div>
   );
+};
+
+FilterBlogs.propTypes = {
+  tags: PropTypes.array.isRequired,
 };
 
 export default FilterBlogs;
