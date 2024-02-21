@@ -7,7 +7,7 @@ const SelectBox = ({ tags, selectedTags, handleChangeTags }) => (
     onChange={handleChangeTags}
     options={tags}
     isMulti
-    value={tags.filter((tag) => selectedTags.includes(tag.value))}
+    value={tags?.filter((tag) => selectedTags.includes(tag.value))}
   />
 );
 

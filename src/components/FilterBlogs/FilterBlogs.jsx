@@ -1,48 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { filterByTag } from "@actions/blogActions";
-import tags from "@constants/tags.json";
+import React from "react";
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { filterByTags } from "@actions/blogActions";
+import SelectBox from "@components/SelectBox/SelectBox";
 import "./filterBlogs.scss";
 
-const FilterBlogs = () => {
+const FilterBlogs = ({ tags }) => {
   const dispatch = useDispatch();
-  const selectedTag = useSelector((state) => state?.filter?.filteredTag);
-  const [currentTag, setCurrentTag] = useState(selectedTag);
+  const selectedTags = useSelector((state) => state?.filter?.filteredTags);
 
-  useEffect(() => {
-    setCurrentTag(selectedTag);
-  }, [selectedTag]);
-
-  const handleChange = (event) => {
-    const tag = event.target.value;
-    setCurrentTag(tag);
-    dispatch(filterByTag(tag));
+  const handleChangeTags = (selectedTags) => {
+    const tagsArray = selectedTags.map((tag) => tag.value);
+    dispatch(filterByTags(tagsArray));
   };
 
   return (
     <div className="filter-blogs">
       <label className="filter-blogs__label">Filter Blogs By Tags:</label>
-      <select
-        className="filter-blogs__select"
-        value={currentTag}
-        onChange={handleChange}
-      >
-        <option className="filter-blogs__option" value="">
-          All
-        </option>
-        {tags &&
-          tags?.map((option, index) => (
-            <option
-              key={index}
-              className="filter-blogs__option"
-              value={option.value}
-            >
-              {option.value}
-            </option>
-          ))}
-      </select>
+      <SelectBox
+        tags={tags}
+        selectedTags={selectedTags}
+        handleChangeTags={handleChangeTags}
+      />
     </div>
   );
+};
+
+FilterBlogs.propTypes = {
+  tags: PropTypes.array.isRequired,
 };
 
 export default FilterBlogs;

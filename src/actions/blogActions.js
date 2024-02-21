@@ -63,7 +63,7 @@ export const searchBlogPosts = (searchQuery) => {
   };
 };
 
-export const filterByTag = (tag) => ({
+export const filterByTags = (tags) => ({
   type: FILTER_BY_TAG,
-  payload: tag,
+  payload: tags,
 });
