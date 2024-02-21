@@ -9,17 +9,4 @@
   &__label {
     margin-right: 0.625rem;
   }
-
-  &__select {
-    background: $secondary-color;
-    border-radius: 0.25rem;
-    min-width: 10rem;
-    overflow: hidden;
-    padding: 0.3rem;
-  }
-
-  &__option {
-    background-color: $secondary-color;
-    font-weight: $font-weight-semi-bold;
-  }
 }
