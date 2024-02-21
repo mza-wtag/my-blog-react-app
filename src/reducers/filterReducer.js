@@ -2,7 +2,7 @@ import { FILTER_BY_TAG } from "@constants/actionTypes";
 
 const initialState = {
   blogs: [],
-  filteredTag: "",
+  filteredTags: [],
 };
 
 const filterReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const filterReducer = (state = initialState, action) => {
     case FILTER_BY_TAG:
       return {
         ...state,
-        filteredTag: action.payload,
+        filteredTags: action.payload,
       };
     default:
       return state;

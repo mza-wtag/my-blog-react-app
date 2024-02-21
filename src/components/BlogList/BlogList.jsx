@@ -7,11 +7,15 @@ import "@components/BlogList/blogList.scss";
 
 const BlogList = ({ blogs }) => {
   const searchQuery = useSelector((state) => state?.search?.searchQuery);
-  const filteredTag = useSelector((state) => state?.filter?.filteredTag);
+  const filteredTags = useSelector((state) => state?.filter?.filteredTags);
 
   const filteredBlogs = blogs?.filter((blog) => {
-    const titleMatches = blog.title.includes(searchQuery.toLowerCase());
-    const tagMatches = !filteredTag || blog.tags.includes(filteredTag);
+    const titleMatches = blog.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const tagMatches =
+      !filteredTags.length ||
+      filteredTags.some((tag) => blog.tags.includes(tag));
     return titleMatches && tagMatches;
   });
 
@@ -19,7 +23,7 @@ const BlogList = ({ blogs }) => {
     <>
       {filteredBlogs?.length > 0 ? (
         <div className="blog-list">
-          {filteredBlogs?.map((blog) => (
+          {filteredBlogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
         </div>

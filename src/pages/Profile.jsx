@@ -8,6 +8,7 @@ import BlogList from "@components/BlogList/BlogList";
 import Button from "@components/Button/Button";
 import Edit from "@assets/images/icons/Edit.svg";
 import Add from "@assets/images/icons/Add.svg";
+import tags from "@constants/tags.json";
 import "@styles/common.scss";
 
 const Profile = () => {
@@ -35,7 +36,7 @@ const Profile = () => {
       {blogFormVisible && <BlogForm />}
       <div className="common-title-filter-holder">
         <h2>My published posts</h2>
-        <FilterBlogs />
+        <FilterBlogs tags={tags} />
       </div>
       <BlogList blogs={personalBlogs} />
     </div>
