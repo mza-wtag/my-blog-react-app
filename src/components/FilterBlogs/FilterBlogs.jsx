@@ -17,11 +17,13 @@ const FilterBlogs = ({ tags }) => {
   return (
     <div className="filter-blogs">
       <label className="filter-blogs__label">Filter Blogs By Tags:</label>
-      <SelectBox
-        tags={tags}
-        selectedTags={selectedTags}
-        handleChangeTags={handleChangeTags}
-      />
+      <div className="filter-blogs__select-box">
+        <SelectBox
+          tags={tags}
+          selectedTags={selectedTags}
+          handleChangeTags={handleChangeTags}
+        />
+      </div>
     </div>
   );
 };
