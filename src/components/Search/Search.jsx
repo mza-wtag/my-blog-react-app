@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { searchBlogPosts } from "@actions/blogActions";
 import SearchIcon from "@assets/images/icons/search.svg";
 import "@components/Search/search.scss";
-import { searchBlogPosts } from "@actions/blogActions";
 
 const Search = () => {
   const dispatch = useDispatch();

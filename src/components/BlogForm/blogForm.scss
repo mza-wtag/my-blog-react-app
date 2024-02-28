@@ -16,11 +16,13 @@
   &__tag-container {
     flex: 1 0;
   }
+
   &__title-tag-wrapper {
     align-items: baseline;
     display: flex;
     gap: 2rem;
   }
+
   &__label {
     display: inline-block;
     font-weight: $font-weight-bold;
@@ -58,6 +60,7 @@
       font-weight: $font-weight-black;
       padding: 0.6rem 1.7rem;
     }
+
     &-cancel {
       background-color: $secondary-color;
       border-radius: 0.25rem;
