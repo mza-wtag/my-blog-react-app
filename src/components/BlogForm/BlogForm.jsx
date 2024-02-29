@@ -34,6 +34,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
       creatorImage: loggedInUser.profileImage,
       creatorFullName: loggedInUser.fullName,
     };
+
     if (isEditMode) {
       dispatch(updateBlog(initialData?.id, blog));
     } else {
