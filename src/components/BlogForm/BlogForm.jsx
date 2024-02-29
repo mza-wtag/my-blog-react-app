@@ -6,8 +6,8 @@ import { addBlog, updateBlog } from "@actions/blogActions";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
-import "@components/BlogForm/blogForm.scss";
 import Button from "@components/Button/Button";
+import "@components/BlogForm/blogForm.scss";
 
 const BlogForm = ({ initialData, onSubmit }) => {
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
       creatorImage: loggedInUser.profileImage,
       creatorFullName: loggedInUser.fullName,
     };
+
     if (isEditMode) {
       dispatch(updateBlog(initialData?.id, blog));
     } else {
