@@ -6,8 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
-  margin: auto;
-  max-width: 80%;
+  margin: 1rem 0;
   padding: 3rem;
   text-align: center;
 
@@ -16,31 +15,31 @@
     display: flex;
     justify-content: center;
 
-    &_image {
+    &-image {
       border-radius: 50%;
       height: 4rem;
       margin-right: 1rem;
       width: 4rem;
     }
-
-    &__info {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-
-      &_full-name {
-        font-size: 1.25rem;
-        font-weight: $font-weight-medium;
-        text-transform: capitalize;
-      }
-
-      &_subtitle {
-        color: $black-color-200;
-        font-size: 0.875rem;
-        font-weight: $font-weight-normal;
-      }
-    }
   }
+
+  &__info {
+    text-align: left;
+  }
+
+  &__fullname {
+    font-size: 1.25rem;
+    font-weight: $font-weight-medium;
+    text-transform: capitalize;
+  }
+
+  &__subtitle {
+    color: $dim-color;
+    font-size: 0.875rem;
+    font-weight: $font-weight-normal;
+    text-transform: capitalize;
+  }
+
   &__about {
     font-size: 1.125rem;
     font-weight: $font-weight-normal;

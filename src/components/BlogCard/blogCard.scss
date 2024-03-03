@@ -16,14 +16,15 @@
 
   &__category-badge {
     background-color: $secondary-color;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     color: $color-blue;
     margin: 1rem;
     padding: 0.5rem;
-    width: 9.375rem;
+    text-align: center;
+    width: fit-content;
   }
 
-  &__blog-title {
+  &__title {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     display: -webkit-box;
@@ -32,28 +33,32 @@
     margin: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: capitalize;
   }
 
   &__author-info {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: space-between;
-    padding: 0 1rem 1rem;
+    padding: 1rem 0;
+  }
 
-    &__author-image {
-      background: $color-blue;
-      height: 1rem;
-      width: 1rem;
-    }
+  &__author-image {
+    background: $color-blue;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+  }
 
-    &__author-name {
-      font-weight: $font-weight-bold;
-      margin-bottom: 0.25rem;
-    }
+  &__author-name {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.25rem;
+    text-transform: capitalize;
+  }
 
-    &__blog-createdAt {
-      color: $dim-color;
-    }
+  &__created-at {
+    color: $dim-color;
   }
 }

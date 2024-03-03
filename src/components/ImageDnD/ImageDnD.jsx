@@ -41,7 +41,7 @@ const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
 ImageDnD.propTypes = {
   onDrop: PropTypes.func.isRequired,
   imagePreview: PropTypes.string,
-  cancelImagePreview: PropTypes.func.isRequired,
+  cancelImagePreview: PropTypes.func,
 };
 
 ImageDnD.defaultProps = {

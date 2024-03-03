@@ -1,5 +1,6 @@
 @import "@styles/variables";
 @import "@styles/constants";
+
 .registration-form {
   align-items: center;
   display: flex;
@@ -43,7 +44,6 @@
     border-radius: 0.25rem;
     border: none;
     color: $primary-color;
-    cursor: pointer;
     font-weight: $font-weight-black;
     padding: 0.5rem 1rem;
   }

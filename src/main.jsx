@@ -16,6 +16,7 @@ import Login from "@components/Login/Login.jsx";
 import Register from "@components/Register/Register.jsx";
 import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute.jsx";
 import Blog from "@pages/Blog.jsx";
+import EditBlog from "@pages/EditBlog.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,10 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/me" element={<ProtectedRoute element={<Profile />} />} />
       <Route path="/blog/:id" element={<ProtectedRoute element={<Blog />} />} />
+      <Route
+        path="/edit-blog/:blogId"
+        element={<ProtectedRoute element={<EditBlog />} />}
+      />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Route>
