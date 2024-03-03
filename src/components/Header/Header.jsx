@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar container">
         <Link to="/" className="navbar__logo">
           WellBlog
         </Link>
