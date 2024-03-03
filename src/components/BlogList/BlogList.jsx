@@ -1,20 +1,29 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import BlogCard from "@components/BlogCard/BlogCard";
-import "@components/BlogList/blogList.scss";
 import NotFound from "@components/NotFound/NotFound";
+import "@components/BlogList/blogList.scss";
 
 const BlogList = ({ blogs }) => {
-  const queryString = useSelector((state) => state?.search?.searchQuery);
-  const searchedBlogs = blogs.filter((blog) =>
-    blog?.title.includes(queryString.toLowerCase())
-  );
+  const searchQuery = useSelector((state) => state?.search?.searchQuery);
+  const filteredTags = useSelector((state) => state?.filter?.filteredTags);
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const titleMatches = blog.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const tagMatches =
+      !filteredTags.length ||
+      filteredTags.some((tag) => blog.tags.includes(tag));
+    return titleMatches && tagMatches;
+  });
 
   return (
     <>
-      {searchedBlogs.length > 0 ? (
+      {filteredBlogs.length > 0 ? (
         <div className="blog-list">
-          {searchedBlogs.map((blog) => (
+          {filteredBlogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
         </div>
@@ -23,6 +32,14 @@ const BlogList = ({ blogs }) => {
       )}
     </>
   );
+};
+
+BlogList.propTypes = {
+  blogs: PropTypes.array,
+};
+
+BlogList.defaultProps = {
+  blogs: [],
 };
 
 export default BlogList;
