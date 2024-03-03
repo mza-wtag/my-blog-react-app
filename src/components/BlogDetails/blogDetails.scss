@@ -4,6 +4,7 @@
   margin: auto;
   padding: 1rem;
   width: 40%;
+
   &__banner {
     border-radius: 0.5rem;
     height: 28rem;
@@ -11,10 +12,10 @@
   }
 
   &__top-wrapper {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
   }
 
   &__category-badge {
@@ -55,6 +56,7 @@
   &__created-at {
     color: $dim-color;
   }
+
   &__body {
     line-height: auto;
     padding-top: 2rem;

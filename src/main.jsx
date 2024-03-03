@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "@pages/Home.jsx";
 import Layout from "./Layout.jsx";
-import "./index.scss";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -18,6 +17,7 @@ import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute.jsx";
 import Blog from "@pages/Blog.jsx";
 import EditBlog from "@pages/EditBlog.jsx";
 import NotFound from "@components/NotFound/NotFound.jsx";
+import "./index.scss";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

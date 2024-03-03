@@ -13,10 +13,12 @@
 
   &__container {
     height: 18.75rem;
+
     &__image {
       height: 100%;
       width: 100%;
     }
+
     &__remove-button {
       background: $error-color;
       border-radius: 50%;

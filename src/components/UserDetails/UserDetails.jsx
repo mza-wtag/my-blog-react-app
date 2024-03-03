@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "@components/UserDetails/userDetails.scss";
 import { useSelector } from "react-redux";
 import facebook from "@assets/images/icons/facebook.png";
 import twitter from "@assets/images/icons/twitter.png";
 import instagram from "@assets/images/icons/instagram.png";
 import youtube from "@assets/images/icons/youtube.png";
+import "@components/UserDetails/userDetails.scss";
 
 const UserDetails = () => {
   const { loggedInUser } = useSelector((state) => state.auth);

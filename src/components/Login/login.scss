@@ -20,21 +20,26 @@
     margin-bottom: 1rem;
     position: relative;
   }
+
   &__label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: $font-weight-black;
   }
+
   &__error-text {
     color: $error-color;
   }
+
   &__error-message {
     color: $error-color;
     margin-top: 1rem;
   }
+
   &__footer-link {
     margin-top: 1rem;
   }
+
   &__input {
     background-color: $secondary-color;
     border-radius: 0.2rem;

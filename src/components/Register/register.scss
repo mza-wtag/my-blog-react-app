@@ -19,11 +19,13 @@
   &__field {
     margin-bottom: 1rem;
   }
+
   &__label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: $font-weight-black;
   }
+
   &__error-text {
     color: $error-color;
   }
@@ -31,6 +33,7 @@
   &__footer-link {
     margin-top: 1rem;
   }
+
   &__input {
     background-color: $secondary-color;
     border-radius: 0.2rem;
