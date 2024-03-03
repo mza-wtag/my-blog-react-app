@@ -9,7 +9,7 @@ const BlogList = ({ blogs }) => {
   const searchQuery = useSelector((state) => state?.search?.searchQuery);
   const filteredTags = useSelector((state) => state?.filter?.filteredTags);
 
-  const filteredBlogs = blogs?.filter((blog) => {
+  const filteredBlogs = blogs.filter((blog) => {
     const titleMatches = blog.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -21,7 +21,7 @@ const BlogList = ({ blogs }) => {
 
   return (
     <>
-      {filteredBlogs?.length > 0 ? (
+      {filteredBlogs.length > 0 ? (
         <div className="blog-list">
           {filteredBlogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
