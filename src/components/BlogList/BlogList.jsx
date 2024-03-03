@@ -6,15 +6,15 @@ import NotFound from "@components/NotFound/NotFound";
 
 const BlogList = ({ blogs }) => {
   const queryString = useSelector((state) => state?.search?.searchQuery);
-  const searchedBlogs = blogs?.filter((blog) =>
+  const searchedBlogs = blogs.filter((blog) =>
     blog?.title.includes(queryString.toLowerCase())
   );
 
   return (
     <>
-      {searchedBlogs?.length > 0 ? (
+      {searchedBlogs.length > 0 ? (
         <div className="blog-list">
-          {searchedBlogs?.map((blog) => (
+          {searchedBlogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
         </div>
