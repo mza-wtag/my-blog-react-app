@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
+import { Form, Field } from "react-final-form";
 import { addBlog, updateBlog } from "@actions/blogActions";
+import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
-import Button from "@components/Button/Button";
 import "@components/BlogForm/blogForm.scss";
 
 const BlogForm = ({ initialData, onSubmit }) => {

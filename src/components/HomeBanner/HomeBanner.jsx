@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "@components/HomeBanner/homeBanner.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "@components/HomeBanner/homeBanner.scss";
 
 const HomeBanner = ({ blog }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
   const { id, title, tags, image, createdAt, creatorFullName, creatorImage } =
-    blog || {};
+    blog;
 
   const wrapperClassName = loggedInUser
     ? "banner__auth-info-wrapper"

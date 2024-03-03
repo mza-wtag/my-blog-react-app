@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router";
-import UserDatails from "@components/UserDetails/UserDetails";
 import BlogForm from "@components/BlogForm/BlogForm";
+import UserDetails from "@components/UserDetails/UserDetails";
 
 const EditBlog = () => {
   const { blogId } = useParams();
@@ -22,7 +22,7 @@ const EditBlog = () => {
   };
   return (
     <div className="container">
-      <UserDatails />
+      <UserDetails />
       {blogData && (
         <BlogForm initialData={blogData} onSubmit={handleUpdateBlog} />
       )}

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import UserDatails from "@components/UserDetails/UserDetails";
+import { useSelector } from "react-redux";
 import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
+import UserDetails from "@components/UserDetails/UserDetails";
 import BlogForm from "@components/BlogForm/BlogForm";
 import BlogList from "@components/BlogList/BlogList";
-import { useSelector } from "react-redux";
 import Button from "@components/Button/Button";
-import Add from "@assets/images/icons/Add.svg";
 import Edit from "@assets/images/icons/Edit.svg";
+import Add from "@assets/images/icons/Add.svg";
 import "@styles/common.scss";
 
 const Profile = () => {
@@ -29,7 +29,7 @@ const Profile = () => {
           <img src={Edit} alt="Edit Profile" />
         </Button>
       </div>
-      <UserDatails />
+      <UserDetails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
       <h2>My published posts</h2>

@@ -1,9 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   ADD_BLOG_POST,
   EDIT_BLOG_POST,
   GET_BLOG_POSTS,
+  SEARCH_BLOG_POSTS,
 } from "@constants/actionTypes";
-import { v4 as uuidv4 } from "uuid";
 
 export const addBlog = (post) => {
   return (dispatch) => {
@@ -66,5 +67,12 @@ export const updateBlog = (postId, updatedPost) => {
     } catch (error) {
       throw new Error("Error updating blog post: " + error.message);
     }
+  };
+};
+
+export const searchBlogPosts = (searchQuery) => {
+  return {
+    type: SEARCH_BLOG_POSTS,
+    payload: searchQuery,
   };
 };

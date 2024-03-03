@@ -1,6 +1,6 @@
 import React from "react";
-import BlogList from "@components/BlogList/BlogList";
 import { useSelector } from "react-redux";
+import BlogList from "@components/BlogList/BlogList";
 import HomeBanner from "@components/HomeBanner/HomeBanner";
 
 const Home = () => {

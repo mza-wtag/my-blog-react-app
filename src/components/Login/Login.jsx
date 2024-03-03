@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import "@components/Login/login.scss";
-import { useDispatch } from "react-redux";
 import { loginUserWithLocalStorage } from "@actions/authActions";
 import Button from "@components/Button/Button";
+import "@components/Login/login.scss";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
