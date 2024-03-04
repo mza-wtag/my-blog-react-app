@@ -34,10 +34,12 @@ const Profile = () => {
       <UserDetails />
       {editProfileVisible && <EditProfileForm />}
       {blogFormVisible && <BlogForm />}
-      <div className="common-title-filter-holder">
-        <h2>My published posts</h2>
-        <FilterBlogs tags={tags} />
-      </div>
+      {personalBlogs.length > 0 && (
+        <div className="common-title-filter-holder">
+          <h2>My published posts</h2>
+          <FilterBlogs tags={tags} />
+        </div>
+      )}
       <BlogList blogs={personalBlogs} />
     </div>
   );

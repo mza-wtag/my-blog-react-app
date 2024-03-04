@@ -8,19 +8,39 @@ import tags from "@constants/tags.json";
 
 const Home = () => {
   const blogs = useSelector((state) => state.blog);
+  const loggedInUser = useSelector((state) => state.auth.loggedInUser);
 
   return (
     <div className="container">
-      {blogs.length === 0 ? (
-        <NotFound text={"No Data Found"} />
+      {loggedInUser ? (
+        <>
+          {blogs.length === 0 ? (
+            <NotFound text="Please add a blog post" />
+          ) : (
+            <>
+              <HomeBanner blog={blogs[0]} />
+              <div className="common-title-filter-holder">
+                <h2>Latest Posts</h2>
+                <FilterBlogs tags={tags} />
+              </div>
+              <BlogList blogs={blogs} />
+            </>
+          )}
+        </>
       ) : (
         <>
-          <HomeBanner blog={blogs[0]} />
-          <div className="common-title-filter-holder">
-            <h2>Latest Posts</h2>
-            <FilterBlogs tags={tags} />
-          </div>
-          <BlogList blogs={blogs} />
+          {blogs.length === 0 ? (
+            <NotFound text="Please Log In or Signup" />
+          ) : (
+            <>
+              <HomeBanner blog={blogs[0]} />
+              <div className="common-title-filter-holder">
+                <h2>Latest Posts</h2>
+                <FilterBlogs tags={tags} />
+              </div>
+              <BlogList blogs={blogs} />
+            </>
+          )}
         </>
       )}
     </div>
