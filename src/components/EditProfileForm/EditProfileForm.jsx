@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,13 @@ const EditProfileForm = () => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [imageName, setImageName] = useState("");
+  const [formClosed, setFormClosed] = useState(false);
+
+  useEffect(() => {
+    if (loggedInUser.profileImage) {
+      setImagePreview(loggedInUser.profileImage);
+    }
+  }, [loggedInUser]);
 
   const resetForm = (form) => {
     form.reset({
@@ -20,7 +27,7 @@ const EditProfileForm = () => {
       about: loggedInUser?.about || "",
       profileImage: loggedInUser?.profileImage || "",
     });
-    setImagePreview(null);
+    setImagePreview(loggedInUser?.profileImage || null);
     setImageName("");
   };
 
@@ -28,10 +35,12 @@ const EditProfileForm = () => {
     const updatedValues = { ...values, profileImage: imagePreview };
     dispatch(updateUserProfile(loggedInUser?.userId, updatedValues));
     resetForm(form);
+    setFormClosed(true);
   };
 
   const onCancel = (form) => {
     resetForm(form);
+    setFormClosed(true);
   };
 
   const handleImageDrop = (acceptedFiles) => {
@@ -43,6 +52,10 @@ const EditProfileForm = () => {
     };
     reader.readAsDataURL(file);
   };
+
+  if (formClosed) {
+    return null;
+  }
 
   return (
     <Form

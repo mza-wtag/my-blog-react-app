@@ -41,6 +41,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
       dispatch(addBlog(blog));
     }
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };
@@ -61,6 +62,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
 
   const handleCancel = (form) => {
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };

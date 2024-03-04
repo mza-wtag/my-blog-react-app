@@ -21,13 +21,23 @@ const Profile = () => {
     loggedInUser?.userName &&
     blogs?.filter((blog) => blog.userId === loggedInUser?.userId);
 
+  const toggleEditProfileForm = () => {
+    setEditProfileVisible(!editProfileVisible);
+    setBlogFormVisible(false);
+  };
+
+  const toggleBlogForm = () => {
+    setBlogFormVisible(!blogFormVisible);
+    setEditProfileVisible(false);
+  };
+
   return (
     <div className="container">
       <div className="button-holder">
-        <Button onClick={() => setBlogFormVisible(!blogFormVisible)}>
+        <Button onClick={toggleBlogForm}>
           <img src={Add} alt="Add Blog" />
         </Button>
-        <Button onClick={() => setEditProfileVisible(!editProfileVisible)}>
+        <Button onClick={toggleEditProfileForm}>
           <img src={Edit} alt="Edit Profile" />
         </Button>
       </div>
