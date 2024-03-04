@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import defaultUserImage from "@assets/images/icons/defaultUserImage.svg";
 import facebook from "@assets/images/icons/facebook.png";
 import twitter from "@assets/images/icons/twitter.png";
 import instagram from "@assets/images/icons/instagram.png";
@@ -16,7 +17,7 @@ const UserDetails = () => {
       <div className="user-details__identity">
         <img
           className="user-details__identity-image"
-          src={profileImage}
+          src={loggedInUser.profileImage ? profileImage : defaultUserImage}
           alt="Profile Picture"
         />
         <div className="user-details__info">
