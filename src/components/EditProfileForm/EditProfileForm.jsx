@@ -9,6 +9,7 @@ import "@components/EditProfileForm/editProfileForm.scss";
 
 const EditProfileForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
+  const { blog } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [imageName, setImageName] = useState("");
@@ -33,7 +34,7 @@ const EditProfileForm = () => {
 
   const onSubmit = (values, form) => {
     const updatedValues = { ...values, profileImage: imagePreview };
-    dispatch(updateUserProfile(loggedInUser?.userId, updatedValues));
+    dispatch(updateUserProfile(loggedInUser?.userId, updatedValues, blog));
     resetForm(form);
     setFormClosed(true);
   };

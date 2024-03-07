@@ -33,7 +33,7 @@ export const authReducer = (state = initialState, action) => {
         loggedInUser: null,
       };
     case UPDATE_USER_PROFILE:
-      const { userId, profileData } = action.payload;
+      const { userId, profileData, blogs } = action.payload;
       const updatedUsersList = state?.users?.map((user) => {
         if (user.userId === userId) {
           return {
@@ -43,6 +43,16 @@ export const authReducer = (state = initialState, action) => {
         }
         return user;
       });
+
+      const updatedBlogs = blogs.map((blog) => {
+        if (blog.userId === userId) {
+          blog.creatorImage = profileData.profileImage;
+          blog.creatorFullName = profileData.fullName;
+        }
+        return blog;
+      });
+
+      localStorage.setItem("blogPosts", JSON.stringify(updatedBlogs));
 
       localStorage.setItem("users", JSON.stringify(updatedUsersList));
       localStorage.setItem(
