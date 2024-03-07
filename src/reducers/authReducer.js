@@ -44,7 +44,7 @@ export const authReducer = (state = initialState, action) => {
         return user;
       });
 
-      const updatedBlogs = blogs.map((blog) => {
+      const userUpdateOnBlog = blogs.map((blog) => {
         if (blog.userId === userId) {
           blog.creatorImage = profileData.profileImage;
           blog.creatorFullName = profileData.fullName;
@@ -52,7 +52,7 @@ export const authReducer = (state = initialState, action) => {
         return blog;
       });
 
-      localStorage.setItem("blogPosts", JSON.stringify(updatedBlogs));
+      localStorage.setItem("blogPosts", JSON.stringify(userUpdateOnBlog));
 
       localStorage.setItem("users", JSON.stringify(updatedUsersList));
       localStorage.setItem(

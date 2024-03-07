@@ -9,7 +9,7 @@ import "@components/EditProfileForm/editProfileForm.scss";
 
 const EditProfileForm = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
-  const { blog } = useSelector((state) => state);
+  const blog = useSelector((state) => state.blog);
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [imageName, setImageName] = useState("");
