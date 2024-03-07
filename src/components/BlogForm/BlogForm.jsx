@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlog, updateBlog } from "@actions/blogActions";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
@@ -14,6 +14,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [formClosed, setFormClosed] = useState(false);
 
   const { loggedInUser } = useSelector((state) => state.auth);
 
@@ -41,8 +42,10 @@ const BlogForm = ({ initialData, onSubmit }) => {
       dispatch(addBlog(blog));
     }
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
+    setFormClosed(true);
   };
 
   const handleDrop = (acceptedFiles) => {
@@ -61,6 +64,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
 
   const handleCancel = (form) => {
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };
@@ -69,6 +73,10 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const handleChangeTags = (selectedOptions) => {
     setSelectedTags(selectedOptions?.map((option) => option.value));
   };
+
+  if (formClosed) {
+    return null;
+  }
 
   return (
     <Form

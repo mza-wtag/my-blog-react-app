@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
 import Button from "@components/Button/Button";
+import Subtract from "@assets/images/icons/Subtract.svg";
 import "@components/ImageDnD/imageDnD.scss";
 
 const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
@@ -27,7 +28,7 @@ const ImageDnD = ({ onDrop, imagePreview, cancelImagePreview }) => (
               onClick={cancelImagePreview}
               className="image-dnd__container__remove-button"
             >
-              X
+              <img src={Subtract} alt="remove image" />
             </Button>
           </div>
         ) : (

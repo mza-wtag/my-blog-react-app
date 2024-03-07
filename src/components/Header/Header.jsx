@@ -11,6 +11,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.auth.loggedInUser);
+  const blogs = useSelector((state) => state.blog);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -23,7 +24,7 @@ const Header = () => {
         <Link to="/" className="navbar__logo">
           WellBlog
         </Link>
-        <Search />
+        {blogs.length > 0 && <Search />}
         {loggedInUser ? (
           <div className="navbar__menu">
             Welcome

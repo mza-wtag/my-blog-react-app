@@ -16,10 +16,15 @@
   }
 
   &__category-badge {
+    display: flex;
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  &__tag {
     background-color: $secondary-color;
     border-radius: 0.3rem;
     color: $color-blue;
-    margin: 1rem;
     padding: 0.5rem;
     text-align: center;
     width: fit-content;
@@ -42,12 +47,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: space-between;
-    padding: 1rem 0;
+    padding: 1rem 1rem;
   }
 
   &__author-image {
-    background: $color-blue;
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -61,5 +64,6 @@
 
   &__created-at {
     color: $dim-color;
+    font-weight: $font-weight-extra-light;
   }
 }
