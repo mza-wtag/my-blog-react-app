@@ -12,7 +12,13 @@ const BlogCard = ({ blog }) => {
     <div className="blog-card">
       <Link to={`/blog/${id}`} className="blog-card__link">
         <img src={image} className="blog-card__banner" alt="Blog Banner" />
-        <div className="blog-card__category-badge">{tags}</div>
+        <div className="blog-card__category-badge">
+          {tags.map((tag, index) => (
+            <div key={index} className="blog-card__tag">
+              {tag}
+            </div>
+          ))}
+        </div>
         <h3 className="blog-card__title">{title}</h3>
         <div className="blog-card__author-info">
           <img

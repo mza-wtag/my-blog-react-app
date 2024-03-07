@@ -28,7 +28,13 @@ const BlogDetails = ({ blogDetails }) => {
   return (
     <div className="blog-details">
       <div className="blog-details__top-wrapper">
-        <div className="blog-details__category-badge">{tags}</div>
+        <div className="blog-details__category-badge">
+          {tags.map((tag, index) => (
+            <div key={index} className="blog-details__tag">
+              {tag}
+            </div>
+          ))}
+        </div>
         <div>
           {loggedInUser.userId === userId && (
             <Button onClick={handleEditBlog}>
