@@ -7,13 +7,12 @@ import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import "@components/EditProfileForm/editProfileForm.scss";
 
-const EditProfileForm = () => {
+const EditProfileForm = ({ onSetEditProfileVisibility }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
   const blog = useSelector((state) => state.blog);
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [imageName, setImageName] = useState("");
-  const [formClosed, setFormClosed] = useState(false);
 
   useEffect(() => {
     if (loggedInUser.profileImage) {
@@ -36,12 +35,12 @@ const EditProfileForm = () => {
     const updatedValues = { ...values, profileImage: imagePreview };
     dispatch(updateUserProfile(loggedInUser?.userId, updatedValues, blog));
     resetForm(form);
-    setFormClosed(true);
+    onSetEditProfileVisibility(false);
   };
 
   const onCancel = (form) => {
     resetForm(form);
-    setFormClosed(true);
+    onSetEditProfileVisibility(false);
   };
 
   const handleImageDrop = (acceptedFiles) => {
@@ -53,10 +52,6 @@ const EditProfileForm = () => {
     };
     reader.readAsDataURL(file);
   };
-
-  if (formClosed) {
-    return null;
-  }
 
   return (
     <Form
@@ -123,7 +118,6 @@ const EditProfileForm = () => {
               </div>
             </div>
           </div>
-
           <div className="edit-profile-form__buttons">
             <Button
               onClick={handleSubmit}
@@ -147,11 +141,13 @@ const EditProfileForm = () => {
 };
 
 EditProfileForm.propTypes = {
+  onSetEditProfileVisibility: PropTypes.func.isRequired,
   loggedInUser: PropTypes.shape({
     fullName: PropTypes.string,
     subtitle: PropTypes.string,
     about: PropTypes.string,
     profileImage: PropTypes.string,
+    userId: PropTypes.string,
   }),
 };
 
@@ -161,7 +157,7 @@ EditProfileForm.defaultProps = {
     subtitle: "",
     about: "",
     profileImage: "",
+    userId: "",
   },
 };
-
 export default EditProfileForm;
