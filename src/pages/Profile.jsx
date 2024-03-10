@@ -22,12 +22,12 @@ const Profile = () => {
     blogs?.filter((blog) => blog.userId === loggedInUser?.userId);
 
   const toggleEditProfileForm = () => {
-    setEditProfileVisible(!editProfileVisible);
+    setEditProfileVisible((prevState) => !prevState);
     setBlogFormVisible(false);
   };
 
   const toggleBlogForm = () => {
-    setBlogFormVisible(!blogFormVisible);
+    setBlogFormVisible((prevState) => !prevState);
     setEditProfileVisible(false);
   };
 
@@ -42,8 +42,18 @@ const Profile = () => {
         </Button>
       </div>
       <UserDetails />
-      {editProfileVisible && <EditProfileForm />}
-      {blogFormVisible && <BlogForm />}
+      {editProfileVisible && (
+        <EditProfileForm
+          isEditProfileVisible={editProfileVisible}
+          onSetEditProfileVisibility={setEditProfileVisible}
+        />
+      )}
+      {blogFormVisible && (
+        <BlogForm
+          isBlogFormVisible={blogFormVisible}
+          onSetBlogFormVisibility={setBlogFormVisible}
+        />
+      )}
       {personalBlogs.length > 0 && (
         <div className="common-title-filter-holder">
           <h2>My published posts</h2>

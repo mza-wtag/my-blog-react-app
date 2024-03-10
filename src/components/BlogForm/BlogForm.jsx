@@ -9,12 +9,11 @@ import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
 import "@components/BlogForm/blogForm.scss";
 
-const BlogForm = ({ initialData, onSubmit }) => {
+const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [formClosed, setFormClosed] = useState(false);
 
   const { loggedInUser } = useSelector((state) => state.auth);
 
@@ -45,7 +44,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
     setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
-    setFormClosed(true);
+    onSetBlogFormVisibility(false);
   };
 
   const handleDrop = (acceptedFiles) => {
@@ -73,10 +72,6 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const handleChangeTags = (selectedOptions) => {
     setSelectedTags(selectedOptions?.map((option) => option.value));
   };
-
-  if (formClosed) {
-    return null;
-  }
 
   return (
     <Form
