@@ -39,12 +39,12 @@ const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
       dispatch(updateBlog(initialData?.id, blog));
     } else {
       dispatch(addBlog(blog));
+      onSetBlogFormVisibility(false);
     }
     form.reset();
     setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
-    onSetBlogFormVisibility(false);
   };
 
   const handleDrop = (acceptedFiles) => {
@@ -161,6 +161,7 @@ BlogForm.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string),
   }),
   onSubmit: PropTypes.func,
+  onSetBlogFormVisibility: PropTypes.func,
 };
 
 BlogForm.defaultProps = {
