@@ -9,7 +9,7 @@ const customStyles = {
     border: state.isFocused ? "none" : "2px solid #e8e8ea",
     boxShadow: state.isFocused ? "0 0 0 2px #e8e8ea" : "none",
     maxHeight: "26px",
-    overflowY: "auto",
+    overflowY: "hidden",
   }),
   option: (provided, state) => ({
     ...provided,
