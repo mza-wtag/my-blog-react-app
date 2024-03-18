@@ -15,9 +15,9 @@ const Search = () => {
     dispatch(searchBlogPosts(searchQuery));
   };
 
-  const shouldRenderSearch = !["/login", "/register"].includes(
-    location.pathname
-  );
+  const shouldRenderSearch =
+    !["/login", "/register"].includes(location.pathname) &&
+    !location.pathname.startsWith("/blog/");
 
   if (!shouldRenderSearch) {
     return null;
