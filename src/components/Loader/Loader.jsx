@@ -4,7 +4,7 @@ import "@components/Loader/loader.scss";
 
 export const Loader = () => {
   return (
-    <div className="loader-container">
+    <div className="loader-container" data-testid="loader-component">
       <Oval />
     </div>
   );
