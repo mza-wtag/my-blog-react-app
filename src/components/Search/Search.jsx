@@ -17,7 +17,8 @@ const Search = () => {
 
   const shouldRenderSearch =
     !["/login", "/register"].includes(location.pathname) &&
-    !location.pathname.startsWith("/blog/");
+    !location.pathname.startsWith("/blog/") &&
+    !location.pathname.startsWith("/edit-blog/");
 
   if (!shouldRenderSearch) {
     return null;
