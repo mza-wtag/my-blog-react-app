@@ -1,11 +1,13 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import supabase from "./../../app/supabase";
 import Button from "@components/Button/Button";
 import "@components/Register/register.scss";
+import { registerUser } from "@actions/authActions";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const validate = (values) => {
@@ -23,17 +25,9 @@ const Register = () => {
     return errors;
   };
 
-  const handleRegisterSubmit = async (event) => {
+  const handleRegisterSubmit = async (values) => {
     try {
-      const { user, error } = await supabase.auth.signUp({
-        email: event.email,
-        password: event.password,
-      });
-
-      if (error) {
-        throw new Error(error.message);
-      }
-
+      await dispatch(registerUser(values));
       navigate("/login");
     } catch (error) {
       console.error("Failed to register user: ", error.message);
