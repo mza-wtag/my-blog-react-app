@@ -35,7 +35,6 @@ export const registerUser = (user) => {
       });
 
       let users = JSON.parse(localStorage.getItem("users")) || [];
-      users.push(user);
       localStorage.setItem("users", JSON.stringify(users));
     } catch (error) {
       throw new Error("Failed to register user: " + error.message);
@@ -94,9 +93,9 @@ export const loginUserWithLocalStorage = (
   };
 };
 
-export const updateUserProfile = (userId, profileData) => {
+export const updateUserProfile = (userId, profileData, blogs) => {
   return {
     type: UPDATE_USER_PROFILE,
-    payload: { userId, profileData },
+    payload: { userId, profileData, blogs },
   };
 };

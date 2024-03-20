@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import defaultUserImage from "@assets/images/icons/defaultUserImage.svg";
 import "@components/BlogCard/blogCard.scss";
 
 const BlogCard = ({ blog }) => {
@@ -11,11 +12,17 @@ const BlogCard = ({ blog }) => {
     <div className="blog-card">
       <Link to={`/blog/${id}`} className="blog-card__link">
         <img src={image} className="blog-card__banner" alt="Blog Banner" />
-        <div className="blog-card__category-badge">{tags}</div>
+        <div className="blog-card__category-badge">
+          {tags.map((tag, index) => (
+            <div key={index} className="blog-card__tag">
+              {tag}
+            </div>
+          ))}
+        </div>
         <h3 className="blog-card__title">{title}</h3>
         <div className="blog-card__author-info">
           <img
-            src={creatorImage}
+            src={creatorImage ? creatorImage : defaultUserImage}
             alt="Author"
             className="blog-card__author-image"
           />

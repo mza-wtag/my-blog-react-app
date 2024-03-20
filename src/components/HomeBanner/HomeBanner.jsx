@@ -20,7 +20,11 @@ const HomeBanner = ({ blog }) => {
         <div className={wrapperClassName}>
           <div className={`${wrapperClassName}-heading`}>
             <div className={`${wrapperClassName}-heading-category-badge`}>
-              {tags}
+              {tags.map((tag, index) => (
+                <div key={index} className={`${wrapperClassName}-heading__tag`}>
+                  {tag}
+                </div>
+              ))}
             </div>
             <h3 className={`${wrapperClassName}-heading-title`}>{title}</h3>
           </div>

@@ -20,6 +20,7 @@
   &__title-tag-wrapper {
     align-items: baseline;
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
   }
 
@@ -48,6 +49,7 @@
 
   &__buttons {
     display: flex;
+    flex-wrap: wrap;
     font-size: 1rem;
     gap: 1rem;
     justify-content: center;

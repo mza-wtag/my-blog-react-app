@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlog, updateBlog } from "@actions/blogActions";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
@@ -9,7 +9,7 @@ import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
 import "@components/BlogForm/blogForm.scss";
 
-const BlogForm = ({ initialData, onSubmit }) => {
+const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -39,8 +39,10 @@ const BlogForm = ({ initialData, onSubmit }) => {
       dispatch(updateBlog(initialData?.id, blog));
     } else {
       dispatch(addBlog(blog));
+      onSetBlogFormVisibility(false);
     }
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };
@@ -61,6 +63,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
 
   const handleCancel = (form) => {
     form.reset();
+    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };
@@ -158,6 +161,7 @@ BlogForm.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string),
   }),
   onSubmit: PropTypes.func,
+  onSetBlogFormVisibility: PropTypes.func,
 };
 
 BlogForm.defaultProps = {
