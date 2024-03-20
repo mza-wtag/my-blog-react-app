@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserProfile } from "@actions/authActions";
+// import { updateUserProfile } from "@actions/authActions";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import "@components/EditProfileForm/editProfileForm.scss";
