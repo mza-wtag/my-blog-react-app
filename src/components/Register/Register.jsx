@@ -3,8 +3,8 @@ import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
 import Button from "@components/Button/Button";
 import "@components/Register/register.scss";
-import { registerUser } from "@actions/authActions";
 import { useDispatch } from "react-redux";
+import { registerUser } from "@actions/authActions";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,15 @@ const Register = () => {
 
   const validate = (values) => {
     const errors = {};
+    if (!values.userName) {
+      errors.userName = "User Name Required";
+    }
+    if (!values.firstName) {
+      errors.firstName = "First Name Required";
+    }
+    if (!values.lastName) {
+      errors.lastName = "Last Name Required";
+    }
     if (!values.email) {
       errors.email = "Email Required";
     } else if (
@@ -42,6 +51,75 @@ const Register = () => {
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className="registration-form__form">
+            <div className="registration-form__field">
+              <label className="registration-form__label">User Name:*</label>
+              <Field
+                type="text"
+                name="userName"
+                component="input"
+                className="registration-form__input"
+              />
+              <div className="registration-form__error">
+                <Field
+                  name="userName"
+                  subscription={{ error: true, touched: true }}
+                >
+                  {({ meta: { touched, error } }) =>
+                    touched && error ? (
+                      <span className="registration-form__error-text">
+                        {error}
+                      </span>
+                    ) : null
+                  }
+                </Field>
+              </div>
+            </div>
+            <div className="registration-form__field">
+              <label className="registration-form__label">First Name:*</label>
+              <Field
+                type="text"
+                name="firstName"
+                component="input"
+                className="registration-form__input"
+              />
+              <div className="registration-form__error">
+                <Field
+                  name="firstName"
+                  subscription={{ error: true, touched: true }}
+                >
+                  {({ meta: { touched, error } }) =>
+                    touched && error ? (
+                      <span className="registration-form__error-text">
+                        {error}
+                      </span>
+                    ) : null
+                  }
+                </Field>
+              </div>
+            </div>
+            <div className="registration-form__field">
+              <label className="registration-form__label">Last Name:*</label>
+              <Field
+                type="text"
+                name="lastName"
+                component="input"
+                className="registration-form__input"
+              />
+              <div className="registration-form__error">
+                <Field
+                  name="lastName"
+                  subscription={{ error: true, touched: true }}
+                >
+                  {({ meta: { touched, error } }) =>
+                    touched && error ? (
+                      <span className="registration-form__error-text">
+                        {error}
+                      </span>
+                    ) : null
+                  }
+                </Field>
+              </div>
+            </div>
             <div className="registration-form__field">
               <label className="registration-form__label">Email:*</label>
               <Field

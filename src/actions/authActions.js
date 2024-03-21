@@ -3,9 +3,17 @@ import { LOGGEDIN_USER, LOGGEDOUT_USER } from "@constants/actionTypes";
 
 export const registerUser = (user) => async (dispatch) => {
   try {
+    const { email, password, firstName, lastName, userName } = user;
     const { user: newUser, error } = await supabase.auth.signUp({
-      email: user.email,
-      password: user.password,
+      email,
+      password,
+      options: {
+        data: {
+          firstName,
+          lastName,
+          userName,
+        },
+      },
     });
 
     if (error) {

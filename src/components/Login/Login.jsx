@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import supabase from "./../../app/supabase";
 import Button from "@components/Button/Button";
 import "@components/Login/login.scss";
 import { useDispatch } from "react-redux";
