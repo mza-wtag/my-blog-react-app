@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import Button from "@components/Button/Button";
 import Edit from "@assets/images/icons/Edit.svg";
+import defaultUserImage from "@assets/images/icons/defaultUserImage.svg";
 import "@components/BlogDetails/blogDetails.scss";
 import "@styles/common.scss";
 
@@ -47,7 +48,7 @@ const BlogDetails = ({ blogDetails }) => {
       <h3 className="blog-details__title">{title}</h3>
       <div className="blog-details__author-info">
         <img
-          src={creatorImage}
+          src={creatorImage ? creatorImage : defaultUserImage}
           alt="Author"
           className="blog-details__author-image"
         />
