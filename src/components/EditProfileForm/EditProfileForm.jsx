@@ -1,28 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { updateUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
-import "@components/EditProfileForm/editProfileForm.scss";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 import { Field, Form } from "react-final-form";
-import { useDispatch, useSelector } from "react-redux";
+import "@components/EditProfileForm/editProfileForm.scss";
 
 const EditProfileForm = ({ onSetEditProfileVisibility }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
-  const blog = useSelector((state) => state.blog);
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState("");
   const [loggedInUserInfo, setLoggedInUserInfo] = useState(null);
-  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     if (loggedInUser.profileImage) {
       setImagePreview(loggedInUser.profileImage);
     }
-    setUserId(loggedInUser?.id);
-
     setLoggedInUserInfo(loggedInUser.user_metadata);
   }, [loggedInUser]);
 
