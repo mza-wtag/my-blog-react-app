@@ -6,6 +6,7 @@ import Button from "@components/Button/Button";
 import Edit from "@assets/images/icons/Edit.svg";
 import defaultUserImage from "@assets/images/icons/defaultUserImage.svg";
 import getImagePath from "../../helpers/getImagePath";
+import formatDate from "./../../helpers/formatDate";
 import "@components/BlogDetails/blogDetails.scss";
 import "@styles/common.scss";
 
@@ -54,7 +55,7 @@ const BlogDetails = ({ blogDetails }) => {
           className="blog-details__author-image"
         />
         <p className="blog-details__author-name">{creatorFullName}</p>
-        <p className="blog-details__created-at">{createdAt}</p>
+        <p className="blog-details__created-at">{formatDate(createdAt)}</p>
       </div>
       <img
         src={BannerImage}
