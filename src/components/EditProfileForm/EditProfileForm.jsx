@@ -66,74 +66,74 @@ const EditProfileForm = ({ onSetEditProfileVisibility }) => {
         about: loggedInUserInfo?.about || "",
       }}
       render={({ handleSubmit, form }) => (
-        <form className='edit-profile-form' onSubmit={handleSubmit}>
-          <div className='edit-profile-form__container'>
-            <div className='edit-profile-form__info-wrapper'>
-              <div className='edit-profile-form__field'>
-                <label className='edit-profile-form__label'>Name</label>
+        <form className="edit-profile-form" onSubmit={handleSubmit}>
+          <div className="edit-profile-form__container">
+            <div className="edit-profile-form__info-wrapper">
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">Name</label>
                 <Field
-                  name='fullName'
-                  component='input'
-                  type='text'
-                  placeholder='Name'
-                  className='edit-profile-form__input'
+                  name="fullName"
+                  component="input"
+                  type="text"
+                  placeholder="Name"
+                  className="edit-profile-form__input"
                 />
               </div>
-              <div className='edit-profile-form__field'>
-                <label className='edit-profile-form__label'>Subtitle</label>
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">Subtitle</label>
                 <Field
-                  name='subtitle'
-                  component='input'
-                  type='text'
-                  placeholder='Subtitle'
-                  className='edit-profile-form__input'
+                  name="subtitle"
+                  component="input"
+                  type="text"
+                  placeholder="Subtitle"
+                  className="edit-profile-form__input"
                 />
               </div>
-              <div className='edit-profile-form__field'>
-                <label className='edit-profile-form__label'>About</label>
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">About</label>
                 <Field
-                  name='about'
-                  component='textarea'
-                  placeholder='About'
-                  className='edit-profile-form__textarea'
+                  name="about"
+                  component="textarea"
+                  placeholder="About"
+                  className="edit-profile-form__textarea"
                 />
               </div>
             </div>
-            <div className='edit-profile-form__image-wrapper'>
-              <div className='edit-profile-form__field'>
-                <label className='edit-profile-form__label'>
+            <div className="edit-profile-form__image-wrapper">
+              <div className="edit-profile-form__field">
+                <label className="edit-profile-form__label">
                   Profile Image
                 </label>
                 <ImageDnD onDrop={handleImageDrop} />
               </div>
-              <div className='edit-profile-form__image-preview'>
+              <div className="edit-profile-form__image-preview">
                 {imageName && (
-                  <span className='edit-profile-form__image-name'>
+                  <span className="edit-profile-form__image-name">
                     {imageName}
                   </span>
                 )}
                 {imagePreview && (
                   <img
                     src={imagePreview}
-                    alt='Profile Preview'
-                    className='edit-profile-form__preview-image'
+                    alt="Profile Preview"
+                    className="edit-profile-form__preview-image"
                   />
                 )}
               </div>
             </div>
           </div>
-          <div className='edit-profile-form__buttons'>
+          <div className="edit-profile-form__buttons">
             <Button
               onClick={handleSubmit}
-              type='submit'
-              className='edit-profile-form__submit-button'
+              type="submit"
+              className="edit-profile-form__submit-button"
             >
               Submit
             </Button>
             <Button
               onClick={() => onCancel(form)}
-              type='button'
-              className='edit-profile-form__cancel-button'
+              type="button"
+              className="edit-profile-form__cancel-button"
             >
               Cancel
             </Button>
