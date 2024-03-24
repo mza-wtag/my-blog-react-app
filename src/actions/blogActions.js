@@ -26,6 +26,7 @@ export const createBlogPost = (blog) => {
     body: blog.body,
     image: blog.image,
     tags: blog.tags,
+    userId: blog.userId,
     creatorImage: blog.creatorImage,
     creatorFullName: blog.creatorFullName,
   };

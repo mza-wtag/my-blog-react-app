@@ -29,9 +29,9 @@ const BlogForm = ({ initialData, onSubmit }) => {
       ...values,
       image: imagePreview,
       tags: selectedTags,
-      userId: loggedInUser.userId,
-      creatorImage: loggedInUser.profileImage,
-      creatorFullName: loggedInUser.fullName,
+      userId: loggedInUser?.id,
+      creatorImage: loggedInUser?.user_metadata?.profileImage,
+      creatorFullName: loggedInUser?.user_metadata?.fullName,
     };
 
     if (isEditMode) {
