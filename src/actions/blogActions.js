@@ -44,7 +44,7 @@ export const createBlogPost = (blog) => {
 
       dispatch(fetchBlogs());
     } catch (error) {
-      console.error("Error fetching blogs:", error);
+      throw error;
     }
   };
 };
@@ -68,7 +68,7 @@ export const updateBlogPost = (blogId, updatedBlogData) => {
 
       dispatch(fetchBlogs());
     } catch (error) {
-      console.error("Error updating blog:", error);
+      throw error;
     }
   };
 };

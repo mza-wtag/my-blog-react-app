@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogs } from "@actions/blogActions";
 import EditProfileForm from "@components/EditProfileForm/EditProfileForm";
 import UserDetails from "@components/UserDetails/UserDetails";
 import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
@@ -12,14 +13,19 @@ import tags from "@constants/tags.json";
 import "@styles/common.scss";
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const { loggedInUser } = useSelector((state) => state.auth);
   const blogs = useSelector((state) => state.blog);
   const [editProfileVisible, setEditProfileVisible] = useState(false);
   const [blogFormVisible, setBlogFormVisible] = useState(false);
 
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
+
   const personalBlogs =
     loggedInUser?.user_metadata?.userName &&
-    blogs?.filter((blog) => blog.userId === loggedInUser?.id);
+    blogs?.filter((blog) => blog?.userId === loggedInUser?.id);
 
   const toggleEditProfileForm = () => {
     setEditProfileVisible((prevState) => !prevState);
