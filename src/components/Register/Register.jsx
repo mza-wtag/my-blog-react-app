@@ -223,7 +223,7 @@ const Register = () => {
       await dispatch(registerUser(values));
       navigate("/login");
     } catch (error) {
-      console.error("Failed to register user: ", error.message);
+      throw error;
     }
   };
 

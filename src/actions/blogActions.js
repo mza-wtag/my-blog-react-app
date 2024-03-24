@@ -9,13 +9,16 @@ import supabase from "./../app/supabase";
 export const fetchBlogs = () => {
   return async (dispatch) => {
     try {
-      const { data, error } = await supabase.from("blogs").select("*");
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .order("id", { ascending: false });
       if (error) {
         throw new Error(error.message);
       }
       dispatch(getBlogs(data));
     } catch (error) {
-      console.error("Error fetching blogs:", error);
+      throw error;
     }
   };
 };

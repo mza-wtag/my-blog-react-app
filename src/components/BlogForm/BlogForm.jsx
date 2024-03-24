@@ -8,7 +8,8 @@ import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
 import tags from "@constants/tags.json";
 import "@components/BlogForm/blogForm.scss";
-const BlogForm = ({ initialData, onSubmit }) => {
+
+const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -38,6 +39,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
       dispatch(updateBlogPost(initialData?.id, blog));
     } else {
       dispatch(createBlogPost(blog));
+      onSetBlogFormVisibility(false);
     }
     form.reset();
     setImagePreview(null);
@@ -61,6 +63,7 @@ const BlogForm = ({ initialData, onSubmit }) => {
   const handleCancel = (form) => {
     form.reset();
     setImagePreview(null);
+    setSelectedTags("");
     onSubmit();
   };
 

@@ -133,8 +133,7 @@ const Login = () => {
       await dispatch(loginUser(userData));
       navigate("/");
     } catch (error) {
-      console.error("Failed to login user: ", error.message);
-      setErrorMessage("Invalid email or password");
+      setErrorMessage("Invalid email or password", error);
     }
   };
 

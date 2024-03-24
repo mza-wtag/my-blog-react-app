@@ -13,9 +13,7 @@ import "@styles/common.scss";
 
 const Profile = () => {
   const { loggedInUser } = useSelector((state) => state.auth);
-  console.log(loggedInUser);
   const blogs = useSelector((state) => state.blog);
-  console.log(blogs);
   const [editProfileVisible, setEditProfileVisible] = useState(false);
   const [blogFormVisible, setBlogFormVisible] = useState(false);
 

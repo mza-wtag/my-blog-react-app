@@ -38,7 +38,6 @@ export const loginUser = (userData) => {
         email: userData.email,
         password: userData.password,
       });
-      console.log(data);
 
       if (error) {
         throw new Error(error.message);
@@ -103,7 +102,6 @@ export const logoutUser = () => async (dispatch) => {
     });
     localStorage.removeItem("loggedInUser");
   } catch (error) {
-    console.log(error);
     throw new Error("Failed to logout user: " + error.message);
   }
 };
