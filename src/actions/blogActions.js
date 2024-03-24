@@ -12,7 +12,7 @@ export const fetchBlogs = () => {
       const { data, error } = await supabase
         .from("blogs")
         .select("*")
-        .order("id", { ascending: false });
+        .order("createdAt", { ascending: false });
       if (error) {
         throw new Error(error.message);
       }
