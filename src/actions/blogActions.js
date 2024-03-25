@@ -13,9 +13,11 @@ export const fetchBlogs = () => {
         .from("blogs")
         .select("*")
         .order("createdAt", { ascending: false });
+
       if (error) {
         throw new Error(error.message);
       }
+
       dispatch(getBlogs(data));
     } catch (error) {
       throw error;
@@ -36,7 +38,7 @@ export const createBlogPost = (blog) => {
 
   return async (dispatch) => {
     try {
-      const { error } = await supabase.from("blogs").insert([newBlog]);
+      const { error } = await supabase.from("blogs").insert([blog]);
 
       if (error) {
         throw new Error(error.message);
