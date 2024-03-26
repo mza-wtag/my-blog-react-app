@@ -38,7 +38,7 @@ export const createBlogPost = (blog) => {
 
   return async (dispatch) => {
     try {
-      const { error } = await supabase.from("blogs").insert([blog]);
+      const { error } = await supabase.from("blogs").insert([newBlog]);
 
       if (error) {
         throw new Error(error.message);
