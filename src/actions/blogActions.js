@@ -4,7 +4,9 @@ import {
   FILTER_BY_TAG,
 } from "@constants/actionTypes";
 
-import supabase from "./../app/supabase";
+import { getSupabaseInstance } from "./../app/supabase";
+
+const supabase = getSupabaseInstance();
 
 export const fetchBlogs = () => {
   return async (dispatch) => {
@@ -26,19 +28,9 @@ export const fetchBlogs = () => {
 };
 
 export const createBlogPost = (blog) => {
-  const newBlog = {
-    title: blog.title,
-    body: blog.body,
-    image: blog.image,
-    tags: blog.tags,
-    userId: blog.userId,
-    creatorImage: blog.creatorImage,
-    creatorFullName: blog.creatorFullName,
-  };
-
   return async (dispatch) => {
     try {
-      const { error } = await supabase.from("blogs").insert([newBlog]);
+      const { error } = await supabase.from("blogs").insert([blog]);
 
       if (error) {
         throw new Error(error.message);

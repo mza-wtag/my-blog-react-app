@@ -153,7 +153,6 @@ const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
 
 BlogForm.propTypes = {
   initialData: PropTypes.shape({
-    id: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
     image: PropTypes.string,
@@ -164,7 +163,6 @@ BlogForm.propTypes = {
 
 BlogForm.defaultProps = {
   initialData: {
-    id: null,
     title: "",
     body: "",
     image: null,
