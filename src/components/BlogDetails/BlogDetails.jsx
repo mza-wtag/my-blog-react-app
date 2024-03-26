@@ -39,7 +39,7 @@ const BlogDetails = ({ blogDetails }) => {
           ))}
         </div>
         <div>
-          {loggedInUser.id === userId && (
+          {loggedInUser && loggedInUser.id === userId && (
             <Button onClick={handleEditBlog}>
               <img src={Edit} alt="Edit Blog" />
             </Button>
