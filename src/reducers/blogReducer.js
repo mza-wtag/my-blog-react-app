@@ -4,7 +4,7 @@ import {
   GET_BLOG_POSTS,
 } from "@constants/actionTypes";
 
-const initialState = JSON.parse(localStorage.getItem("blogPosts")) || [];
+const initialState = [];
 
 export const blogReducer = (state = initialState, action) => {
   switch (action.type) {

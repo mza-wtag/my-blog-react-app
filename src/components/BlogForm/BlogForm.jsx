@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
-import { useDispatch, useSelector } from "react-redux";
-import { addBlog, updateBlog } from "@actions/blogActions";
+import { createBlogPost, updateBlogPost } from "@actions/blogActions";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
 import SelectBox from "@components/SelectBox/SelectBox";
@@ -30,19 +30,18 @@ const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
       ...values,
       image: imagePreview,
       tags: selectedTags,
-      userId: loggedInUser.userId,
-      creatorImage: loggedInUser.profileImage,
-      creatorFullName: loggedInUser.fullName,
+      userId: loggedInUser?.id,
+      creatorImage: loggedInUser?.user_metadata?.profileImage,
+      creatorFullName: loggedInUser?.user_metadata?.fullName,
     };
 
     if (isEditMode) {
-      dispatch(updateBlog(initialData?.id, blog));
+      dispatch(updateBlogPost(initialData?.id, blog));
     } else {
-      dispatch(addBlog(blog));
+      dispatch(createBlogPost(blog));
       onSetBlogFormVisibility(false);
     }
     form.reset();
-    setSelectedTags([]);
     setImagePreview(null);
     onSubmit();
   };
@@ -63,8 +62,8 @@ const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
 
   const handleCancel = (form) => {
     form.reset();
-    setSelectedTags([]);
     setImagePreview(null);
+    setSelectedTags("");
     onSubmit();
   };
 
@@ -154,19 +153,16 @@ const BlogForm = ({ initialData, onSubmit, onSetBlogFormVisibility }) => {
 
 BlogForm.propTypes = {
   initialData: PropTypes.shape({
-    id: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
     image: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
   }),
   onSubmit: PropTypes.func,
-  onSetBlogFormVisibility: PropTypes.func,
 };
 
 BlogForm.defaultProps = {
   initialData: {
-    id: null,
     title: "",
     body: "",
     image: null,

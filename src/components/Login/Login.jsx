@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import { loginUserWithLocalStorage } from "@actions/authActions";
 import Button from "@components/Button/Button";
 import "@components/Login/login.scss";
+import { useDispatch } from "react-redux";
+import { loginUser } from "@actions/authActions";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const validate = (values) => {
     const errors = {};
-    if (!values.userName) {
-      errors.userName = "User Name Required";
+    if (!values.email) {
+      errors.email = "Email Required";
     }
     if (!values.password) {
       errors.password = "Password Required";
@@ -21,8 +22,17 @@ const Login = () => {
     return errors;
   };
 
-  const handleLoginSubmit = (event) => {
-    dispatch(loginUserWithLocalStorage(event, setErrorMessage, navigate));
+  const handleLoginSubmit = async (event) => {
+    try {
+      const userData = {
+        email: event.email,
+        password: event.password,
+      };
+      await dispatch(loginUser(userData));
+      navigate("/");
+    } catch (error) {
+      setErrorMessage("Invalid email or password", error);
+    }
   };
 
   return (
@@ -34,16 +44,16 @@ const Login = () => {
         render={({ handleSubmit }) => (
           <form className="login-form__form" onSubmit={handleSubmit}>
             <div className="login-form__field">
-              <label className="login-form__label">User Name:*</label>
+              <label className="login-form__label">Email:*</label>
               <Field
                 className="login-form__input"
                 type="text"
-                name="userName"
+                name="email"
                 component="input"
               />
               <div className="login-form__error">
                 <Field
-                  name="userName"
+                  name="email"
                   subscription={{ error: true, touched: true }}
                 >
                   {({ meta: { touched, error } }) =>

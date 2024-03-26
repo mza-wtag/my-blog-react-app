@@ -1,14 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import NotFound from "@components/NotFound/NotFound";
-import HomeBanner from "@components/HomeBanner/HomeBanner";
-import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
+import { fetchBlogs } from "@actions/blogActions";
 import BlogList from "@components/BlogList/BlogList";
+import FilterBlogs from "@components/FilterBlogs/FilterBlogs";
+import HomeBanner from "@components/HomeBanner/HomeBanner";
+import NotFound from "@components/NotFound/NotFound";
 import tags from "@constants/tags.json";
 
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 const Home = () => {
+  const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blog);
-  const loggedInUser = useSelector((state) => state.auth.loggedInUser);
+  const loggedInUser = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
 
   return (
     <div className="container">

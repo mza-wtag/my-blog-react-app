@@ -1,14 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Form, Field } from "react-final-form";
 import { useNavigate, Link } from "react-router-dom";
-import { registerUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
 import "@components/Register/register.scss";
+import { useDispatch } from "react-redux";
+import { registerUser } from "@actions/authActions";
 
 const Register = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validate = (values) => {
     const errors = {};
@@ -34,9 +34,13 @@ const Register = () => {
     return errors;
   };
 
-  const handleRegisterSubmit = (event) => {
-    dispatch(registerUser(event));
-    navigate("/login");
+  const handleRegisterSubmit = async (values) => {
+    try {
+      await dispatch(registerUser(values));
+      navigate("/login");
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
