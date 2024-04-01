@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserProfile } from "@actions/authActions";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { updateUser } from "@actions/authActions";
 import Button from "@components/Button/Button";
 import ImageDnD from "@components/ImageDnD/ImageDnD";
+import { Field, Form } from "react-final-form";
 import "@components/EditProfileForm/editProfileForm.scss";
 
 const EditProfileForm = ({ onSetEditProfileVisibility }) => {
   const { loggedInUser } = useSelector((state) => state.auth);
-  const blog = useSelector((state) => state.blog);
   const dispatch = useDispatch();
   const [imagePreview, setImagePreview] = useState(null);
+  const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState("");
+  const [loggedInUserInfo, setLoggedInUserInfo] = useState(null);
 
   useEffect(() => {
     if (loggedInUser.profileImage) {
       setImagePreview(loggedInUser.profileImage);
     }
+    setLoggedInUserInfo(loggedInUser.user_metadata);
   }, [loggedInUser]);
 
   const resetForm = (form) => {
@@ -31,9 +33,8 @@ const EditProfileForm = ({ onSetEditProfileVisibility }) => {
     setImageName("");
   };
 
-  const onSubmit = (values, form) => {
-    const updatedValues = { ...values, profileImage: imagePreview };
-    dispatch(updateUserProfile(loggedInUser?.userId, updatedValues, blog));
+  const onSubmit = async (values, form) => {
+    dispatch(updateUser(values, image));
     resetForm(form);
     onSetEditProfileVisibility(false);
   };
@@ -45,21 +46,20 @@ const EditProfileForm = ({ onSetEditProfileVisibility }) => {
 
   const handleImageDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImagePreview(reader.result);
-      setImageName(file.name);
-    };
-    reader.readAsDataURL(file);
+    setImage(file);
+    setImagePreview(URL.createObjectURL(file));
+    setImageName(file.name);
   };
 
   return (
     <Form
-      onSubmit={(values, form) => onSubmit(values, form)}
+      onSubmit={(values, form) => {
+        onSubmit(values, form);
+      }}
       initialValues={{
-        fullName: loggedInUser?.fullName || "",
-        subtitle: loggedInUser?.subtitle || "",
-        about: loggedInUser?.about || "",
+        fullName: loggedInUserInfo?.fullName || "",
+        subtitle: loggedInUserInfo?.subtitle || "",
+        about: loggedInUserInfo?.about || "",
       }}
       render={({ handleSubmit, form }) => (
         <form className="edit-profile-form" onSubmit={handleSubmit}>
